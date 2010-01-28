@@ -1,0 +1,522 @@
+<{config_load file="showfavor.conf"}>
+
+<{ include file="header.tmpl" }>
+
+
+<!-- 论坛的访问菜单 -->
+<table width="99%" cellpadding=0 cellspacing=1 border="0" bgcolor="#f6f7f1" align="center">
+<tr>
+<td align="left">
+&nbsp;&nbsp;<img src="<{$image_url}>open.gif" border=0 align="absmiddle">
+&nbsp;&nbsp;<a href='index.php?module=bbs'>[<{#the_bbs_home_page#}>]</a>
+<font color="<{#global_column_color#}>">></font>
+
+<a href='index.php?module=user'>[<{#user_control_panel#}>]</a>
+<font color="<{#global_column_color#}>">></font>
+
+<a href='index.php?module=favor'>[<{#view_my_favor#}>]</a>
+<font color="<{#global_column_color#}>">></font>
+
+
+
+</td>
+</tr>
+</table>
+<br>
+
+<{ include file="usersharemenu.tmpl" }>
+
+<table width="99%" cellpadding=10 cellspacing=1 border="0" align="center">
+<tr>
+<td align="center" valign="top"  bgcolor="#FFFFFF" width="250">
+
+<table width="99%" cellpadding=3 cellspacing=1 border="0" align='center' bgcolor="<{#global_font_color#}>">
+
+<!-- 显示用户名和用户角色 -->
+<tr>
+<td align="center" valign="middle"  height="25" >
+<b><{$view_user_name}></b>&nbsp;&nbsp;[<{$user_roles}>]
+</td>
+</tr>
+
+<!-- 显示用户的头像 -->
+<tr>
+<td align="center" valign="middle" >
+<br>
+<img src="<{$head_url}>" border="0" align="absmiddle">
+<br>
+</td>
+</tr>
+
+<tr>
+<td align="center" valign="middle"  height="25" >
+<b><{#base_user_info_label#}></b>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="middle"  height="25" >
+<b><{#username_label#}>:</b> &nbsp;&nbsp;<{$view_user_name}>
+</td>
+</tr>
+
+
+<tr>
+<td align="left" valign="middle"  height="25" >
+<b><{#user_title#}>:</b>&nbsp;&nbsp;<{$user_roles}>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="middle"  height="25" >
+<b><{#register_date#}>:</b> &nbsp;&nbsp;<{$user_register_date}>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="middle"  height="25" >
+<b><{#last_login_date#}>:</b> &nbsp;&nbsp;<{$user_last_logout}>
+</td>
+</tr>
+
+
+<tr>
+<td align="left" valign="middle"  height="25" >
+<b><{#all_topics#}>:</b> &nbsp;&nbsp;<{$all_topic_number}><{#topic_desc#}>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="middle"  height="25" >
+<b><{#all_replies#}>:</b> &nbsp;&nbsp;<{$all_reply_number}><{#reply_desc#}>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="middle"  height="25" >
+<b><{#favor_number#}>:</b> &nbsp;&nbsp;<{$favor_amount}><{#favor_desc#}>
+</td>
+</tr>
+
+
+<tr>
+<td align="left" valign="middle"  height="25" >
+<b><{#all_messages#}>:</b> &nbsp;&nbsp;<{$message_all_number}><{#message_desc#}>
+</td>
+</tr>
+
+</table>
+
+
+</td>
+
+<td align="center" valign="top"  bgcolor="#FFFFFF">
+<br>
+<div align="left">&nbsp;&nbsp;<{#favor_dir_manager#}>:
+<select name='dir_manager' id='dir_manager' OnChange="manager_dir()">
+<option value=0>-<{#dir_label#}>-</option>
+<{ section name=dir loop=$dir_array }>
+<option value=<{$dir_array[dir].id}> <{ if $dir == $dir_array[dir].id }> selected <{/if}>  >
+<{$dir_array[dir].dir_name}>
+</option>
+<{/section}>
+</select>
+<input type="button" name="create_dir" id="create_dir" value='<{#create_new_favor_dir#}>' onClick="showcreatedir()">
+<input type='button' name='delete_dir' id='delete_dir' value='<{#delete_favor_dir#}>' onClick="deletefavordir()">
+<input type="text" id="dir_name" name="dir_name" size="25" style="display:none">
+<input type="button" value="<{#show_save_label#}>" onClick="savenewdir()" style="display:none" id="dir_button1">
+<input type="button" value="<{#show_cancel_label#}>" onClick="cancelsavedir()" style="display:none" id="dir_button2">
+
+</div><br>
+
+<!-- 加入导航栏 -->
+<table width="99%" cellpadding=1 cellspacing=1 align="right" border=0 >
+<tr>
+<td width="150" align="left">
+&nbsp;
+</td>
+<td align="right">
+<table  align="right" cellpadding=1 cellspacing=1 border=0 bgcolor="#727273" >
+<tr bgcolor="#f6f7f1" >
+<td  width="150" align="center">
+<font color="<{#global_column_color#}>" ><{#total_have#}><{$total_page}><{#page_th#}><{$now_page}><{#page_label#}></font>
+</td>
+
+<td align="center" width="30">
+<a href='index.php?module=favor&page=1&dir=<{$dir}>'><{#first_page#}></a>
+</td>
+
+<td align="center" width="30">
+<a href='index.php?module=favor&page=<{$now_page-1}>&dir=<{$dir}>'><{#pre_page#}></a>
+</td>
+
+<{ section name="nav_page" loop=$nav_page }>
+
+
+<{ if $nav_page[nav_page] != $now_page }>
+<td width="16" align="center">
+<a href='index.php?module=favor&page=<{$nav_page[nav_page]}>&dir=<{$dir}>'><b><{$nav_page[nav_page]}></b></a>
+</td>
+<{ else }>
+
+<td width="20" align="center" bgcolor="white">
+<b><{$nav_page[nav_page]}></b>
+</td>
+
+<{/if}>
+
+
+<{ /section }>
+
+<td width="30" align="center">
+<a href='index.php?module=favor&page=<{ $now_page+1}>&dir=<{$dir}>'><{#next_page#}></a>
+</td>
+
+
+<td width="30" align="center">
+<a href='index.php?module=favor&page=<{$total_page}>&dir=<{$dir}>'><{#last_page#}></a>
+</td>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+<!-- 导航栏结束 -->
+<br><br>
+
+<form name="form1" id="form1" action="index.php" method="post">
+<input type="hidden" name="module" value="favor">
+<input type="hidden" name="action" value="delete">
+<input type="hidden" name="dir" value="<{$dir}>">
+<input type="hidden" name="page" value="<{$page}>">
+
+<!-- 显示用户收藏的主题 -->
+<table width="97%" bgcolor="#f6f7f1" cellpadding=3 cellspacing=1 border="0" align='center'>
+
+<tr>
+<td align="left" colspan=9>
+<{#newest_five_topic#}>
+</td>
+</tr>
+
+<tr bgcolor="#FFFFFF">
+
+<td align="center" width="46">
+<input type=checkbox name="chkall" value="on" onclick="CheckAll(this.checked)">
+<{#choice_all#}>
+
+</td>
+<td align="center" width="55">
+&nbsp;
+</td>
+
+<td align="left">
+&nbsp;&nbsp;&nbsp;
+<{#title_label#}>
+</td>
+
+<td align="center" width="80">
+<{#author_label#}>
+</td>
+
+<td align="center" width="100">
+<select name='change_dir' id='change_dir' OnChange="showdifffavor()">
+<option value=0>-<{#dir_label#}>-</option>
+<{ section name=dir loop=$dir_array }>
+<option value=<{$dir_array[dir].id}> <{ if $dir == $dir_array[dir].id }> selected <{/if}>  >
+<{$dir_array[dir].dir_name}>
+</option>
+<{/section}>
+</select>
+</td>
+
+<td align="center" width="155">
+<{#view_btitle_label#}>
+</td>
+
+
+<td align="center" width="55">
+<{#view_label#}>
+</td>
+
+<td align="center" width="55">
+<{#reply_label#}>
+</td>
+
+<td align="center" width="135">
+<{#last_post_label#}>
+</td>
+
+
+</tr>
+
+<{ section name="mysubject" loop=$subject }>
+   <tr>
+   <td align="center" bgcolor="white">
+    <input type="checkbox" name="id[]" value="<{$subject[mysubject].fid}>">
+    </td>
+
+
+   <td align="center" valign="middle" width="30" bgcolor="white">
+   <img src="<{$image_url}><{$subject[mysubject].image}>" border="0" align="absmiddle">
+   </td>
+
+
+   <td bgcolor="white" align="left">
+       <{ if $subject[mysubject].express ne '' }>
+      <img src="<{$image_url}>express/<{$subject[mysubject].express}>" border="0" align="absmiddle">
+      <{/if}>
+       <a href="index.php?module=bbs&action=viewtopic&id=<{$subject[mysubject].id}>" target="_blank">
+<{$subject[mysubject].title}></a>
+      <{ if $subject[mysubject].have_attach }>
+         <img src="<{$image_url}>attach.gif" border=0 align="absmiddle">
+      <{/if}>
+
+      <{ if $subject[mysubject].have_new_reply && $subject[mysubject].reply_number>0 }>
+      <a href="index.php?module=bbs&action=viewtopic&id=<{$subject[mysubject].id}>&page=1#topic2"
+         title='<{#go_to_the_new_topic#}>' target="_blank">
+      <img src="<{$image_url}>firstnew.gif" border=0 align="absmiddle">
+      </a>
+      <{/if}>
+   </td>
+
+
+<td align="center" bgcolor="white">
+<{$subject[mysubject].username}>
+</td>
+
+<td align="center" bgcolor="white">
+<{$subject[mysubject].dir_name}>
+</td>
+
+
+
+    <td align="center"  bgcolor="white">
+        <a href="index.php?module=bbs&action=viewlayout&id=<{$subject[mysubject].bid}>" target="_blank">
+        <{ $subject[mysubject].btitle}>
+        </a>    
+    </td>
+
+
+
+
+   <td align="center" width="55" bgcolor="white">
+      <font color="<{#global_column_color#}>"><{$subject[mysubject].clicks_number}></font>
+   </td>
+
+   <td align="center" width="55" bgcolor="white">
+      <font color="<{#global_column_color#}>"><{$subject[mysubject].reply_number}></font>
+   </td>
+
+   <td align="center" width="135" bgcolor="white">
+      <font color="<{#global_column_color#}>">
+         <{$subject[mysubject].last_time}><br>
+       <div align="right">
+      <a href="index.php?module=user&action=view&id=<{$subject[mysubject].last_userid}>" target="_blank">
+         <{$subject[mysubject].last_username}>
+      </a>
+      <{ if $subject[mysubject].reply_number>0 }>
+         <a href="index.php?module=bbs&action=viewtopic&id=<{$subject[mysubject].id}>&page=<{$subject[mysubject].last_page}>#topic<{$subject[mysubject].last_number}>" title="<{#go_to_the_last_topic#}>" target="_blank">
+         <img src="<{$image_url}>lastpost.gif" border="0" align="absmiddle"></div>
+         </a>
+      <{/if}>
+      </font>
+   </td>
+
+   </tr>
+
+   <{/section}>
+</table>
+<br>
+<input type="button" name="delmesg" value="<{#delete_all_favor#}>" OnClick="showcanceldel()">
+
+</form>
+
+<br>
+
+
+<!-- 加入导航栏 -->
+<table width="99%" cellpadding=1 cellspacing=1 align="right" border=0 >
+<tr>
+<td width="150" align="left">
+&nbsp;
+</td>
+<td align="right">
+<table  align="right" cellpadding=1 cellspacing=1 border=0 bgcolor="#727273" >
+<tr bgcolor="#f6f7f1" >
+<td  width="150" align="center">
+<font color="<{#global_column_color#}>" ><{#total_have#}><{$total_page}><{#page_th#}><{$now_page}><{#page_label#}></font>
+</td>
+
+<td align="center" width="30">
+<a href='index.php?module=favor&page=1&dir=<{$dir}>'><{#first_page#}></a>
+</td>
+
+<td align="center" width="30">
+<a href='index.php?module=favor&page=<{$now_page-1}>&dir=<{$dir}>'><{#pre_page#}></a>
+</td>
+
+<{ section name="nav_page" loop=$nav_page }>
+
+
+<{ if $nav_page[nav_page] != $now_page }>
+<td width="16" align="center">
+<a href='index.php?module=favor&page=<{$nav_page[nav_page]}>&dir=<{$dir}>'><b><{$nav_page[nav_page]}></b></a>
+</td>
+<{ else }>
+
+<td width="20" align="center" bgcolor="white">
+<b><{$nav_page[nav_page]}></b>
+</td>
+
+<{/if}>
+
+
+<{ /section }>
+
+<td width="30" align="center">
+<a href='index.php?module=favor&page=<{ $now_page+1}>&dir=<{$dir}>'><{#next_page#}></a>
+</td>
+
+
+<td width="30" align="center">
+<a href='index.php?module=favor&page=<{$total_page}>&dir=<{$dir}>'><{#last_page#}></a>
+</td>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+<!-- 导航栏结束 -->
+
+
+</td>
+</tr>
+</table>
+
+
+
+<br>
+<br>
+
+<br>
+<br>
+
+<br>
+
+<script language="javascript">
+
+   function CheckAll(v){
+        var e = document.form1;
+        for (var i=0;i<e.elements.length;i++)
+        {
+            if ( e.elements[i].type == 'checkbox' && e.elements[i].name != 'checkall' ) {
+                e.elements[i].checked = v;
+            }
+        }
+    }
+
+
+function showcanceldel()
+{
+    var no_choice = true;
+
+    var e = document.form1;
+    for(var i=0; i<e.elements.length; i++ ) {
+        if ( e.elements[i].type == 'checkbox' && e.elements[i].checked ) {
+            no_choice = false;
+        }
+    }
+
+    if (  no_choice ) {
+      alert("<{#do_not_choice_message#}>");
+      return false;
+    }
+    
+    if(confirm("<{#sure_delete_msg#}>?\n")) {
+       document.form1.submit();
+        return;
+    }
+}
+
+
+function showdifffavor() {
+    var dir_value = $F('change_dir');
+  
+    document.location.href='index.php?module=favor&dir=' + dir_value;
+ 
+}
+
+function manager_dir () {
+    var dir_value = $F('dir_manager');
+    document.location.href='index.php?module=favor&dir=' + dir_value;
+
+}
+
+function showcreatedir() {
+    var dir_box = $('dir_name');
+    var dir_button1 = $('dir_button1');
+    var dir_button2 = $('dir_button2');
+
+
+    
+    dir_box.style.display = 'inline';
+    dir_button1.style.display = 'inline';
+    dir_button2.style.display = 'inline';
+
+
+}
+
+
+function cancelsavedir() {
+    var dir_box = $('dir_name');
+    var dir_button1 = $('dir_button1');
+    var dir_button2 = $('dir_button2');
+
+
+    
+    dir_box.style.display = 'none';
+    dir_button1.style.display = 'none';
+    dir_button2.style.display = 'none';
+
+
+}
+
+function savenewdir() {
+    var dir_box = $F('dir_name');
+
+    if ( !dir_box ) {
+        alert('<{#please_your_favor_name#}>');
+        return false;
+    }
+
+    document.location.href='index.php?module=favor&action=adddir&dirname=' + dir_box;
+}
+
+function deletefavordir() {
+    var dir_id = $F('dir_manager');
+
+    if ( dir_id == 0 ) {
+        alert('<{#please_choice_your_want_to_del_dir#}>');    
+        return false;
+    }
+
+    if ( confirm("<{#confirm_delete_dir#}>") ) {
+        document.location.href='index.php?module=favor&action=deldir&dir=' + dir_id;
+    }
+}
+
+
+
+
+</script>
+
+
+
+<{ include file="footer.tmpl" }>

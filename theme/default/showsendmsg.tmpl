@@ -1,0 +1,69 @@
+<{config_load file="showsendmsg.conf"}>
+
+<{ include file="header.tmpl" }>
+
+<br>
+<table width="100%" height="300" align="center" cellspacing=1 cellpadding=1 border=0>
+<tr>
+<td align="center" valign="top">
+
+<table width="98%"  height="295" bgcolor="#f6f7f1" cellpadding="3" cellspacing=1 border="0" align="center">
+<tr bgcolor="#c5c5b3">
+<td align="left" height="15" colspan=2>
+<table width="100%" cellpadding=0 cellspacing=0 border=0 align="center">
+<tr>
+<td align="left">
+&nbsp;&nbsp;<font color="#336699"><b><{$view_user_name}></b>&nbsp;&nbsp;[<{$user_roles}>]&nbsp;</font>
+</td>
+<td align="right">
+<img src="<{$image_url}>ly10.gif" border=0 align="absmiddle">
+<font color="#336699"><{#res_title#}></font>
+&nbsp;&nbsp;
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+<tr>
+<td width="100" valign="top" >
+<{ include file="userleftmenu.tmpl" }>
+
+</td>
+<td align="left" valign="top" bgcolor="white">
+<br>
+<center><font color="#336699" size=4><b><{$title}></b></font><br>
+<{#sender_label#}>：<{$sender}><br>
+<{#time_label#}>： <{$send_time}></center>
+
+<table width="65%" align="center" border="0">
+<tr>
+<td align="left">
+
+
+<p align="left">
+<font color="#336699">
+<{$content}>
+
+</font>
+</p>
+
+</td>
+</tr>
+</table>
+
+<br>
+<br>
+<center><input type="button" value="<{#back_label#}>" OnClick="javascript:history.back()"></center>
+
+</td>
+</tr>
+</table>
+
+</form>
+<br>
+<br>
+<br>
+
+<{ include file="footer.tmpl" }>

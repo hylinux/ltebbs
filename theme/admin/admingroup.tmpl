@@ -1,0 +1,50 @@
+<{ config_load file="admin/group.conf" }>
+<html>
+<head>
+<title><{#res_title#}></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel=stylesheet type=text/css href="<{$css_url}>style.css">
+</head>
+
+<body bgcolor="#e0e0e0" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
+
+<input type="button" value="<{#add_group_label#}>" OnClick="document.location.href='index.php?action=addgroup'">
+<table width="100%"  align="center" cellpadding="1" cellspacing="1" border="0" bgcolor="#727273">
+<tr>
+<td align="center" width="265">
+<font color="#FFFFFF"><{#name_label#}></font>
+</td>
+
+<td align="center">
+<font color="#FFFFFF"><{#description_label#}></font>
+</td>
+
+<td align="center" width="200">
+<font color="#FFFFFF"><{#operation_label#}></font>
+</td>
+</tr>
+
+<{ section name="sysarray" loop=$sysarray }>
+<tr bgcolor="#FFFFFF">
+<td align="center">
+<{$sysarray[sysarray].name}>
+</td>
+
+<td align="center">
+<{$sysarray[sysarray].description}>
+</td>
+
+<td align="center">
+<input type="button" value="<{#del_label#}>" OnClick="document.location.href='index.php?action=delgroup&id=<{$sysarray[sysarray].id}>'">
+<input type="button" value="<{#edit_label#}>" OnClick="document.location.href='index.php?action=editgroup&id=<{$sysarray[sysarray].id}>'">
+</td>
+</tr>
+<{/section}>
+
+</table>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,248 @@
+<{config_load file="showhelp.conf"}>
+
+<{ include file="header.tmpl" }>
+
+<!-- 论坛的访问菜单 -->
+<table width="99%" cellpadding=0 cellspacing=1 border="0" bgcolor="#f6f7f1" align="center">
+<tr>
+<td align="left">
+&nbsp;&nbsp;<img src="<{$image_url}>open.gif" border=0 align="absmiddle">
+&nbsp;&nbsp;<a href='index.php?module=bbs'>[<{#the_bbs_home_page#}>]</a>
+<font color="<{#global_column_color#}>">></font>
+<font color="<{#global_column_color#}>"><{#system_help_label#}></font>
+<font color="<{#global_column_color#}>">></font>
+</td>
+</tr>
+</table>
+<br>
+<br>
+
+
+
+<table width="85%" height="300" align="left" cellspacing=1 cellpadding=1 border=0>
+<tr>
+<td align="left" valign="top" width="100">
+&nbsp;&nbsp;
+</td>
+<td align="left" valign="top">
+
+<a href="#first"><u><b>新手入门</b></u></a>
+<hr width="39%">
+<ul>
+<li><a href="#register">注册、登录</a></li>
+<li><a href="#recove">忘记密码</a></li>
+<li><a href="#theme">选择风格</a></li>
+</ul>
+
+<a href="#secondly">发帖回帖</a>
+<a name="secondly"></a>
+<hr width="39%">
+<ul>
+<li><a href="#topic">发表主题</a></li>
+<li><a href="#reply">发表回帖</a></li>
+<li><a href="#quote">引用回复</a></li>
+<li><a href="#favor">添加收藏</a></li>
+<li><a href="#sendmessage">发送短消息给主题作者</a></li>
+<li><a href="#attach">上传附件</a></li>
+</ul>
+
+<a href="#person">控制面板使用</a>
+<a name="person"></a>
+<hr width="39%">
+<ul>
+<li><a href="#editinfo">编辑资料</a></li>
+<li><a href="#favordir">收藏夹管理</a></li>
+<li><a href="#mytopic">我的主题</a></li>
+<li><a href="#myreply">我的回复</a></li>
+<li><a href="#inbox">短消息收件箱</a></li>
+<li><a href="#outbox">短消息发件箱</a></li>
+<li><a href="#header">更换个人头像</a></li>
+</ul>
+<br>
+
+<a href="#about">5anet(BBS)</a>
+<a name="about"></a>
+<hr width="39%">
+<ul>
+<li><a href="#about5anetbbs">关于5anet(BBS)</a></li>
+<li><a href="#license">许可声明</a></li>
+
+</ul>
+<br>
+
+
+<hr width="39%">
+
+<b><font color="<{#global_column_color#}>">注册、登录</font></b>
+<a name="register"></a>
+<p>
+注册方法：如果您还没有注册，是以游客状态浏览论坛的，点击“注册”，填写相应的信息，就可以完成注册了。
+因站长设置的不同，游客的浏览及使用论坛的权限会受到很多限制，如果您喜欢这个论坛，建议您马上注册。
+登录方法：如果您已经注册了该论坛，可以在网站首页使用快速登录入口登录，也可以在页面头部导航栏点击“登陆”，进入登陆页面进行登陆，在限制游客访问的页面，也会有登陆提示页面出现。
+
+</p>
+
+
+<b><font color="<{#global_column_color#}>">忘记密码</font></b>
+<a name="recove"></a>
+<p>
+如果您忘记密码，请在登录页面点击“找回密码”并输入您注册时使用的邮箱，系统将自动发送密码到您的有效邮箱中。
+
+</p>
+
+<b><font color="<{#global_column_color#}>">选择风格</font></b>
+<a name="theme"></a>
+<p>
+当您登录后，在网站的首页，您会看到一个切换风格的快速切换栏，点击选择你喜欢的风格模板就可以切换。您也可以到您的控制面板中，选择编辑资料，在选择风格那项选择您喜欢的风格模板即可。注意本论坛是记住您的模板选择的。
+</p>
+<br>
+
+<b><font color="<{#global_column_color#}>">发表主题</font></b>
+<a name="topic"></a>
+<p>
+当您登录进入论坛后，点选您喜欢查看的版块后，您可以进行主题发表，在每个版块的头部都有“发表主题”的链接，您只要点击它，即可进入发表主题的界面，在该界面里，5anet(BBS)当前版本使用fckeditor作为在线编辑器，并且每一个主题只能上传一个附件，您也可以为自己的主题选择笑脸，输入内容，可以使用HTML编辑，完成，单击发表就可以完成主题发表了。
+
+</p>
+
+<b><font color="<{#global_column_color#}>">发表回帖</font></b>
+<a name="reply"></a>
+<p>
+您选择版面后，通过浏览或者搜索找到您感兴趣的帖子，当您查看时，页面上有“回复”的链接，点击回复，即可对该主题进行回复，需要注意的是，帖子回复时，可以不填入主题，系统会自动帮助你填入主题，其他操作基本和发表主题一致。
+</p>
+
+<b><font color="<{#global_column_color#}>">引用回复</font></b>
+<a name="quote"></a>
+<p>
+当您选择版面，通过浏览或者是搜索到您感觉兴趣的帖子或者是主题时，当您打开查看，页面上会有引用的链接，点击引用实际上是进入回复页面，但是回帖内容预填其他人的发言。完成回复后，提交即可
+</p>
+
+<b><font color="<{#global_column_color#}>">添加收藏</font></b>
+<a name="favor"></a>
+<p>
+当您选择版面，通过浏览或者是搜索到您感觉兴趣的帖子或者是主题时，当您打开查看，页面上会有"添加收藏“的链接,点击链接，进入选择收藏夹的页面，您可以选择一个收藏夹，该主题将被收藏到该收藏夹中，如果没有合适的收藏夹，您也可以通过输入框，为自己创建一个新的收藏夹。点击提交按钮后，收藏成功，并且返回你先前正在查看的页面。
+</p>
+
+<b><font color="<{#global_column_color#}>">发送短消息</font></b>
+<a name="sendmessage"></a>
+<p>
+当您选择版面，通过浏览或者是搜索到您感觉兴趣的帖子或者是主题时，当您打开查看，每个帖子左边都有作者的图标，您可以点击发送短消息的图标来给该帖子的作者发送短消息，点击后会出现一个发送短消息的界面，论坛已经帮你填好需要接收短消息的用户名，您输入主题和内容后，点击发送即可发送短消息，当发送成功后，论坛会跳回您先前查看的主题或者是帖子。
+</p>
+
+<b><font color="<{#global_column_color#}>">上传附件</font></b>
+<a name="attach"></a>
+<p>
+当您进入发表主题或者发表回复的页面时，您可以选择上传一个附件，注意：本软件目前仅仅支持同一时间上传一个附件。注意系统默认是仅仅允许上传最大不能大于2M的附件，但是如果系统的管理员在PHP端限制了更小的附件大小，您可能得根据情况调整您的附件的大小。
+</p>
+
+<b><font color="<{#global_column_color#}>">编辑资料</font></b>
+<a name="editinfo"></a>
+<p>
+用户登录系统后，进入控制面板，点击编辑资料，能进入编辑资料的界面，根据需要您可以改变您你所希望改变的资料，编辑完成，保存即可。
+
+</p>
+
+<b><font color="<{#global_column_color#}>">收藏夹管理</font></b>
+<a name="favordir"></a>
+<p>
+用户登录后，进入控制面板，点击管理菜单的“收藏夹”，即进入收藏夹管理管理，您可以浏览，分类浏览你的主题收藏，或者建立新的收藏夹，或者是删除您已有的收藏和已有的收藏夹。
+
+</p>
+
+<b><font color="<{#global_column_color#}>">我的主题</font></b>
+<a name="mytopic"></a>
+<p>
+用户登录后，进入控制面板，点击管理菜单的“我的主题”，即可显示您发表的主题，可以分页浏览，查看主题。
+
+</p>
+
+<b><font color="<{#global_column_color#}>">我的回复</font></b>
+<a name="myreply"></a>
+<p>
+用户登录后，进入控制面板，点击管理菜单的“参与的帖子”，即可显示您参与发表的主题，可以分页浏览，查看。
+
+</p>
+
+<b><font color="<{#global_column_color#}>">短消息收件箱</font></b>
+<a name="inbox"></a>
+<p>
+用户登录后，进入控制面板，点击管理菜单的“短消息收件箱“，可以查看您的短消息，管理您的短消息。
+
+</p>
+
+<b><font color="<{#global_column_color#}>">短消息发件箱</font></b>
+<a name="outbox"></a>
+<p>
+用户登录后，进入控制面板，点击管理菜单的“短消息发件箱”，可以查看和管理您发送给别人的短消息。
+</p>
+
+<b><font color="<{#global_column_color#}>">更换个人头像</font></b>
+<a name="header"></a>
+<p>
+用户登录后，进入控制面板，点击管理菜单的“更换个人头像”，可以上传您的个性化的图片，定义为自己的个人头像，
+上传的图片有大小限制。
+
+</p>
+
+
+<b><font color="<{#global_column_color#}>">关于5anet(BBS)</font></b>
+<a name="about5anetbbs"></a>
+<p>
+&nbsp;&nbsp;5anet(BBS)目前是由Mike.G <a href="mailto:ghw@5anet.com"><ghw@5anet.com></a>开发并维护的一个在现阶段看来来功能比较简单的BBS软件，该软件目前采用PHP语言编写，配合Apache和MySQL使用，同时使用了<a href="http://www.smarty.net">Smarty</a>和<a href="http://adodb.sourceforge.net">ADOdb</a>,<a href="http://www.fckeditor.net/">FckEditor</a>三个第三方软件。 所有的开发在Linux下完成(主要是Fedora和ubuntu), 没有在Windows下测试过。如果您有在windows下使用它，请您在有时间的时候发一封邮件给<a href="mailto:ghw@5anet.com">Mike.G</a>, 他将非常感谢您。
+
+</p>
+<p>&nbsp;&nbsp;所有的代码都是重写编写(不包括采用的第三方库)。
+</p>
+<br>
+
+
+<b><font color="<{#global_column_color#}>">许可声明</font></b>
+<a name="license"></a>
+<p>
+如果您已经在使用本软件，那么我们将认为您是愿意接受本软件的许可条款的。
+<br>
+
+<pre>
+<font color="#184366">
+5anet(BBS) 软件使用协议
+
+5anet(BBS)论坛管理系统 简称 5anet(BBS)
+版权所有 (c) 2008-, 5anet.com
+保留所有权力.
+
+5anet(BBS) 目前是由 Mike.G(中文名:黄叶)<ghw@5anet.com> 独立开发,全部核心技术归属 Mike.G
+官方网站为 http://www.5anet.com 官方论坛为 http://bbs.5anet.com
+
+本授权协议适用于 5anet(BBS) 任何版本，Mike.G(中文名:黄叶) 拥有对本授权协议的最终解释权和修改权。
+
+5anet(BBS)论坛管理系统（简称：5anet(BBS))
+1 、5anet(BBS)自全面发布之日起，决定采用GPL V3的许可证进行发布。
+2 、所有用户均可查看5anet(BBS) 的全部源代码,也可以根据自己的需要对其进行修改!但无论如何，既无论用途如何、是否经过
+    修改或美化、修改程度如何，只要您使用 5anet(BBS) 的任何整体或部分程序算法，都必须保留页脚处的 5anet(BBS) 名称和 
+    http://www.5anet.com 的链接地址.
+
+3、 商业授权：目前5anet(BBS)不进行商业授权，但是保留商业授权的权力。
+
+免责声明:
+1 、利用本软件构建的网站的任何信息内容以及导致的任何版权纠纷和法律争议及后果，Mike.G和代表他的
+    官方不承担任何责任。
+2 、损坏包括程序的使用(或无法再使用)中所有一般化,特殊化,偶然性的或必然性的损坏(包括但不限于数据的丢失,
+    自己或第三方所维护数据的不正确修改,和其他程序协作过程中程序的崩溃等),Mike.G和代表他的官方不承担任何责任。
+
+
+</font>
+</pre>
+
+
+
+</p>
+<br>
+
+
+
+</td>
+</tr>
+</table>
+<br>
+<br>
+
+<{ include file="footer.tmpl" }>

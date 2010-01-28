@@ -1,0 +1,416 @@
+<{ config_load file="header_newll.conf" }>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<meta name="keywords" content="<{#header_meta_content#}>">
+<meta name="description" content="<{#header_meta_content#}>">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<link rel=stylesheet type=text/css href="<{$css_url}>style.css">
+
+<title><{#res_title#}> <{$clone_title}></title>
+</head>
+
+<!-- include the prototype.js -->
+<script src="<{$root_url}>prototype.js"></script>   
+<script src="<{$root_url}>5anet.js"></script>
+
+</head>
+<body>
+
+
+<div id="header">
+
+	<div id="header_inner" class="fixed">
+
+		<div id="logo">
+			<h1><span>5anet(BBS)</span></h1><br>
+			<h2>5anet(BBS) - The Best Cool Web Forum SoftWare</h2>
+		</div>
+		
+		<div id="menu">
+			<ul>
+                <!-- 菜单区 -->
+
+                <!-- 首页 -->
+ 				<li>
+                    <a href="index.php" <{ if $module == 'bbs' && $action == 'default' }>
+                    class="active" <{/if}> 
+                    ><{#header_index#}></a>
+                </li>
+
+                <{ if $user_name }>
+                <!-- 如果用户已经登录 -->
+                <!-- 动态菜单 -->
+
+                <!-- 编辑资料 -->
+                <{ if $module == 'user' && $action == 'editinfo' }>
+
+                <li>
+                    <a href="index.php?module=user&action=editinfo " 
+                        class="active"><{#header_edit_info#}></a>
+                </li>
+
+                 <!-- 查看公告 -->
+                <{ elseif  $module == 'post' && $action == 'view' }>
+
+                <li>
+                    <a href="#" 
+                        class="active"><{#header_view_post#}></a>
+                </li>
+
+
+
+
+                 <!-- 收藏夹 -->
+                <{ elseif  $module == 'favor' && $action == 'default' }>
+
+                <li>
+                    <a href="index.php?module=favor" 
+                        class="active"><{#header_show_favor#}></a>
+                </li>
+
+
+
+                 <!-- 添加收藏 -->
+                <{ elseif  $module == 'favor' && $action == 'add' }>
+
+                <li>
+                    <a href="index.php?module=favor&action=add&id=<{$id}>&backurl=<{$backurl}>&type=<{$favor_type}>" 
+                        class="active"><{#header_show_favor_add#}></a>
+                </li>
+
+
+
+
+                 <!-- 发送邮件 -->
+                <{ elseif  $module == 'email' && $action == 'showsend' }>
+
+                <li>
+                    <a href="index.php?module=email&action=showsend&id=<{$id}>&backurl=<{$backurl}>" 
+                        class="active"><{#header_show_send_email#}></a>
+                </li>
+
+
+                 <!-- 我参与发表的主题 -->
+                <{ elseif  $module == 'user' && $action == 'myreply' }>
+
+                <li>
+                    <a href="index.php?module=user&action=myreply" 
+                        class="active"><{#header_my_reply#}></a>
+                </li>
+ 
+                 <!-- 我的主题 -->
+                <{ elseif  $module == 'user' && $action == 'mytopic' }>
+
+                <li>
+                    <a href="index.php?module=user&action=mytopic" 
+                        class="active"><{#header_my_topic#}></a>
+                </li>
+               
+                <!-- 发表新主题 -->
+                <{ elseif  $module == 'bbs' && $action == 'newtopic' }>
+
+                <li>
+                    <a href="index.php?module=bbs&action=newtopic&id=<{$bbsid}>" 
+                        class="active"><{#header_new_article#}></a>
+                </li>
+
+                <!-- 查看用户 -->
+                 <{ elseif $module == 'user' && $action == 'view' }>
+                <li>
+                    <a href="index.php?module=user&action=view&id=<{$user_id}>" 
+                        class="active"><{#header_view_user#}></a>
+                </li>
+
+                <!-- 编辑帖子 -->
+                 <{ elseif $module == 'bbs' && $action == 'edit' }>
+                <li>
+                    <a href="index.php?module=user&action=view&id=<{$bbsid}>&topic=<{$is_topic}>" 
+                        class="active">
+                    <{ if $is_topic }>
+                        <{#header_edit_topic#}>
+                    <{ else }>
+                        <{#header_edit_reply#}>
+                    <{/if}>
+                    </a>
+                </li>
+
+                <!-- 发送短消息 -->
+                 <{ elseif $module == 'message' && $action == 'showsend' }>
+                <li>
+                    <a href="index.php?module=message&action=showsend" 
+                        class="active"><{#header_show_send#}></a>
+                </li>
+
+                 <!-- 短消息收件箱 -->
+                 <{ elseif $module == 'message' && $action == 'receive' }>
+                <li>
+                    <a href="index.php?module=message&action=receive" 
+                        class="active"><{#header_message_receive#}></a>
+                </li>
+
+                 <!-- 查看短消息收件箱 -->
+                 <{ elseif $module == 'message' &&  ( $action == 'show' || $action == 'showsendmsg' ) }>
+                <li>
+                        <a href="#" class="active">
+                        <{#header_message_show#}>
+                        </a>
+                </li>
+
+                 <!-- 基本信息管理 -->
+                 <{ elseif $module == 'user' &&  $action == 'baseinfo' }>
+                <li>
+                        <a href="index.php?module=user&action=baseinfo" class="active">
+                        <{#header_base_info#}>
+                        </a>
+                </li>
+
+
+                  <!-- 编辑邮件和密码 -->
+                 <{ elseif $module == 'user' &&  $action == 'mailandpasswd' }>
+                <li>
+                        <a href="index.php?module=user&action=mailandpasswd" class="active">
+                        <{#header_mail_passwd#}>
+                        </a>
+                </li>
+
+                  <!-- 编辑用户头像 -->
+                 <{ elseif $module == 'user' &&  $action == 'userhead' }>
+                <li>
+                        <a href="index.php?module=user&action=userhead" class="active">
+                        <{#header_user_header#}>
+                        </a>
+                </li>
+
+                   <!-- 编辑签名 -->
+                 <{ elseif $module == 'user' &&  $action == 'sign' }>
+                <li>
+                        <a href="index.php?module=user&action=sign" class="active">
+                        <{#header_user_sign#}>
+                        </a>
+                </li>
+
+                   <!-- 编辑签名 -->
+                 <{ elseif $module == 'user' &&  $action == 'bbsoption' }>
+                <li>
+                        <a href="index.php?module=user&action=bbsoption" class="active">
+                        <{#header_bbsoption#}>
+                        </a>
+                </li>
+
+            
+                 <!-- 短消息发件箱 -->
+                 <{ elseif $module == 'message' && $action == 'send' }>
+                <li>
+                    <a href="index.php?module=message&action=send" 
+                        class="active"><{#header_message_send#}></a>
+                </li>
+
+                <!-- 发表回复 -->
+                <{ elseif $module == 'bbs' && $action == 'reply' }>
+                <li>
+                    <a href="index.php?module=bbs&action=reply&id=<{$bbsid}>" 
+                        class="active"><{#header_new_reply#}></a>
+                </li>
+
+
+                <!-- 查看论坛 -->
+                <{ elseif $module == 'bbs' && $action == 'viewlayout' }>
+                <li>
+                    <{ if $showbest }>
+                    <a href="index.php?module=bbs&action=viewtopic&id=<{$bbs_id}>&showbest=1" 
+                        class="active"><{#header_view_layout_best#}></a>
+                    <{ else }>
+
+                    <a href="index.php?module=bbs&action=viewlayout&id=<{$bbs_id}>" 
+                        class="active"><{#header_view_layout#}></a>
+
+                    <{/if}>
+                </li>
+
+                <!-- 查看主题 -->
+                <{ elseif $module == 'bbs' && $action == 'viewtopic' }>
+                <li>
+                    <a href="index.php?module=bbs&action=viewtopic&id=<{$topic_id}>" 
+                        class="active"><{#header_view_topic#}></a>
+                </li>
+               <{ else }>
+
+                    <!-- 查看新帖 -->
+                   <li>
+                    <a href="index.php?module=bbs&action=viewnew"
+                         <{ if $module == 'bbs' && $action == 'viewnew' }>
+                                class="active" <{/if}>
+                         title="<{#view_new_subject_description#}>">
+                        <{#view_new_subject#}>
+                    </a>
+                    </li>
+
+                <{/if}>
+
+
+                <!-- 搜索论坛 -->
+                <li>
+                <a href="index.php?module=bbs&action=search" 
+                     <{ if $module == 'bbs' && ( $action == 'search' || $action == 'searchresult' ) }>
+                            class="active" <{/if}>
+                title="<{#search_bbs_description#}>">
+                <{#search_bbs#}></a>
+                </li>
+
+                <!-- 会员列表 -->
+                <li>
+                <a href="index.php?module=user&action=listuser" 
+                     <{ if $module == 'user' && $action == 'listuser' }>
+                            class="active" <{/if}>
+                title="<{#userlist#}>">
+                <{#userlist#}></a>
+                </li>
+
+                <!-- 控制面板 -->
+                <li>
+                <a href="index.php?module=user" 
+                     <{ if $module == 'user' && $action == 'default' }>
+                            class="active" <{/if}>
+                    title="<{#header_user_manager#}>">
+                <{#header_user_manager#}></a>
+                </li>
+
+                <!-- 退出登录 -->
+                <li>
+                <a href="index.php?module=user&action=logout" 
+                    <{ if $module == 'user' && $action == 'logout' }>
+                            class="active" <{/if}>
+                title="<{#header_logout#}>">
+                <{#header_logout#}>
+
+                </a>
+                </li>
+
+
+
+                <{ else }>
+                <!-- 如果用户还没有登录 -->
+                <!-- 注册 -->
+                <li>
+                    <a href="index.php?module=user&action=register"  
+                        <{ if $module == 'user' && $action == 'register' }>
+                            class="active" <{/if}>
+                        title="<{#header_register_description#}>" 
+                        >
+                        <{#header_register#}>
+                    </a>
+                </li>
+                <!-- 登录 -->
+                <li>
+                    <a href="index.php?module=user&action=showlogin"  
+                        <{ if $module == 'user' && $action == 'showlogin' }>
+                            class="active" <{/if}>  
+                            title="<{#header_login_description#}>"
+                        >
+                            <{#header_login#}>
+                    </a>
+                </li>
+
+                <!-- 查看论坛 -->
+                <{ if $module == 'bbs' && $action == 'viewlayout' }>
+                <li>
+                    <{ if $showbest }>
+                    <a href="index.php?module=bbs&action=viewtopic&id=<{$bbs_id}>&showbest=1" 
+                        class="active"><{#header_view_layout_best#}></a>
+                    <{ else }>
+
+                    <a href="index.php?module=bbs&action=viewlayout&id=<{$bbs_id}>" 
+                        class="active"><{#header_view_layout#}></a>
+
+                    <{/if}>
+                </li>
+
+                <!-- 查看主题 -->
+                <{ elseif $module == 'bbs' && $action == 'viewtopic' }>
+                <li>
+                    <a href="index.php?module=bbs&action=viewtopic&id=<{$topic_id}>" 
+                        class="active"><{#header_view_topic#}></a>
+                </li>
+                <{/if}>
+
+
+                <{/if}>
+
+                <!-- 帮助 -->
+                <li>
+                    <a href="index.php?module=help"
+                        <{ if $module == 'help' }> 
+                            class="active" <{/if}> 
+                     title="<{#header_help_description#}>">
+                        <{#header_help#}>
+                    </a>
+                </li>
+
+			</ul>
+		</div>
+		
+	</div>
+</div>
+
+
+<!-- 从这里开始正文 -->
+<div id="main">
+    <div id="main_inner" class="fixed">
+		<div id="primaryContent_columns">
+
+<table border=0 >
+<tr align="left" valign="middle">
+<td>
+<{ if !$user_name &&  $module == 'bbs' && $action == 'default' }>
+
+<form name='quick_login' id='quick_login_form' method='post' action='index.php'>
+<b><{#quick_login_form_label#}>:</b>    <input type='hidden' name='module' value='user'>
+    <input type='hidden' name='action' value='login'>
+
+    <{#quick_login_form_username#}><input type="text" id='quick_user_name' name='username' size="10">:
+    <{#quick_login_form_password#}>:
+    <input type="password" id='quick_user_password' name='password' size='10'>
+    <input type="button" value="<{#quick_login_submit_label#}>" id="quick_user_submit" onClick="header_quick_form_login()">
+</form>
+<{/if}>
+
+<{ if $user_name && $module == 'bbs' && $action == 'default' }>
+<{#welcome_label#}>, <b><font color="<{#global_column_color#}>"><{$user_name}></font></b>
+&nbsp;&nbsp;<{#you_can_go_into#}>&nbsp;<a href="index.php?module=user"><b><{#header_user_manager#}></b></a>&nbsp;
+<{#customer_your_bbs#}>&nbsp;<{#or_directly_do#}>
+<select name="changetheme" id="header_changetheme" onChange="changeTheme()">
+<option><{#switch_theme#}></option>
+<option value="new"><{#blue_theme#}></option>
+<option value="newll"><{#read_theme#}></option>
+</select>
+&nbsp;&nbsp;
+<{/if}>
+<br>
+<{ if $module == 'bbs' &&  $action == 'default' }>
+
+<{#today_is_label#}><{$now_date}>
+<{ if $user_name }>
+,
+&nbsp;&nbsp;&nbsp;
+<{#welcome_our_newer#}>
+<{ section  name="newuser" loop=$newuser }>
+<a href="index.php?module=user&action=view&id=<{$newuser[newuser].id}>" target="_blank">
+<b>
+<{$newuser[newuser].user_name}>
+</b>
+</a>,&nbsp;
+
+<{/section}>
+<{#click_label#}><a href="index.php?module=user&action=listuser">&nbsp;<b><{#here_label#}></b>&nbsp;</a><{#look_more_member_label#}>
+<{/if}>
+<br>
+<{#online_user_number_label#}><{$all_page_online_user}><{#item_label#}>,
+&nbsp;&nbsp;&nbsp;<{#topic_number_label#}><{$all_page_topic_number}><{#number_item_label#}>，
+&nbsp;&nbsp;&nbsp;<{#reply_number_label#}><{$all_page_reply_number}><{#number_item_label#}>,
+&nbsp;&nbsp;&nbsp;<{#all_have_meber_label#}><{$all_page_user_number}><{#item_label#}>
+<{/if}>
+</td>
+</tr>
+</table>

@@ -1,0 +1,91 @@
+<{config_load file="login.conf"}>
+
+<{ include file="header.tmpl" }>
+
+
+<!-- 论坛的访问菜单 -->
+<table width="99%" cellpadding=0 cellspacing=1 border="0" bgcolor="#f6f7f1" align="center">
+<tr>
+<td align="left">
+&nbsp;&nbsp;<img src="<{$image_url}>open.gif" border=0 align="absmiddle">
+&nbsp;&nbsp;<a href='index.php?module=bbs'>[<{#the_bbs_home_page#}>]</a>
+<font color="<{#global_column_color#}>">></font>
+
+<a href='index.php?module=user&action=register'>[<{#show_login_label#}>]</a>
+<font color="<{#global_column_color#}>">></font>
+
+</td>
+</tr>
+</table>
+<br>
+
+<form action="index.php" method="post" name="form2">
+<input type=hidden name="module" value="user">
+<input type=hidden name="action" value="login">
+
+<table width="99%" cellpadding=5 cellspacing=1 border="0" bgcolor="#f6f7f1" align="center">
+<tr>
+<td align="left" valign="middle" colspan=2 bgcolor="<{#global_column_color#}>" height="20">
+&nbsp;&nbsp;<font color="#FFFFFF"><{#show_login_label#}>:</font>
+</td>
+</tr>
+
+<!-- 用户名称 -->
+<tr>
+<td align="left" valign="middle" width="350" bgcolor="#FFFFFF">
+&nbsp;&nbsp;<{#res_username#}><font color="red">(*)</font>:
+</td>
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+<input type="text" name="username" size=30 tabindex=1>&nbsp;&nbsp;
+<a href='index.php?module=user&action=register'><{#regiser_it_now#}></a>
+</td>
+</tr>
+
+<!-- 用户密码 -->
+<tr>
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+&nbsp;&nbsp;<{#res_userpass#}><font color="red">(*)</font>:
+</td>
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+<input type="password" name="password" size=30 tabindex=2>&nbsp;&nbsp;
+<a href="index.php?module=user&action=recover"><{#recover_password#}></a>
+</td>
+</tr>
+
+<!-- 记住登录信息 -->
+<tr>
+<td align="left" valign="middle"  bgcolor="#FFFFFF">
+&nbsp;&nbsp;<{#cookie_setting#}>
+</td>
+
+<td align="left" valign="middle"  bgcolor="#FFFFFF">
+   <input type=radio name="is_remeber" value='1y' checked tabindex=3>&nbsp;<{#remeber_one_year#}>&nbsp;&nbsp;
+<input type=radio name="is_remeber" value='1m' tabindex=4>&nbsp;<{#remeber_one_month#}>&nbsp;&nbsp;
+<input type=radio name="is_remeber" value='1d' tabindex=5>&nbsp;<{#remeber_one_day#}>&nbsp;&nbsp;
+<input type=radio name="is_remeber" value='1h' tabindex=6>&nbsp;<{#remeber_one_hour#}>&nbsp;&nbsp;
+<input type=radio name="is_remeber" value='0' tabindex=7>&nbsp;<{#do_not_remeber#}>
+</td>
+</tr>
+
+<tr>
+<td align="center" valign="middle" height="30" bgcolor="#FFFFFF" colspan=2>
+
+<input type="submit" value="<{#res_login#}>" name="login" tabindex=8> &nbsp;&nbsp;
+<input type="reset" value="<{#res_cancel#}>" name="cancel" tabindex=9>
+
+</td>
+</tr>
+
+
+
+
+</table>
+
+
+
+
+</form>
+
+
+<{ include file="footer.tmpl" }>
+

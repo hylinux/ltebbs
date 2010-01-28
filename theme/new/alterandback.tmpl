@@ -1,0 +1,46 @@
+<{config_load file="alterandback.conf"}>
+
+<{ include file="header.tmpl" }>
+
+
+<table width="100%" height="300" align="center" cellspacing=1 cellpadding=1 border=0>
+<tr>
+<td align="center" valign="middle">
+
+<table width="65%" height="50%" align="center" cellspacing=10 cellpadding=10 border=0 
+bgcolor="<{#global_font_color#}>">
+<tr>
+<td height="25" align="center">
+ <img src="<{$image_url}>error_stop.gif" border="0" align="absmiddle">&nbsp;&nbsp;&nbsp;<font color="red" size=4><b><{#res_title#}></b></font>
+<hr width="70%">
+</td>
+</tr>
+<tr>
+<td align="center" valign="top">
+<font color=red style="font-size:20px"><{$errorMessage}></font>
+
+<br>
+<br>
+<input type=button value="<{#back_button#}>" OnClick="javascript:history.back(-1)"><br>
+<br>
+<center><div id='sec'><{#to_comment#}></div></center>
+</td>
+</tr>
+</table>
+
+
+
+</td>
+</tr>
+</table>
+
+
+<script language="javascript">
+function back() {
+    history.back();
+}
+
+setTimeout(back, 3000);
+</script>
+
+<{ include file="footer.tmpl" }>

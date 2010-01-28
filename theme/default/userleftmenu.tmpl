@@ -1,0 +1,88 @@
+<{config_load file="userleftmenu.conf"}>
+
+<!-- 系统菜单 -->
+<table width="99%" cellpadding=2 cellspacing=1 border=0 align="center">
+<tr>
+<td align="center">
+<input type="button" value="  <{#send_message_label#}>  " 
+OnClick="document.location.href='index.php?module=message&action=showsend'">
+</td>
+</tr>
+
+
+
+<tr>
+<td align="center">
+<input type="button" value="  <{#inbox_label#}>  " 
+OnClick="document.location.href='index.php?module=message&action=receive'">
+</td>
+</tr>
+
+<tr>
+<td align="center">
+<input type="button" value="  <{#outbox_label#}>  "  
+OnClick="document.location.href='index.php?module=message&action=send'">
+</td>
+</tr>
+
+<tr>
+<td align="center">
+<input type="button" value=" <{#base_info#}> "  
+OnClick="document.location.href='index.php?module=user&action=baseinfo'">
+</td>
+</tr>
+
+<tr>
+<td align="center">
+<input type="button" value=" <{#password_and_email#}> "  
+OnClick="document.location.href='index.php?module=user&action=mailandpasswd'">
+</td>
+</tr>
+
+
+<tr>
+<td align="center">
+<input type="button" value=" <{#person_image#}> "  
+OnClick="document.location.href='index.php?module=user&action=userhead'">
+</td>
+</tr>
+
+
+<tr>
+<td align="center">
+<input type="button" value=" <{#person_sign#}> "  
+OnClick="document.location.href='index.php?module=user&action=sign'">
+</td>
+</tr>
+
+<!--
+<tr>
+<td align="center">
+<input type="button" value=" <{#friends_group#}> "  
+OnClick="document.location.href='index.php?module=user&action=fgroup'">
+</td>
+</tr>
+
+<tr>
+<td align="center">
+<input type="button" value=" <{#friends_list#}> "  
+OnClick="document.location.href='index.php?module=user&action=friends'">
+</td>
+</tr>
+
+<tr>
+<td align="center">
+<input type="button" value="  <{#black_list#}>  "  
+OnClick="document.location.href='index.php?module=user&action=blacklist'">
+</td>
+</tr>
+-->
+
+<tr>
+<td align="center">
+<input type="button" value=" <{#person_option#}> "  
+OnClick="document.location.href='index.php?module=user&action=bbsoption'">
+</td>
+</tr>
+</table>
+

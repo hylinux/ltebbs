@@ -1,0 +1,128 @@
+<{ config_load file="showregister.conf" }>
+
+<{ include file="header.tmpl" }>
+
+<table width="100%" height="420" align="center" cellspacing=1 cellpadding=1 border=0>
+<tr>
+<td align="center" valign="top">
+
+<!-- 标题 -->
+<br>
+<h2><{#res_sub_title#}></h2>
+
+<form action="index.php" method="post" name="form2">
+<input type=hidden name="module" value="user">
+<input type=hidden name="action" value="checkregiste">
+
+<table width="55%" bgcolor="#c5c5b3" cellpadding="3" cellspacing="3" align="center">
+
+<tr>
+<td align=center width="80">
+<font color="#FFFFFF"><{#register_user_name#}>:</font>
+</td>
+<td>
+<input type="text" name="username" size=30>
+</td>
+</tr>
+
+<tr>
+<td align=center width="80">
+<font color="#FFFFFF"><{#register_user_email#}>:</font>
+</td>
+<td>
+<input type="text" name="useremail" size=30>
+</td>
+</tr>
+
+<tr>
+<td align=center width="80">
+&nbsp;
+</td>
+<td>
+<input type="checkbox" name="public_email" value=1 checked>&nbsp;<{#public_your_email#}>
+</td>
+</tr>
+
+<tr>
+<td align=center width="80">
+<font color="#FFFFFF"><{#register_user_passwd#}>:</font>
+</td>
+<td>
+<input type="password" name="userpass" size=30>
+</td>
+</tr>
+
+<tr>
+<td align=center width="80">
+<font color="#FFFFFF"><{#register_user_passwd_check#}>:</font>
+</td>
+<td>
+<input type="password" name="userpasscheck" size=30>
+</td>
+</tr>
+
+<tr>
+<td align=center width="80" valign="top">
+<font color="#FFFFFF"><{#register_user_image#}>:</font>
+</td>
+<td valign="middle">
+<select name=persionimage OnChange="document.images['currentimage'].src='<{$image_url}>face/' + document.form2.persionimage.options[document.form2.persionimage.selectedIndex].value + '.jpg'">
+<{$image_options}>
+</select>
+&nbsp;
+<img src="<{$image_url}>face/1.jpg" width="42" border=1 id='currentimage' align='absmiddle'>
+</td>
+</tr>
+
+<tr>
+<td align=center width="80">
+<font color="#FFFFFF"><{#register_user_check_code#}>:</font>
+</td>
+<td>
+<input type="text" name="checkcode" size=10>&nbsp;&nbsp;<img src="index.php?module=util&action=showcheck" border="1" align="absmiddle">
+</td>
+</tr>
+
+</table>
+<center>
+<input type=submit value="<{#agree_and_register#}>">
+&nbsp;&nbsp;&nbsp;
+<input type=reset value="<{#cancel_not_register#}>">
+</center>
+
+<br>
+<table width="85%" bgcolor="#f6f7f1" cellpadding="5" cellspacing="3" align="center">
+<tr>
+<td valign="top" align="left">
+
+<font color="red"><{#attention#}></font><b><u><{#please_read_this_protocol#}></u></b><br>
+
+<p>
+<font color="336699">
+<ul>
+<li><{#the_first_protocol#}>
+<li><{#the_second_protocol#}>
+<li><{#the_third_protocol#}>
+<li><{#the_four_protocol#}>
+<li><{#the_five_protocol#}>
+</ul>
+
+</font>
+</td>
+</tr>
+</table>
+
+
+</td>
+</tr>
+</table>
+
+</form>
+<br>
+<br>
+<br>
+
+
+
+<{ include file="footer.tmpl" }>
+

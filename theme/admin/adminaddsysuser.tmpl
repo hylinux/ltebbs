@@ -1,0 +1,65 @@
+<{ config_load file="admin/addsysuser.conf" }>
+
+<html>
+<head>
+<title><{#res_title#}></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel=stylesheet type=text/css href="<{$css_url}>style.css">
+</head>
+
+<body bgcolor="#e0e0e0" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
+
+<form name="form2" action="index.php" method="post">
+<input type="hidden" name="action" value="savesysuer">
+
+<br>
+<table width="65%"   cellpadding="1" cellspacing="1" border="0" bgcolor="#727273">
+
+<tr>
+<td align="center" width="95">
+<font color="#FFFFFF">
+<{#group_name_label#}>:
+</font>
+</td>
+<td >
+<input type="text" name="name" size="30">
+</td>
+</tr>
+
+<tr>
+<td align="center" width="95">
+<font color="#FFFFFF">
+<{#group_passwd#}>:
+</font>
+</td>
+<td >
+<input type="password" name="passwd" size="30">
+</td>
+</tr>
+
+<tr>
+<td align="center" width="95">
+<font color="#FFFFFF">
+<{#group_check_passwd#}>:
+</font>
+</td>
+<td >
+<input type="password" name="check_passwd" size="30">
+</td>
+</tr>
+
+<tr>
+<td colspan="2" align="center">
+<input type="submit" value="<{#save_label#}>">
+<input type="reset" value="<{#reset_label#}>" onClick="document.location.href='index.php?action=system'">
+
+</td>
+</tr>
+
+</table>
+
+</form>
+
+</body>
+</html>
+

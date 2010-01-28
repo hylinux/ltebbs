@@ -1,0 +1,36 @@
+<{config_load file="movetopic.conf"}>
+
+<{ include file="header.tmpl" }>
+
+
+<form name="move" action="index.php" method="get">
+<input type=hidden name="module" value="bbs">
+<input type=hidden name="action" value="suremovetopic">
+<input type=hidden name="id" value="<{$id}>">
+
+<table width="100%" height="415" align="center" cellspacing=1 cellpadding=1 border=0>
+<tr>
+<td align="center" valign="top">
+
+<!-- 标题 -->
+<br>
+<h2><{#col_title#}></h2>
+<select name="layout">
+<option value="0"><{#choice_layout#}></option>
+<option value="0">------------------------------------------------</option>
+<{ section name="layout" loop=$layout }>
+<option value="<{$layout[layout].id}>"><{$layout[layout].name}></option>
+<{/section}>
+
+</select>
+<br>
+<input type="submit" value="<{#del_label#}>">&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="button" value="<{#back_label#}>" onClick="javascript:history.back();">
+
+</td>
+</tr>
+</table>
+</form>
+
+<{ include file="footer.tmpl" }>
+

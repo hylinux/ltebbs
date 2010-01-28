@@ -1,0 +1,24 @@
+<?php
+//vim:set expandtab tabstop=3 shiftwidth=3 softtabstop=3 foldcolumn=1 foldmethod=marker:
+/**
+*  Project Name:  5anet
+*  File Name:     lang/zh/LayoutUtil.lang.php
+*
+*  define some constant varibles to LayoutUtil.class.php
+*
+*  PHP Version 5
+*
+*  @package:   lang.zh
+*  @author:    Mike.G   Chinese Name: 黄叶 <hylinux@gmail.com>
+*  @license:   http://www.gnu.org/copyleft/lesser.html  LGPL License 2.1 
+*  @copyright: http://www.5anet.com
+*  @version:   $Id: LayoutUtil.lang.php,v 1.1.1.1 2006-08-28 13:09:20 ghw Exp $
+*  @date:      $Date: 2006-08-28 13:09:20 $
+*/
+
+define('LU_IS_TOP', '置顶');
+define('LU_IS_BEST', '精');
+
+
+
+?>

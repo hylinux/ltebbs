@@ -1,0 +1,97 @@
+<{ include file="header.tmpl" }>
+
+<br>
+<form action="install.php" method="get">
+<table width="55%" left="left" cellpadding=3 cellspacing=3 border="0">
+
+<tr align="left">
+<td colspan=2>
+<font size=4>路径目录设定检测</font><br>
+</td>
+</tr>
+
+
+
+<tr align="left">
+<td>
+网站域名
+</td>
+<td>
+<{ if $failed_error[domain] }>
+<{ $failed_error[domain] }>
+<{ else }>
+<font color="green">域名检测成功</font>
+<{/if}>
+</td>
+</tr>
+
+
+
+<tr align="left">
+<td>
+访问URL:
+</td>
+<td>
+<{ if $failed_error[url] }>
+<font color="red"><{$failed_error[url]}></font>
+<{ else }>
+<font color="green">访问URL检测成功</font>
+<{/if}>
+</td>
+</tr>
+
+<tr align="left">
+<td>
+代码安装路径:
+</td>
+<td>
+<{ if $failed_error[path] }>
+<font color="red"><{$failed_error[path]}></font>
+<{ else }>
+<font color="green">代码安装路径检测成功</font>
+<{/if}>
+</td>
+</tr>
+
+<tr align="left">
+<td>
+缓存目录:
+</td>
+<td>
+<{ if $failed_error[cache] }>
+<font color="red"><{$failed_error[cache]}></font>
+<{ else }>
+<font color="green">缓存目录检测成功</font>
+<{/if}>
+</td>
+</tr>
+
+<tr align="left">
+<td>
+配置文件:
+</td>
+<td>
+<{ if $failed_error[config] }>
+<font color="red"><{$failed_error[config]}></font>
+<{ else }>
+<font color="green">配置文件检测成功</font>
+<{/if}>
+</td>
+</tr>
+
+
+</table>
+<br>
+<input type="hidden" name="step" value=4>
+<input type="button" value="上一步" OnClick="document.location.href='install.php?step=2'">&nbsp;&nbsp;
+<input type="submit" value="下一步">
+
+</form>
+
+
+
+
+
+
+
+<{ include file="footer.tmpl" }>

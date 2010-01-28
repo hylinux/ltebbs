@@ -1,0 +1,51 @@
+<{config_load file="recover.conf"}>
+
+<{ include file="header.tmpl" }>
+
+
+<form action="index.php" method="post" name="form2">
+<input type=hidden name="module" value="user">
+<input type=hidden name="action" value="recoveremail">
+
+
+<!-- 论坛的访问菜单 -->
+<table width="99%" cellpadding=0 cellspacing=1 border="0" bgcolor="#f6f7f1" align="center">
+<tr>
+<td align="left">
+&nbsp;&nbsp;<img src="<{$image_url}>open.gif" border=0 align="absmiddle">
+&nbsp;&nbsp;<a href='index.php?module=bbs'>[<{#the_bbs_home_page#}>]</a>
+<font color="<{#global_column_color#}>">></font>
+
+<a href='index.php?module=user&action=recover'>[<{#show_recover_label#}>]</a>
+<font color="<{#global_column_color#}>">></font>
+
+</td>
+</tr>
+</table>
+<br>
+
+<table width="99%" cellpadding=10 cellspacing=1 border="0" bgcolor="#f6f7f1" align="center">
+<tr>
+<td align="center" valign="middle"  bgcolor="<{#global_column_color#}>" height="20">
+<font color="#FFFFFF"><{#show_recover_label#}></font>
+</td>
+</tr>
+
+<tr>
+<td align="center" valign="middle"  bgcolor="#FFFFFF" height="50">
+<{#pls_input_your_email#}>&nbsp;&nbsp;&nbsp;
+<input type="text" name="recover_email" id="recover_email" size=30>
+<input type="submit" name="recover" value="<{#send_password_label#}>">
+
+</td>
+
+</tr>
+</table>
+
+</form>
+
+
+
+
+<{ include file="footer.tmpl" }>
+

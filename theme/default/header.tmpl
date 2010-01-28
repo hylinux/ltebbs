@@ -1,0 +1,121 @@
+<{ config_load file="header.conf" }>
+
+<html>
+<head>
+<meta name="keywords" content="<{#header_meta_content#}>">
+<meta name="description" content="<{#header_meta_content#}>">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<link rel=stylesheet type=text/css href="<{$css_url}>style.css">
+
+<title><{#res_title#}> <{$clone_title}></title>
+</head>
+<body bgcolor="#e0e0e0" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
+<table  cellpadding="1" cellspacing="1" border="0" align="center" 
+   background="<{$image_url}>topbar.jpg" width="781">
+<tr>
+<td valign="middle" height="20" align="left">
+&nbsp;&nbsp;&nbsp;
+<{ if $user_name }>
+<font color=white><b><u><{#header_welcome#}>, <{$user_name}></u></b>&nbsp;&nbsp;</font>&nbsp;&nbsp;&nbsp;
+<a href="index.php?module=user" title="<{#header_user_manager#}>">
+<font color=white><{#header_user_manager#}></font></a>&nbsp;&nbsp;<font color=white>|</font>&nbsp;&nbsp;
+<a href="index.php?module=user&action=logout" title="<{#header_logout#}>">
+<font color="white"><{#header_logout#}></font></a>
+
+<{ else }>
+<a href="index.php?module=user&action=showlogin" title="<{#header_login_description#}>">
+<font color=white><{#header_login#}></font></a>&nbsp;&nbsp;<font color=white>|</font>&nbsp;&nbsp;
+<a href="index.php?module=user&action=register" title="<{#header_register_description#}>">
+<font color="white"><{#header_register#}></font></a>
+<{/if}>
+</td>
+<td valign="middle" height="20" align="right">
+<font color=white>
+<{$now_date}>
+</font>
+&nbsp;&nbsp;&nbsp;
+</td>
+</tr>
+</table>
+<table width="780" bgcolor="#727273" cellpadding=0 cellspacing=1 border=0 align="center">
+<tr>
+<td bgcolor="white" align="center" valign="top" height="380">
+
+<!-- 前面的图片 -->
+<table  cellpadding="0" cellspacing="0" border="0" align="center" 
+    width="780" bgcolor="#FFFFFF">
+<tr>
+<td height="55" bgcolor="white">
+<img src="<{$image_url}>5a.jpg" border="0"height="55" width="779"/>
+</td>
+</tr>
+</table>
+
+<!-- 主菜单 -->
+<table  cellpadding="0" cellspacing="0" border="0" align="center" 
+    width="780" bgcolor="#FFFFFF">
+<tr>
+<td height="20" width="500" background="<{$image_url}>mainmenu.jpg">
+<table width="100%" align="center" cellpadding=0 cellspacin=0 border=0>
+<tr>
+<td align="left" valign="middle">
+&nbsp;&nbsp;&nbsp;
+<a href="index.php" title="<{#header_index_description#}>">
+<font color=white><{#header_index#}></a>
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+<{ if $user_name }>
+<a href="index.php?module=bbs&action=viewnew" title="<{#view_new_subject_description#}>">
+<font color=white><{#view_new_subject#}></a>
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+
+<a href="index.php?module=bbs&action=search" title="<{#search_bbs_description#}>">
+<font color=white><{#search_bbs#}></a>
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+
+<{/if}>
+
+<!--
+<a href="index.php?module=calendar" title="<{#calendar_description#}>">
+<font color=white><{#bbs_calendar#}></a>
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+
+<a href="index.php?module=album" title="<{#album_description#}>">
+<font color=white><{#bbs_album#}></a>
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+
+-->
+
+
+<{ if $user_name }>
+<a href="index.php?module=user&action=listuser" title="<{#userlist#}>">
+<font color=white><{#userlist#}></a>
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+
+<a href="index.php?module=user&action=listuser&m=1" title="<{#managerlist#}>">
+<font color=white><{#managerlist#}></a>
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+<{/if}>
+
+
+<a href="index.php?module=help" title="<{#header_help_description#}>">
+<font color=white><{#header_help#}></a>
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+</td>
+
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+

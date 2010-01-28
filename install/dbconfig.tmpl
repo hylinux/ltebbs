@@ -1,0 +1,82 @@
+<{ include file="header.tmpl" }>
+
+<h1>数据库设定</h1>
+<form name="myform" action="install.php" method="post">
+
+<table width="45%" align="center" cellpadding=3 cellspacing=3 border=1>
+<tr align="left">
+<td width=150>
+<b>数据库类型:</b>
+</td>
+<td>
+<select name="db_type">
+<option value="mysqli" selected>(mysqli)MySQL数据库增强型扩展驱动
+<option value="mysql">(mysql)MySQL数据库默认连接驱动
+
+</select>
+</td>
+</tr>
+
+<tr align="left">
+<td width=150>
+<b>数据库主机:</b>
+</td>
+<td>
+<input type="text" name="db_host" value="<{$db_host}>" size=35/>
+</td>
+</tr>
+
+<tr align="left">
+<td width=150>
+<b>数据库名:</b>
+</td>
+<td>
+<input type="text" name="db_name" value="<{$db_name}>" size=35/>
+</td>
+</tr>
+
+
+
+<tr align="left">
+<td width=150>
+<b>连接数据库用户:</b>
+</td>
+<td>
+<input type="text" name="db_user" value="<{$db_user}>" size=35/>
+</td>
+</tr>
+
+<tr align="left">
+<td width=150>
+<b>数据库用户密码:</b>
+</td>
+<td>
+<input type="text" name="db_passwd" value="<{$db_password}>" size=35/>
+</td>
+</tr>
+
+<tr align="left">
+<td width=150>
+<b>使用持久连接:</b>
+</td>
+<td>
+<input type="checkbox" name="db_persist" value=1 checked /><br>
+<font color="red">请默认使用它，它带来更好的性能</font>
+</td>
+</tr>
+</table>
+<br>
+<table border=0 cellpadding=0 cellspacing=0>
+<tr>
+<td>
+<input type="hidden" name="step" value=5>
+<input type="button" value="上一步" OnClick="document.location.href='install.php?step=2'"/>
+&nbsp;&nbsp;
+<input type="submit" value="下一步">
+</td>
+</tr>
+</table>
+</form>
+
+
+<{ include file="footer.tmpl" }>

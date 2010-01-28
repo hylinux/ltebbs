@@ -1,0 +1,40 @@
+<?php
+//vim:set expandtab tabstop=3 shiftwidth=3 softtabstop=3 foldcolumn=1 foldmethod=marker:
+/**
+ * 项目：   5anet(BBS)
+ * 文件：   lang/zh/SaveReply.lang.php
+ *
+ * SaveReply.class.php 的语言文件
+ *
+ * PHP Version 5
+ *
+ * @package:   lang.zh
+ * @author:    Mike.G 黄叶 <hylinux@gmail.com>
+ * @license:   http://www.gnu.org/copyleft/lesser.html  LGPL License 2.1 
+ * @copyright: www.5anet.com
+ * @version:   $Id: SaveReply.lang.php,v 1.1.1.1 2006-08-28 13:09:20 ghw Exp $
+ * @Date:      $Date: 2006-08-28 13:09:20 $
+ */
+
+define('TOPIC_IS_NOT_EXISTS', '主题不存在！');
+define('TOPIC_HAD_BE_CLOSED', '该主题已被关闭，不允许回复！');
+define('SRY_NEED_LOGIN', '您还没有登录，请先登录。');
+define('SRY_LAYOUT_WAS_CLOSED', '主题所在的版块已被关闭。');
+define('SRY_NOW_ALLOW_NEW_TOPIC', '主题所在的版块不允许发帖。');
+define('SNT_NEED_LOGIN', '本版块需要验证，请您先登录');
+define('SNT_LAYOUT_WAS_CLOSED', '本版块被关闭');
+define('SNT_NOW_ALLOW_NEW_TOPIC', '本版是顶级版，不允许发帖');
+define('ST_UPLOAD_ERROR', '上传附件出错。');
+define('ST_MAIL_CONTENT', "您参与的主题有人发表了新的回复。\n\n请点击下面的连接查看：");
+define('ST_MAIL_SUBJECT', '您的主题有新回复');
+define('ST_MESSAGE_CONTENT', "您参与的主题有人发表了新的回复。\n\n请点击下面的连接查看：");
+define('ST_CLICK_HERE', '点击这里');
+define('ST_SAVE_REPLY_SUCCESS', '成功发表回复');
+
+
+
+
+
+
+
+?>

@@ -1,0 +1,500 @@
+<{ config_load file="topic.conf" }>
+<{ include file="header.tmpl" }>
+
+<!-- 论坛的访问菜单 -->
+<table width="99%" cellpadding=0 cellspacing=1 border="0" bgcolor="#f6f7f1" align="center">
+<tr>
+<td align="left">
+&nbsp;&nbsp;<img src="<{$image_url}>open.gif" border=0 align="absmiddle">
+&nbsp;&nbsp;<a href='index.php?module=bbs'>[<{#bbs_home_page#}>]</a>
+<font color="<{#global_column_color#}>">></font>
+
+<{ section name="nav_menu" loop=$nav_array }>
+<a href='index.php?module=bbs&action=viewlayout&id=<{$nav_array[nav_menu].id}>'>[<{$nav_array[nav_menu].title}>]</a>
+<font color="<{#global_column_color#}>">></font>
+<{ /section }>
+
+<font color="<{#global_column_color#}>"><{$clone_title}></font>
+<font color="<{#global_column_color#}>">></font>
+
+</td>
+</tr>
+</table>
+<br>
+
+
+<center><font color="<{#global_column_color#}>" size=4><b><{$clone_title}></font></center><br>
+<form action="index.php" method="post" name="form2" enctype="multipart/form-data">
+<input type="hidden" name="MAX_FILE_SIZE" value="2097152" />
+<input type=hidden name="module" value="bbs">
+<{ if $is_new_topic }>
+   <input type=hidden name="action" value="savetopic">
+<{ elseif $is_new_reply }>
+   <input type=hidden name="action" value="savereply">
+<{ elseif $is_edit }>
+   <input type=hidden name="action" value="saveedit">
+<{/if}>
+
+<{ if $is_topic }>
+   <input type=hidden name="topic" value="1">
+<{ else }>
+   <input type=hidden name="topic" value="0">
+<{/if}>
+
+<input type=hidden name="id" value="<{$bbsid}>">
+<table width="98%" align="center" height="380" cellpadding=3 cellspacing=3 border=0 bgcolor="#f6f7f1">
+<tr>
+<td valign="top" align="center">
+
+<table width="99%" align="center" cellpadding=3 cellspacing=1 border=0>
+<tr>
+<tr>
+<td align="center" width="100" height="35">
+<font color="<{#global_column_color#}>"><b><{#topic_title_label#}>：</b></font>
+</td>
+<td align="left" height="35">
+<input type="text" size="75" name="title" style="height:22px"  maxlength="70" value="<{$temp_title}>">
+</td>
+</tr>
+
+<tr>
+<td align="center" valign="top">
+<b><font color="<{#global_column_color#}>"><{#topic_content_label#}>：</font></b>
+
+</td>
+<td valign="top">
+ <{$fck->Create() }>
+
+</td>
+</tr>
+
+
+<tr>
+<td colspan=2 align="center">
+   <input type="submit" name="submit" value="<{ if $is_topic }><{#save_topic_label#}> <{ else }><{#save_reply_label#}><{/if}>" OnClick="return SubmitCheck(this.form);">&nbsp;&nbsp;
+   <input type="reset" name="reset" value="<{#cancel_save_topic#}>">
+
+
+</td>
+</tr>
+
+
+<tr>
+<td colspan=2 bgcolor="<{#global_column_color#}>" align="center">
+<font color=white><{#topic_option_label#}></font>
+</td>
+</tr>
+
+
+
+
+
+
+<tr>
+<td align="center" valign="top">
+<font color="<{#global_column_color#}>"><{#topic_express_label#}>：</font>
+</td>
+<td align="left">
+
+<table width="500" cellpadding=1 cellpadding=1 border="0">
+<tr>
+<td align="left">
+<input type=radio name="express" value="smile.gif" <{ if $temp_express eq 'smile.gif'}>checked <{/if}> >
+<a href="#this" title="微笑"><img src="<{$image_url}>express/smile.gif" border="0" align="absmiddle"></a>
+</td>
+
+<td align="left">
+<input type=radio name="express" value="rolleyes.gif" <{ if $temp_express eq 'rolleyes.gif'}>checked <{/if}> >
+<a href="#this" title="陶醉"><img src="<{$image_url}>express/rolleyes.gif" border="0" align="absmiddle"></a>
+</td>
+
+<td align="left">
+<input type=radio name="express" value="thank.gif"  <{ if $temp_express eq 'thank.gif'}>checked <{/if}> >
+<a href="#this" title="谢谢" ><img src="<{$image_url}>express/thank.gif" border="0" align="absmiddle"></a>
+</td>
+
+<td align="left">
+<input type=radio name="express" value="comp.gif" <{ if $temp_express eq 'comp.gif'}>checked <{/if}> >
+<a href="#this" title="破坏"><img src="<{$image_url}>express/comp.gif" border="0" align="absmiddle"></a>
+</td>
+
+
+<td align="left">
+<input type=radio name="express" value="cool.gif"  <{ if $temp_express eq 'cool.gif'}>checked <{/if}> >
+<a href="#this" title="酷"><img src="<{$image_url}>express/cool.gif" border="0" align="absmiddle"></a>
+</td>
+</tr>
+
+
+<tr>
+<td align="left">
+<input type=radio name="express" value="help.gif"  <{ if $temp_express eq 'help.gif'}>checked <{/if}> >
+<a href="#this" title="求助"><img src="<{$image_url}>express/help.gif" border="0" align="absmiddle"></a>
+</td>
+
+<td align="left">
+<input type=radio name="express" value="beat.gif" <{ if $temp_express eq 'beat.gif'}>checked <{/if}> >
+<a href="#this" title="攻击" ><img src="<{$image_url}>express/beat.gif" border="0" align="absmiddle"></a>
+</td>
+
+<td align="left">
+<input type=radio name="express" value="tongue.gif" <{ if $temp_express eq 'tongue.gif'}>checked <{/if}> >
+<a href="#this" title="扮鬼脸"><img src="<{$image_url}>express/tongue.gif" border="0" align="absmiddle"></a>
+</td>
+
+<td align="left">
+<input type=radio name="express" value="bigscream.gif" <{ if $temp_express eq 'bigscream.gif'}>checked <{/if}> >
+<a href="#this" title="吃惊"><img src="<{$image_url}>express/bigscream.gif" border="0" align="absmiddle"></a>
+</td>
+
+
+<td align="left">
+<input type=radio name="express" value="sleep.gif"  <{ if $temp_express eq 'sleep.gif'}>checked <{/if}> >
+<a href="#this" title="睡觉"><img src="<{$image_url}>express/sleep.gif" border="0" align="absmiddle"></a>
+</td>
+</tr>
+
+
+<tr>
+<td align="left">
+<input type=radio name="express" value="wink.gif" <{ if $temp_express eq 'wink.gif'}>checked <{/if}> >
+<a href="#this" title="使眼色"><img src="<{$image_url}>express/wink.gif" border="0" align="absmiddle"></a>
+</td>
+
+
+<td align="left">
+<input type=radio name="express" value="biglove.gif" <{ if $temp_express eq 'biglove.gif'}>checked <{/if}> >
+<a href="#this" title="发情"><img src="<{$image_url}>express/biglove.gif" border="0" align="absmiddle"></a>
+</td>
+
+<td align="left">
+<input type=radio name="express" value="ask.gif"  <{ if $temp_express eq 'ask.gif'}>checked <{/if}> >
+<a href="#this" title="疑问"><img src="<{$image_url}>express/ask.gif" border="0" align="absmiddle"></a>
+</td>
+
+<td align="left">
+<input type=radio name="express" value="biggrin.gif"  <{ if $temp_express eq 'bgigrin.gif'}>checked <{/if}> >
+<a href="#this" title="狂笑"><img src="<{$image_url}>express/biggrin.gif" border="0" align="absmiddle"></a>
+</td>
+
+<td align="left">
+<input type=radio name="express" value="confused.gif" <{ if $temp_express eq 'confused.gif'}>checked <{/if}> >
+<a href="#this" title="困惑"><img src="<{$image_url}>express/confused.gif" border="0" align="absmiddle"></a>
+</td>
+</tr>
+
+
+<tr>
+<td align="left">
+<input type=radio name="express" value="hungry.gif" <{ if $temp_express eq 'hungry.gif'}>checked <{/if}> >
+<a href="#this" title="饿死了"><img src="<{$image_url}>express/hungry.gif" border="0" align="absmiddle"></a>
+</td>
+
+<td align="left">
+<input type=radio name="express" value="redface.gif" <{ if $temp_express eq 'redface.gif'}>checked <{/if}> >
+<a href="#this" title="脸红了" OnClick=setRedface()><img src="<{$image_url}>express/redface.gif" border="0" align="absmiddle"></a>
+</td>
+
+
+<td align="left">
+<input type=radio name="express" value="eek.gif" <{ if $temp_express eq 'eek.gif'}>checked <{/if}> >
+<a href="#this" title="唉呀！" OnClick=setEek()><img src="<{$image_url}>express/eek.gif" border="0" align="absmiddle"></a>
+</td>
+
+
+<td align="left">
+<input type=radio name="express" value="cool2.gif" <{ if $temp_express eq 'cool2.gif'}>checked <{/if}> >
+<a href="#this" title="太酷了"><img src="<{$image_url}>express/cool2.gif" border="0" align="absmiddle"></a>
+</td>
+
+
+<td align="center">
+<input type=radio name="express" value="frown.gif"  <{ if $temp_express eq 'frown.gif'}>checked <{/if}> >
+<a href="#this" title="皱眉" OnClick=setFrown()><img src="<{$image_url}>express/frown.gif" border="0" align="absmiddle"></a>
+</td>
+</tr>
+
+
+<tr>
+<td align="left">
+<input type=radio name="express" value="mad.gif" <{ if $temp_express eq 'mad.gif'}>checked <{/if}>  >
+<a href="#this" title="发疯" OnClick=setMad()><img src="<{$image_url}>express/mad.gif" border="0" align="absmiddle"></a>
+</td>
+
+
+<td align="left">
+<input type=radio name="express" value="sorry.gif" <{ if $temp_express eq 'sorry.gif'}>checked <{/if}> >
+<a href="#this" title="对不起了" OnClick=setSorry()><img src="<{$image_url}>express/sorry.gif" border="0" align="absmiddle"></a>
+</td>
+
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+
+<!-- 管理附件的地方 -->
+<tr>
+<td colspan=2 align="left" bgcolor="<{#global_column_color#}>">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color=white><{#manager_attach_label#}></font>
+</td>
+</tr>
+
+<tr>
+<td colspan=2 align="left" valign="top">
+
+<{ if $is_new_topic }>
+<{#upload_attach_label#}>：<input type="file" name="attach"><font color=red>&nbsp;&nbsp;&nbsp;<{#attention_label#}>:</font><{#upload_attention_detail#}>
+
+<{ elseif $is_new_reply }>
+ <{#upload_attach_label#}>：<input type="file" name="attach"><font color=red>&nbsp;&nbsp;&nbsp; <{#attention_label#}>:</font><{#upload_attention_detail#}>
+
+<{ elseif $is_edit}>
+<{ if $image_name }>
+<img src="<{$image_name}>" border="0" height="65" align="absmiddle">
+<input type="checkbox" value="1" name="delattach"><{#delete_attach_label#}>
+
+<{/if}>
+
+<{/if}>
+</td>
+</tr>
+
+</table>
+
+
+
+
+
+
+
+</td>
+</tr>
+</table>
+</form>
+<br>
+<br>
+<br>
+
+
+<script language=javascript>
+
+//表单提交检测
+function SubmitCheck(form) {
+   var title = form.title.value;
+
+   <{ if $is_new_topic }>
+   if ( title.length <= 0 ) {
+      alert('帖子标题不能为空。');
+      return false;
+   }
+   <{/if}>
+
+   if ( title.length > 70 ) {
+      alert('帖子标题不能超过50个字符');
+      return false;
+   }
+
+
+   return true;
+
+}
+
+//设置粗体
+function SetBold() {
+   document.form2.content.value = document.form2.content.value + "[b][/b]";
+   document.form2.content.focus();
+}
+
+function SetItalicize() {
+   document.form2.content.value = document.form2.content.value + "[i][/i]";
+   document.form2.content.focus();
+}
+
+function SetUnderline() {
+   document.form2.content.value = document.form2.content.value + "[u][/u]";
+   document.form2.content.focus();
+}
+
+function SetColor() {
+   document.form2.content.value = document.form2.content.value + "[color='red'][/color]";
+   document.form2.content.focus();
+}
+
+function SetSize() {
+   document.form2.content.value = document.form2.content.value + "[size='5'][/size]";
+   document.form2.content.focus();
+}
+
+function SetEmail() {
+   document.form2.content.value = document.form2.content.value + "[email='@'][/email]";
+   document.form2.content.focus();
+}
+
+function SetURL() {
+   document.form2.content.value = document.form2.content.value + "[url='http://'][/url]";
+   document.form2.content.focus();
+}
+
+function SetQuote() {
+   document.form2.content.value = document.form2.content.value + "\n[quote][/quote]";
+   document.form2.content.focus();
+}
+
+function SetCode() {
+   document.form2.content.value = document.form2.content.value + "\n[code][/code]";
+   document.form2.content.focus();
+}
+
+function SetFlash() {
+   document.form2.content.value = document.form2.content.value + "\n[flash][/flash]";
+   document.form2.content.focus();
+}
+
+function SetImage() {
+   document.form2.content.value = document.form2.content.value + "\n[img][/img]";
+   document.form2.content.focus();
+}
+
+function SetEmpty() {
+   document.form2.content.value="";
+
+}
+
+function setSmile() {
+   document.form2.content.value = document.form2.content.value + ":)";
+   document.form2.content.focus();
+}
+
+function setRolleyes() {
+   document.form2.content.value = document.form2.content.value + ":rolleyes:";
+   document.form2.content.focus();
+}
+
+function setThanks() {
+   document.form2.content.value = document.form2.content.value + ":thank:";
+   document.form2.content.focus();
+}
+
+function setComp() {
+   document.form2.content.value = document.form2.content.value + ":comp:";
+   document.form2.content.focus();
+}
+
+function setCool() {
+   document.form2.content.value = document.form2.content.value + ":cool:";
+   document.form2.content.focus();
+}
+
+function setHelp() {
+   document.form2.content.value = document.form2.content.value + ":help:";
+   document.form2.content.focus();
+}
+
+function setBeat() {
+   document.form2.content.value = document.form2.content.value + ":beat:";
+   document.form2.content.focus();
+}
+
+function setTongue() {
+   document.form2.content.value = document.form2.content.value + ":p";
+   document.form2.content.focus();
+}
+
+function setBigscream() {
+   document.form2.content.value = document.form2.content.value + ":!!";
+   document.form2.content.focus();
+}
+
+function setSleep() {
+   document.form2.content.value = document.form2.content.value + ":sleep:";
+   document.form2.content.focus();
+}
+
+function setWink() {
+   document.form2.content.value = document.form2.content.value + ";)";
+   document.form2.content.focus();
+}
+
+function setBiglove() {
+   document.form2.content.value = document.form2.content.value + ":%";
+   document.form2.content.focus();
+}
+
+function setAsk() {
+   document.form2.content.value = document.form2.content.value + ":ask:";
+   document.form2.content.focus();
+}
+
+function setBiggrin() {
+   document.form2.content.value = document.form2.content.value + ":D";
+   document.form2.content.focus();
+}
+
+function setConfused() {
+   document.form2.content.value = document.form2.content.value + ":confused:";
+   document.form2.content.focus();
+}
+
+function setHungry() {
+   document.form2.content.value = document.form2.content.value + ":hungry:";
+   document.form2.content.focus();
+}
+
+function setRedface() {
+   document.form2.content.value = document.form2.content.value + ":o";
+   document.form2.content.focus();
+}
+
+function setEek() {
+   document.form2.content.value = document.form2.content.value + ":eek:";
+   document.form2.content.focus();
+}
+
+function setCool2() {
+   document.form2.content.value = document.form2.content.value + ":2cool:";
+   document.form2.content.focus();
+}
+
+function setFrown() {
+   document.form2.content.value = document.form2.content.value + ":(";
+   document.form2.content.focus();
+}
+
+function setMad() {
+   document.form2.content.value = document.form2.content.value + ":mad:";
+   document.form2.content.focus();
+}
+
+function setSorry() {
+   document.form2.content.value = document.form2.content.value + ":sorry:";
+   document.form2.content.focus();
+}
+
+//弹出用户选取标签的地方
+function tempTags() {
+   window.open ("newtopic.do?action=showtag", "设置标签", "height=300, width=550, top=150, left=230, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no");
+}
+
+//弹出用户选取标签的地方
+function ManagerAccessory() {
+   window.open ("accessory.do?action=showaccessory", "管理附件", "height=300, width=550, top=100, left=230, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no");
+}
+
+function previewImage(id) {
+   window.open ("accessory.do?action=previewimage&id=" + id, "管理附件", "height=300, width=550, top=100, left=230, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no");
+}
+
+
+
+
+</script>
+
+<{ include file="footer.tmpl" }>

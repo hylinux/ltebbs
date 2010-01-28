@@ -1,0 +1,307 @@
+<{ config_load file="admin/showuser.conf" }>
+
+<html>
+<head>
+<title><{#res_title#}></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel=stylesheet type=text/css href="<{$css_url}>style.css">
+</head>
+
+<body bgcolor="#e0e0e0" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
+
+<table width="98%" cellpadding=4 cellspacing=0 border="0" align="center">
+<tr bgcolor="#727273">
+<td align="center">
+<a href="index.php?action=user&m=<{$m}>"><font color="#FFFFFF">#</font></a>
+</td>
+
+<td align="center">
+<a href="index.php?action=user&t=a&m=<{$m}>"><font color="#FFFFFF">A</font></a>
+</td>
+
+<td align="center">
+<a href="index.php?action=user&t=b&m=<{$m}>"><font color="#FFFFFF">B</font></a>
+</td>
+
+<td align="center">
+<a href="index.php?action=user&t=c&m=<{$m}>"><font color="#FFFFFF">C</font></a>
+</td>
+
+<td align="center">
+<a href="index.php?action=user&t=d&m=<{$m}>"><font color="#FFFFFF">D</font></a>
+</td>
+
+<td align="center">
+<a href="index.php?action=user&t=e&m=<{$m}>"><font color="#FFFFFF">E</font></a>
+</td>
+
+<td align="center">
+<a href="index.php?action=user&t=f&m=<{$m}>"><font color="#FFFFFF">F</font></a>
+</td>
+<td align="center">
+<a href="index.php?action=user&t=g&m=<{$m}>"><font color="#FFFFFF">G</font></a>
+</td>
+<td align="center">
+<a href="index.php?action=user&t=h&m=<{$m}>"><font color="#FFFFFF">H</font></a>
+</td>
+<td align="center">
+<a href="index.php?action=user&t=i&m=<{$m}>"><font color="#FFFFFF">I</font></a>
+</td>
+<td align="center">
+<a href="index.php?action=user&t=j&m=<{$m}>"><font color="#FFFFFF">J</font></a>
+</td>
+<td align="center">
+<a href="index.php?action=user&t=k&m=<{$m}>"><font color="#FFFFFF">K</font></a>
+</td>
+<td align="center">
+<a href="index.php?action=user&t=l&m=<{$m}>"><font color="#FFFFFF">L</font></a>
+</td>
+<td align="center">
+<a href="index.php?action=user&t=m&m=<{$m}>"><font color="#FFFFFF">M</font></a>
+</td>
+<td align="center">
+<a href="index.php?action=user&t=n&m=<{$m}>"><font color="#FFFFFF">N</font></a>
+</td>
+<td align="center">
+<a href="index.php?action=user&t=o&m=<{$m}>"><font color="#FFFFFF">O</font></a>
+</td>
+<td align="center">
+<a href="index.php?action=user&t=p&m=<{$m}>"><font color="#FFFFFF">P</font></a>
+</td>
+<td align="center">
+<a href="index.php?action=user&t=q&m=<{$m}>"><font color="#FFFFFF">Q</font></a>
+</td>
+<td align="center">
+<a href="index.php?action=user&t=r&m=<{$m}>"><font color="#FFFFFF">R</font></a>
+</td>
+<td align="center">
+<a href="index.php?action=user&t=s&m=<{$m}>"><font color="#FFFFFF">S</font></a>
+</td>
+<td align="center">
+<a href="index.php?action=user&t=t&m=<{$m}>"><font color="#FFFFFF">T</font></a>
+</td>
+<td align="center">
+<a href="index.php?action=user&t=u&m=<{$m}>"><font color="#FFFFFF">U</font></a>
+</td>
+<td align="center">
+<a href="index.php?action=user&t=v&m=<{$m}>"><font color="#FFFFFF">V</font></a>
+</td>
+<td align="center">
+<a href="index.php?action=user&t=w&m=<{$m}>"><font color="#FFFFFF">W</font></a>
+</td>
+<td align="center">
+<a href="index.php?action=user&t=x&m=<{$m}>"><font color="#FFFFFF">X</font></a>
+</td>
+<td align="center">
+<a href="index.php?action=user&t=y&m=<{$m}>"><font color="#FFFFFF">Y</font></a>
+</td>
+<td align="center">
+<a href="index.php?action=user&t=z&m=<{$m}>"><font color="#FFFFFF">Z</font></a>
+</td>
+
+</tr>
+
+</table>
+
+
+<!-- 帖子导航栏的显示 -->
+<table width="99%" cellpadding=1 cellspacing=1 align="center" border=0 >
+<tr>
+<td width="150" align="left">
+&nbsp;
+</td>
+<td align="right">
+<table  align="right" cellpadding=1 cellspacing=1 border=0 bgcolor="#727273" >
+<tr bgcolor="#727273" >
+<td  width="150" align="center">
+<font color="#FFFFFF" ><{#total_have#}><{$total_page}><{#page_th#}><{$now_page}><{#page_label#}></font>
+</td>
+
+<td align="center" width="30">
+<a href='index.php?action=user&page=1&t=<{$t_sort}>&m=<{$m}>'><font color="#FFFFFF"><{#first_page#}></font></a>
+</td>
+
+<td align="center" width="30">
+<a href='index.php?action=user&page=<{$now_page-1}>&t=<{$t_sort}>&m=<{$m}>'><font color="#FFFFFF"><{#pre_page#}></font></a>
+</td>
+
+<{ section name="nav_page" loop=$nav_page }>
+
+
+
+<{ if $nav_page[nav_page] != $now_page }>
+<td width="16" align="center">
+<a href='index.php?action=user&page=<{$nav_page[nav_page]}>&t=<{$t_sort}>&m=<{$m}>'><b><font color="#FFFFFF"><{$nav_page[nav_page]}></font></b></a>
+</td>
+<{ else }>
+
+<td width="20" align="center" bgcolor="white">
+<b><{$nav_page[nav_page]}></b>
+</td>
+
+<{/if}>
+
+
+<{ /section }>
+
+<td width="30" align="center">
+<a href='index.php?action=user&page=<{ $now_page+1}>&t=<{$t_sort}>&m=<{$m}>'><font color="#FFFFFF"><{#next_page#}></font></a>
+</td>
+
+
+<td width="30" align="center">
+<a href='index.php?action=user&page=<{$total_page}>&t=<{$t_sort}>&m=<{$m}>'><font color="#FFFFFF"><{#last_page#}></font></a>
+</td>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+
+<!-- 用户列表 -->
+<table width="98%" cellpadding=4 cellspacing=0 border="0" align="center">
+<tr bgcolor="#727273">
+<td align="center">
+<font color="#FFFFFF"><{#user_name_label#}></font>
+</td>
+
+<td align="center">
+<font color="#FFFFFF"><{#register_date_label#}></font>
+</td>
+
+<td align="center">
+<font color="#FFFFFF"><{#topic_number_label#}></font>
+</td>
+
+<td align="center">
+<font color="#FFFFFF"><{#last_access_label#}></font>
+</td>
+
+<td align="center">
+<font color="#FFFFFF"><{#header_label#}></font>
+</td>
+
+<td align="center">
+<font color="#FFFFFF"><{#user_status_label#}></font>
+</td>
+
+
+<td align="center">
+<font color="#FFFFFF"><{#operation_label#}></font>
+</td>
+
+</tr>
+
+
+<{ section name="myuser" loop=$myuser }>
+<tr bgcolor="#FFFFFF">
+<td align="left" valign="center" width="360">
+<font color="#336699"><{$myuser[myuser].name}></font><{ if $myuser[myuser].was_add }><font color="red"><{#user_had_been_added_black_list#}></font><{/if}><br>
+<font color="#336699">[<{$myuser[myuser].group}>]</font>
+</td>
+
+<td align="center" width="130">
+<{$myuser[myuser].register_date}>
+</td>
+
+<td align="center" width="50">
+<{$myuser[myuser].topic_number}>
+</td>
+
+<td align="center" width="130">
+<{$myuser[myuser].last_access_time|date_format:"%Y-%m-%d %H:%M:%S"}>
+</td>
+
+<td align="center" width="65" >
+<img src="<{$myuser[myuser].header}>" border="1" height="28" align="absmiddle">
+</td>
+
+<td align="center" width="55">
+<{ if $myuser[myuser].status }>
+<font color="red"><{#locked_status#}></font>
+<{ else }>
+<{#normal_status#}>
+<{/if}>
+</td>
+
+<td align="center">
+<select name="user_operation" OnChange="ChangeProcess(this, <{$myuser[myuser].id}>)" >
+<option value=''>-------------------</option>
+<option value='resetpasswd'><{#reset_passwd_label#}></option>
+<option value='lockuser'><{#lock_user_label#}></option>
+<option value='unlockuser'><{#unlock_user_label#}>
+<option value='putblacklist'><{#put_black_list_label#}></option>
+<option value='setgroup'><{#set_user_group#}>
+<!-- <option value='viewlog'><{#view_log_label#}></option> -->
+</select>
+</td>
+
+</tr>
+<{/section}>
+
+</table>
+
+
+<!-- JavaScript 函数 -->
+<script language="javascript">
+function ChangeProcess(stuff, id) {
+   var action = stuff.options[stuff.selectedIndex].value;
+
+   switch(action) {
+      case 'resetpasswd':
+         ResetPasswd(id);
+         break;
+      case 'lockuser':
+         LockUser(id);
+         break;
+      case 'putblacklist':
+         PutBlackList(id);
+         break;
+      case 'viewlog':
+         document.location.href='index.php?action=viewlog&id='+id;
+         break;
+      case 'setgroup':
+         document.location.href='index.php?action=setgroup&page=<{$page}>&t=<{$t_sort}>&m=<{$m}>&id='+id;
+         break;
+      case 'unlockuser':
+         UnLockUser(id);
+         break;
+   }
+
+}
+
+function UnLockUser(id) {
+   if ( confirm("<{#are_you_sure_unlock_user#}>") ) {
+      document.location.href='index.php?action=unlock&id='+id;
+   }
+}
+
+function ResetPasswd(id) {
+   if ( confirm("<{#are_your_sure_reset_passwd#}>？") ) {
+      document.location.href='index.php?action=resetpasswd&id='+id;
+   }
+}
+
+function LockUser(id) {
+   if ( confirm("<{#are_you_sure_del_user#}>") ) {
+      document.location.href='index.php?action=lockuser&id='+id;
+   }
+}
+
+function PutBlackList(id) {
+   if ( confirm("<{#are_you_sure_put_blacklist#}>") ) {
+      document.location.href='index.php?action=putblacklist&id='+id;
+   }
+}
+
+</script>
+
+
+
+</body>
+</html>
+

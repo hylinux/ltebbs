@@ -1,0 +1,206 @@
+<{config_load file="showmsg.conf"}>
+
+<{ include file="header.tmpl" }>
+
+
+<!-- 论坛的访问菜单 -->
+<table width="99%" cellpadding=0 cellspacing=1 border="0" bgcolor="#f6f7f1" align="center">
+<tr>
+<td align="left">
+&nbsp;&nbsp;<img src="<{$image_url}>open.gif" border=0 align="absmiddle">
+&nbsp;&nbsp;<a href='index.php?module=bbs'>[<{#the_bbs_home_page#}>]</a>
+<font color="<{#global_column_color#}>">></font>
+
+<a href='index.php?module=user'>[<{#user_control_panel#}>]</a>
+<font color="<{#global_column_color#}>">></font>
+
+<a href='index.php?module=message&action=receive'>[<{#res_title#}>]</a>
+<font color="<{#global_column_color#}>">></font>
+
+<font color="<{#global_column_color#}>">[<{#view_message_label#}>]</font>
+<font color="<{#global_column_color#}>">></font>
+
+
+</td>
+</tr>
+</table>
+<br>
+<!-- 论坛访问菜单结束 -->
+
+
+<!-- 控制面板的菜单 -->
+<{ include file="usersharemenu.tmpl" }>
+
+
+<table width="99%" cellpadding=10 cellspacing=1 border="0" align="center">
+<tr>
+<td align="center" valign="top"  bgcolor="#FFFFFF" width="250">
+<!-- 显示用户的基本情况 -->
+
+<table width="99%" cellpadding=3 cellspacing=1 border="0" align='center' bgcolor="<{#global_font_color#}>">
+
+<!-- 显示用户名和用户角色 -->
+<tr>
+<td align="center" valign="middle"  height="25" >
+<b><{$view_user_name}></b>&nbsp;&nbsp;[<{$user_roles}>]
+</td>
+</tr>
+
+<!-- 显示用户的头像 -->
+<tr>
+<td align="center" valign="middle" >
+<br>
+<img src="<{$head_url}>" border="0" align="absmiddle">
+<br>
+</td>
+</tr>
+
+<tr>
+<td align="center" valign="middle"  height="25" >
+<b><{#base_user_info_label#}></b>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="middle"  height="25" >
+<b><{#username_label#}>:</b> &nbsp;&nbsp;<{$view_user_name}>
+</td>
+</tr>
+
+
+<tr>
+<td align="left" valign="middle"  height="25" >
+<b><{#user_title#}>:</b>&nbsp;&nbsp;<{$user_roles}>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="middle"  height="25" >
+<b><{#register_date#}>:</b> &nbsp;&nbsp;<{$user_register_date}>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="middle"  height="25" >
+<b><{#last_login_date#}>:</b> &nbsp;&nbsp;<{$user_last_logout}>
+</td>
+</tr>
+
+
+<tr>
+<td align="left" valign="middle"  height="25" >
+<b><{#all_topics#}>:</b> &nbsp;&nbsp;<{$all_topic_number}><{#topic_desc#}>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="middle"  height="25" >
+<b><{#all_replies#}>:</b> &nbsp;&nbsp;<{$all_reply_number}><{#reply_desc#}>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="middle"  height="25" >
+<b><{#favor_number#}>:</b> &nbsp;&nbsp;<{$favor_amount}><{#favor_desc#}>
+</td>
+</tr>
+
+
+<tr>
+<td align="left" valign="middle"  height="25" >
+<b><{#all_messages#}>:</b> &nbsp;&nbsp;<{$message_all_number}><{#message_desc#}>
+</td>
+</tr>
+
+</table>
+
+<!-- 用户统计信息显示结束 -->
+<!-- 结束显示用户的基本情况 -->
+
+
+</td>
+<td align="left" valign="top"  bgcolor="#FFFFFF">
+<br>
+
+<!-- 显示短消息内容 -->
+<table width="100%" height="300" align="left" cellspacing=1 cellpadding=1 border=0>
+<tr>
+<td align="left" valign="top">
+
+<table width="980" bgcolor="<{#global_font_color#}>" cellpadding="5" cellspacing="1" align="center">
+
+<tr height="25">
+<td align=center width="80" bgcolor="white">
+<{#title_label#}>:
+</td>
+<td bgcolor="white">
+&nbsp;&nbsp;
+<b><u><{$title}></u></b>
+
+</td>
+</tr>
+
+<tr height="25">
+<td align=center width="80" bgcolor="white">
+<{#sender_label#}>:
+</td>
+<td bgcolor="white">
+&nbsp;&nbsp;
+<a href='index.php?module=user&action=' target="_blank">
+<{$sender}>
+</a>
+</td>
+</tr>
+
+<tr height="25">
+<td align=center width="80" bgcolor="white">
+<{#time_label#}>:
+</td>
+<td bgcolor="white">
+&nbsp;&nbsp;
+<{$send_time}>
+
+</td>
+</tr>
+
+
+<tr height="300">
+<td align=center width="80" valign="top" bgcolor="white">
+<{#content_label#}>:
+</td>
+<td bgcolor="white" align="left" valign="top">
+&nbsp;
+&nbsp;
+<p>
+
+<{$content}>
+
+</p>
+</td>
+</tr>
+
+<tr>
+<td colspan=2 align="center" bgcolor="white">
+
+<center><input type="button" value="<{#back_label#}>" OnClick="javascript:history.back()"></center>
+
+</td>
+</tr>
+
+</td>
+</tr>
+</table>
+
+<!-- 显示短消息内容结束 -->
+
+</td>
+</tr>
+</table>
+
+</td></tr></table>
+
+<br>
+<br>
+<br>
+
+<{ include file="footer.tmpl" }>

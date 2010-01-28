@@ -1,0 +1,44 @@
+<{ config_load file="admin/showdelmanager.conf" }>
+<html>
+<head>
+<title><{#res_title#}></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel=stylesheet type=text/css href="<{$css_url}>style.css">
+</head>
+
+<body bgcolor="#e0e0e0" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
+
+<form name="form2" action="index.php" method="post">
+<input type="hidden" name="action" value="deltruemanager">
+<input type="hidden" name="id" value="<{$id}>">
+
+<br>
+&nbsp;&nbsp;<b><{#please_choice_manager_label#}></b><br>
+<table  cellpadding="1" cellspacing="1" border="0" bgcolor="#727273">
+<tr>
+<td align="center" width="25">
+&nbsp;
+</td>
+<td align="center" width="115">
+<font color="#FFFFFF"><{#layout_label#}></font>
+</td>
+</tr>
+
+<tr bgcolor="#FFFFFF">
+<td align="left" valign="top" colspan="2">
+<{$manager_list}>
+</td>
+</tr>
+
+<tr bgcolor="#FFFFFF">
+<td align="left" colspan="2">
+<input type="submit" value="<{#delete_label#}>">&nbsp;&nbsp;
+<input type="button" value="<{#cancel_label#}>" OnClick="document.location.href='index.php?action=layout&parent=<{$parent_id}>'>
+</td>
+</tr>
+
+</table>
+</form>
+
+</body>
+</html>

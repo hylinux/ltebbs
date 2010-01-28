@@ -1,0 +1,65 @@
+<{config_load file="showsend.conf"}>
+
+<{ include file="header.tmpl" }>
+
+<form action="index.php" method="post">
+<input type=hidden name="module" value="message">
+<input type="hidden" name="action" value="savesend">
+<input type='hidden' name='backurl' value="<{$backurl}>">
+
+<table width="100%" height="300" align="center" cellspacing=1 cellpadding=1 border=0>
+<tr>
+<td align="center" valign="top">
+
+<br>
+<h2><{#res_title#}></h2>
+
+<table width="75%" bgcolor="#c5c5b3" cellpadding="3" cellspacing="3" align="center">
+
+<tr>
+<td align=center width="80">
+<font color="#FFFFFF"><{#res_username#}>:</font>
+</td>
+<td>
+<input type="text" name="username" size=30>
+</td>
+</tr>
+
+<tr>
+<td align=center width="80">
+<font color="#FFFFFF"><{#title_label#}>:</font>
+</td>
+<td>
+<input type="text" name="title" size=50>
+</td>
+</tr>
+
+<tr>
+<td align=center width="80" valign="top">
+<font color="#FFFFFF"><{#content_label#}>:</font>
+</td>
+<td>
+<textarea name="content" cols=45 rows=10></textarea>
+</td>
+</tr>
+
+
+<tr>
+<td colspan=2 align="center">
+<input type="submit" name="s1" value="<{#send_label#}>">
+<input type="reset" value="<{#cancel_label#}>">
+
+</td>
+</tr>
+
+</td>
+</tr>
+</table>
+</form>
+<br>
+<br>
+
+
+
+
+<{ include file="footer.tmpl" }>

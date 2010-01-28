@@ -1,0 +1,32 @@
+<{ include file="header.tmpl" }>
+
+<table width="300" left="left"  align="center" cellpadding=3 cellspacing=3 border="0">
+
+<tr align="center">
+<td>
+<font size=4>数据库设定检测</font><br>
+</td>
+</tr>
+
+<tr>
+<td align="center">
+<font color="red">数据库已经存在，你确认继续吗？</font><br>
+
+
+<font color="red">注意，可能会让你原有的数据库丢失'</font>
+<br>
+
+<br>
+<input type="button" value="确认继续" OnClick="document.location.href='install.php?step=7'">&nbsp;&nbsp;
+<input type="button" value="返回修改" onClick="document.location.href='install.php?step=4'">
+
+</td>
+
+</tr>
+
+
+
+
+</table>
+
+<{ include file="footer.tmpl" }>

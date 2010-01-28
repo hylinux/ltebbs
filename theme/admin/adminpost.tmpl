@@ -1,0 +1,135 @@
+<{ config_load file="admin/post.conf" }>
+
+<html>
+<head>
+<title><{#res_title#}></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel=stylesheet type=text/css href="<{$css_url}>style.css">
+</head>
+
+<body bgcolor="#e0e0e0" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
+<br>
+
+<input type="button" value="<{#add_post_label#}>" OnClick="document.location.href='index.php?action=addpost'">
+
+
+<!-- 帖子导航栏的显示 -->
+<table width="99%" cellpadding=1 cellspacing=1 align="center" border=0 >
+<tr>
+<td width="150" align="left">
+&nbsp;
+</td>
+<td align="right">
+<table  align="right" cellpadding=1 cellspacing=1 border=0 bgcolor="#727273" >
+<tr bgcolor="#727273" >
+<td  width="150" align="center">
+<font color="#FFFFFF" ><{#total_have#}><{$total_page}><{#page_th#}><{$now_page}><{#page_label#}></font>
+</td>
+
+<td align="center" width="30">
+<a href='index.php?action=post&page=1'><font color="#FFFFFF"><{#first_page#}></font></a>
+</td>
+
+<td align="center" width="30">
+<a href='index.php?action=post&page=<{$now_page-1}>'><font color="#FFFFFF"><{#pre_page#}></font></a>
+</td>
+
+<{ section name="nav_page" loop=$nav_page }>
+
+
+
+<{ if $nav_page[nav_page] != $now_page }>
+<td width="16" align="center">
+<a href='index.php?action=post&page=<{$nav_page[nav_page]}>'><b><font color="#FFFFFF"><{$nav_page[nav_page]}></font></b></a>
+</td>
+<{ else }>
+
+<td width="20" align="center" bgcolor="white">
+<b><{$nav_page[nav_page]}></b>
+</td>
+
+<{/if}>
+
+
+<{ /section }>
+
+<td width="30" align="center">
+<a href='index.php?action=post&page=<{ $now_page+1}>'><font color="#FFFFFF"><{#next_page#}></font></a>
+</td>
+
+
+<td width="30" align="center">
+<a href='index.php?action=post&page=<{$total_page}>'><font color="#FFFFFF"><{#last_page#}></font></a>
+</td>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<!-- 帖子导航栏 -->
+
+
+<table width="100%"  align="center" cellpadding="1" cellspacing="1" border="0" bgcolor="#727273">
+<tr>
+<td align="center" >
+<font color="#FFFFFF"><{#title_label#}></font>
+</td>
+
+<td align="center" width="80">
+<font color="#FFFFFF"><{#status_label#}></font>
+</td>
+
+<td align="center" width="180">
+<font color="#FFFFFF"><{#begin_date_label#}></font>
+</td>
+
+<td align="center" width="180">
+<font color="#FFFFFF"><{#end_date_label#}></font>
+</td>
+
+<td align="center" width="80">
+<font color="#FFFFFF"><{#operation_label#}></font>
+</td>
+</tr>
+
+
+<{ section name="post" loop=$post }>
+<tr bgcolor="#FFFFFF">
+<td align="center">
+<a href='index.php?action=viewpost&id=<{$post[post].id}>'><{$post[post].title}></a>
+</td>
+
+<td align="center">
+<{ if $post[post].expire }>
+<font color="red"><{#had_expired#}></font>
+<{ else }>
+<{#normail_label#}>
+<{/if}>
+</td>
+
+<td align="center">
+<{$post[post].begin_date|date_format:"%Y-%m-%d %H:%M:%S" }>
+</td>
+
+<td align="center">
+<{ $post[post].expires|date_format:"%Y-%m-%d %H:%M:%S" }>
+</td>
+
+<td align="center">
+<input type="button" value="<{#delete_label#}>" OnClick="document.location.href='index.php?action=delpost&id=<{$post[post].id}>'">
+</td>
+
+</tr>
+<{/section}>
+
+</table>
+
+
+
+</body>
+</html>
+

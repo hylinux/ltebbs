@@ -1,0 +1,533 @@
+<{ config_load file="viewlayout.conf" }>
+<{ include file="header.tmpl" }>
+
+
+<!-- 如果有公告则显示这一块，如果没有则不显示 -->
+<{ if $have_system_post }>
+<table width="98%" cellpadding=1 cellspacing=1 align="center" border="0">
+<tr>
+<td width="80">
+<font color="red"><b><{#system_post#}>：</b></font>
+</td>
+<td valign="middle">
+<marquee onmouseover="this.stop()" onmouseout="this.start()" scrolldelay="70" scrollamount="3">
+<{$post_str}>
+</marquee>
+</td>
+</tr>
+</table>
+<{/if}>
+
+<!-- 论坛的访问菜单 -->
+<table width="99%" cellpadding=0 cellspacing=1 border="0" bgcolor="#f6f7f1" align="center">
+<tr>
+<td align="left">
+&nbsp;&nbsp;<img src="<{$image_url}>open.gif" border=0 align="absmiddle">
+&nbsp;&nbsp;<a href='index.php?module=bbs'>[<{#the_bbs_home_page#}>]</a>
+<font color="<{#global_column_color#}>">></font>
+
+<{ section name="nav_menu" loop=$nav_array }>
+<a href='index.php?module=bbs&action=viewlayout&id=<{$nav_array[nav_menu].id}>'>[<{$nav_array[nav_menu].title}>]</a>
+<font color="<{#global_column_color#}>">></font>
+<{ /section }>
+
+</td>
+</tr>
+</table>
+<br>
+
+<!-- 显示论坛的板块信息 -->
+<{ if $have_sub_bbs }>
+<table width="99%" cellpadding=0 cellspacing=3 border="0" bgcolor="white" align="center">
+<tr>
+<td align="left" bgcolor="<{#global_column_color#}>">
+<font color="white">
+&nbsp;&nbsp;&nbsp;&nbsp;<b>
+   <{#sub_layout_label#}>：&nbsp;&nbsp;&nbsp;<{$bbs_title}>
+</font>
+</b>
+</td>
+</tr>
+
+<tr>
+<td valign="top">
+   <table width="99%" cellpadding=2 cellspacing=1 border="0" bgcolor="#f6f7f1" align="right">
+   <tr>
+   <td align="center" valign="middle" width="35">
+      &nbsp;
+   </td>
+   <td align="center">
+     <{#layout_label#}> 
+   </td>
+   <td align="center">
+      <{#topic_click_number#}>
+   </td>
+   <td align="center">
+      <{#reply_click_number#}>
+   </td>
+   <td align="center">
+     <{#last_access_info#}> 
+   </td>
+   <td align="center">
+      <{#manager_label#}> 
+   </td>
+   </tr>
+   
+   
+   <{ section name="main" loop=$info }>
+   <tr>
+   <td align="center" valign="middle">
+   <img src="<{$image_url}><{$info[main].image}>" border="0" align="absmiddle">
+   </td>
+   <td align="left" bgcolor="white">
+   <a href="index.php?module=bbs&action=viewlayout&id=<{$info[main].id}>">
+   <{$info[main].title}>&nbsp;(<{#view_persion_number#}>: <{$info[main].viewnumber}>)
+   </a><br>
+   <{$info[main].content}>
+   </td>
+
+   <!-- 主题数 -->
+   <td align="center" width="55" bgcolor="white">
+      <{$info[main].topic_number}>
+   </td>
+   
+   <!-- 回帖数 -->
+   <td align="center" bgcolor="white" width="55">
+      <{$info[main].reply_number}>
+   </td>
+   
+   <!-- 最后的发帖 -->
+   <td align="left" bgcolor="white" width="135">
+   <div align="left"><a href="index.php?module=bbs&action=viewtopic&id=<{$info[main].topicid}>" title="<{$info[main].topic_title}>"><{$info[main].short_title}></a></div>
+   <div align="right"><{$info[main].last_time}></div>
+
+   </td>
+   
+   <!-- 版主列表 -->
+   <form name="form<{$info[main].id}>">
+   <td align="center" bgcolor="white" width="200">
+      <select name="managerlist<{$info[main].id}>" 
+      OnChange="ViewUserInfo(document.form<{$info[main].id}>.managerlist<{$info[main].id}>.options[document.form<{$info[main].id}>.managerlist<{$info[main].id}>.selectedIndex].value)">
+         <option value="-1" selected><{#manager_list#}></option>
+         <option value="-2">---------</option>
+         <{$info[main].managerlist}>
+      </select>
+
+   </td>
+   </form>
+   </tr> 
+
+   <{/section}>
+
+   </table>
+
+</td>
+</tr>
+</table>
+<br>
+<{/if}>
+
+<!-- 帖子导航栏的显示 -->
+
+<{ if $not_allow_new_topic != 1 }>
+<table width="99%" cellpadding=1 cellspacing=1 align="center" border=0 >
+<tr>
+<td width="150" align="left">
+&nbsp;&nbsp;<a href='index.php?module=bbs&id=<{$bbs_id}>&action=newtopic'>[<{#new_topic#}>]</a>
+&nbsp;&nbsp;<a href='index.php?module=bbs&id=<{$bbs_id}>&action=viewlayout&showbest=1'>[<{#only_show_best#}>]</a>
+</td>
+<td align="right">
+<table  align="right" cellpadding=1 cellspacing=1 border=0 bgcolor="#727273" >
+<tr bgcolor="#f6f7f1" >
+<td  width="150" align="center">
+<font color="<{#global_column_color#}>" ><{#total_have#}><{$total_page}><{#page_th#}><{$now_page}><{#page_label#}></font>
+</td>
+
+<td align="center" width="30">
+<a href='index.php?module=bbs&action=viewlayout&id=<{$bbs_id}>&page=1&showbest=<{$show_best}>'><{#first_page#}></a>
+</td>
+
+<td align="center" width="30">
+<a href='index.php?module=bbs&action=viewlayout&id=<{$bbs_id}>&page=<{$now_page-1}>&showbest=<{$show_best}>'><{#pre_page#}></a>
+</td>
+
+<{ section name="nav_page" loop=$nav_page }>
+
+
+
+<{ if $nav_page[nav_page] != $now_page }>
+<td width="16" align="center">
+<a href='index.php?module=bbs&action=viewlayout&id=<{$bbs_id}>&page=<{$nav_page[nav_page]}>&showbest=<{$show_best}>'><b><{$nav_page[nav_page]}></b></a>
+</td>
+<{ else }>
+
+<td width="20" align="center" bgcolor="white">
+<b><{$nav_page[nav_page]}></b>
+</td>
+
+<{/if}>
+
+
+<{ /section }>
+
+<td width="30" align="center">
+<a href='index.php?module=bbs&action=viewlayout&id=<{$bbs_id}>&page=<{ $now_page+1}>&showbest=<{$show_best}>'><{#next_page#}></a>
+</td>
+
+
+<td width="30" align="center">
+<a href='index.php?module=bbs&action=viewlayout&id=<{$bbs_id}>&page=<{$total_page}>&showbest=<{$show_best}>'><{#last_page#}></a>
+</td>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+<!-- 帖子导航菜单列表结束 -->
+
+
+
+<!-- 置顶帖子列表开始 -->
+   <{ if $have_top_subject }>
+   <table width="98%" cellpadding=4 cellspacing=0 border="0" align="center">
+   <tr bgcolor="<{#global_column_color#}>">
+   <td align="center" valign="middle" width="35">
+
+   </td>
+   <td align="center" valign="middle" >
+      <font color="#FFFFFF"><{#the_subject_label#}></font>
+   </td>
+
+   <td align="center" width="65">
+      <font color="#FFFFFF"><{#the_auhtor_label#}></font>
+   </td>
+   
+   <td align="center" width="55">
+      <font color="#FFFFFF"><{#view_number_label#}></font>
+   </td>
+
+   <td align="center" width="55">
+      <font color="#FFFFFF"><{#reply_number_label#}></font>
+   </td>
+
+   <td align="center" width="135">
+      <font color="#FFFFFF"><{#last_reply_label#}></font>
+   </td>
+
+   </tr>
+   </table>
+   
+   <!-- 置顶帖子显示 -->
+   <table width="98%" cellpadding=5 cellspacing=1 border="0" bgcolor="#f6f7f1" align="center">
+
+   <{ section name="top_subject" loop=$top_subject }>
+   <tr>
+   <td align="center" valign="middle" width="30">
+   <img src="<{$image_url}><{$top_subject[top_subject].image}>" border="0" align="absmiddle">
+   </td>
+   <td bgcolor="white" align="left">
+      <{ if $top_subject[top_subject].express ne '' }>
+      <img src="<{$image_url}>express/<{$top_subject[top_subject].express}>" border="0" align="absmiddle">
+      <{/if}>
+      <a href="index.php?module=bbs&action=viewtopic&id=<{$top_subject[top_subject].id}>"><{$top_subject[top_subject].title}></a>
+      <{ if $top_subject[top_subject].have_attach }>
+         <img src="<{$image_url}>attach.gif" border=0 align="absmiddle">
+      <{/if}>
+
+      <{ if $top_subject[top_subject].reply_number>0 }>
+      <a href="index.php?module=bbs&action=viewtopic&id=<{$top_subject[top_subject].id}>&page=1#topic2"
+         title='<{#go_to_the_new_topic#}>'>
+      <img src="<{$image_url}>firstnew.gif" border=0 align="absmiddle">
+      </a>
+      <{/if}>
+   </td>
+
+   <td align="center" bgcolor="white" width="65">
+      <a href="index.php?module=user&action=view&id=<{$top_subject[top_subject].userid}>" target="_blank">
+         <{$top_subject[top_subject].username}>
+      </a>
+   </td>
+   
+   <td align="center" width="55" bgcolor="white">
+      <font color="<{#global_column_color#}>"><{$top_subject[top_subject].clicks_number}></font>
+   </td>
+
+   <td align="center" width="55" bgcolor="white">
+      <font color="<{#global_column_color#}>"><{$top_subject[top_subject].reply_number}></font>
+   </td>
+
+   <td align="center" width="135" bgcolor="white">
+      <font color="<{#global_column_color#}>">
+         <{$top_subject[top_subject].last_time}><br>
+       <div align="right">
+      <a href="index.php?module=user&action=view&id=<{$top_subject[top_subject].last_userid}>">
+         <{$top_subject[top_subject].last_username}>
+      </a>
+      <{ if $top_subject[top_subject].reply_number>0 }>
+         <a href="index.php?module=bbs&action=viewtopic&id=<{$top_subject[top_subject].id}>&page=<{$top_subject[top_subject].last_page}>#topic<{$top_subject[top_subject].last_number}>" title="<{#go_to_the_last_topic#}>">
+         <img src="<{$image_url}>lastpost.gif" border="0" align="absmiddle"></div>
+         </a>
+      <{/if}>
+      </font>
+   </td>
+
+   </tr>
+
+   <{/section}>
+
+   </table>
+   <{/if}>
+
+<!-- 置顶帖子显示结束  -->
+
+<!-- 普通帖子显示列表 -->
+
+
+ <{ if $have_subject }>
+   <table width="98%" cellpadding=4 cellspacing=0 border="0" align="center">
+   <tr bgcolor="<{#global_column_color#}>">
+   <td align="center" valign="middle" width="35">
+
+   </td>
+   <td align="center" valign="middle" >
+      <font color="#FFFFFF"><{#the_subject_label#}></font>
+   </td>
+
+   <td align="center" width="65">
+      <font color="#FFFFFF"><{#the_auhtor_label#}></font>
+   </td>
+   
+   <td align="center" width="55">
+      <font color="#FFFFFF"><{#view_number_label#}></font>
+   </td>
+
+   <td align="center" width="55">
+      <font color="#FFFFFF"><{#reply_number_label#}></font>
+   </td>
+
+   <td align="center" width="135">
+      <font color="#FFFFFF"><{#last_reply_label#}></font>
+   </td>
+
+   </tr>
+   </table>
+   
+   <!-- 普通帖子显示 -->
+   <table width="98%" cellpadding=5 cellspacing=1 border="0" bgcolor="#f6f7f1" align="center">
+
+   <{ section name="mysubject" loop=$subject }>
+   <tr>
+   <td align="center" valign="middle" width="30">
+   <img src="<{$image_url}><{$subject[mysubject].image}>" border="0" align="absmiddle">
+   </td>
+   <td bgcolor="white" align="left">
+       <{ if $subject[mysubject].express ne '' }>
+      <img src="<{$image_url}>express/<{$subject[mysubject].express}>" border="0" align="absmiddle">
+      <{/if}>
+   <a href="index.php?module=bbs&action=viewtopic&id=<{$subject[mysubject].id}>"><{$subject[mysubject].title}></a>
+      <{ if $subject[mysubject].have_attach }>
+         <img src="<{$image_url}>attach.gif" border=0 align="absmiddle">
+      <{/if}>
+
+      <{ if $subject[mysubject].have_new_reply && $subject[mysubject].reply_number>0 }>
+      <a href="index.php?module=bbs&action=viewtopic&id=<{$subject[mysubject].id}>&page=1#topic2"
+         title='<{#go_to_the_new_topic#}>'>
+      <img src="<{$image_url}>firstnew.gif" border=0 align="absmiddle">
+      </a>
+      <{/if}>
+   </td>
+
+   <td align="center" bgcolor="white" width="65">
+      <a href="index.php?module=user&action=view&id=<{$subject[mysubject].userid}>" target="_blank">
+         <{$subject[mysubject].username}>
+      </a>
+   </td>
+   
+   <td align="center" width="55" bgcolor="white">
+      <font color="<{#global_column_color#}>"><{$subject[mysubject].clicks_number}></font>
+   </td>
+
+   <td align="center" width="55" bgcolor="white">
+      <font color="<{#global_column_color#}>"><{$subject[mysubject].reply_number}></font>
+   </td>
+
+   <td align="center" width="135" bgcolor="white">
+      <font color="<{#global_column_color#}>">
+         <{$subject[mysubject].last_time}><br>
+       <div align="right">
+      <a href="index.php?module=user&action=view&id=<{$subject[mysubject].last_userid}>">
+         <{$subject[mysubject].last_username}>
+      </a>
+      <{ if $subject[mysubject].reply_number>0 }>
+         <a href="index.php?module=bbs&action=viewtopic&id=<{$subject[mysubject].id}>&page=<{$subject[mysubject].last_page}>#topic<{$subject[mysubject].last_number}>" title="<{#go_to_the_last_topic#}>">
+         <img src="<{$image_url}>lastpost.gif" border="0" align="absmiddle"></div>
+         </a>
+      <{/if}>
+      </font>
+   </td>
+
+   </tr>
+
+   <{/section}>
+
+   </table>
+   <{/if}>
+
+<!-- 普通帖子显示列表结束 -->
+
+
+
+
+
+
+
+
+
+<!-- 帖子导航栏的显示 -->
+
+<table width="99%" cellpadding=1 cellspacing=1 align="center" border=0 >
+<tr>
+<td width="150" align="left">
+&nbsp;&nbsp;<a href='index.php?module=bbs&id=<{$bbs_id}>&action=newtopic'>[<{#new_topic#}>]</a>
+&nbsp;&nbsp;<a href='index.php?module=bbs&id=<{$bbs_id}>&action=viewlayout&showbest=1'>[<{#only_show_best#}>]</a>
+</td>
+<td align="right">
+<table  align="right" cellpadding=1 cellspacing=1 border=0 bgcolor="#727273" >
+<tr bgcolor="#f6f7f1" >
+<td  width="150" align="center">
+<font color="<{#global_column_color#}>" ><{#total_have#}><{$total_page}><{#page_th#}><{$now_page}><{#page_label#}></font>
+</td>
+
+<td align="center" width="30">
+<a href='index.php?module=bbs&action=viewlayout&id=<{$bbs_id}>&page=1&showbest=<{$show_best}>'><{#first_page#}></a>
+</td>
+
+<td align="center" width="30">
+<a href='index.php?module=bbs&action=viewlayout&id=<{$bbs_id}>&page=<{$now_page-1}>&showbest=<{$show_best}>'><{#pre_page#}></a>
+</td>
+
+<{ section name="nav_page" loop=$nav_page }>
+
+
+
+<{ if $nav_page[nav_page] != $now_page }>
+<td width="16" align="center">
+<a href='index.php?module=bbs&action=viewlayout&id=<{$bbs_id}>&page=<{$nav_page[nav_page]}>&showbest=<{$show_best}>'><b><{$nav_page[nav_page]}></b></a>
+</td>
+<{ else }>
+
+<td width="20" align="center" bgcolor="white">
+<b><{$nav_page[nav_page]}></b>
+</td>
+
+<{/if}>
+
+
+<{ /section }>
+
+<td width="30" align="center">
+<a href='index.php?module=bbs&action=viewlayout&id=<{$bbs_id}>&page=<{ $now_page+1}>&showbest=<{$show_best}>'><{#next_page#}></a>
+</td>
+
+
+<td width="30" align="center">
+<a href='index.php?module=bbs&action=viewlayout&id=<{$bbs_id}>&page=<{$total_page}>&showbest=<{$show_best}>'><{#last_page#}></a>
+</td>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<!-- 帖子导航菜单列表结束 -->
+
+
+
+
+
+<{/if}>
+
+
+<!-- 显示论坛的统计信息 -->
+
+<br>
+<br>
+
+<table width="99%" align="center" bgcolor="white" cellpadding=1 cellspacing=3 border=0>
+<tr>
+<td bgcolor="<{#global_column_color#}>">
+   &nbsp;&nbsp;<b><font color="#FFFFFF"><{#bbs_layout_count_info#}>:</font>
+</td>
+</tr>
+
+<tr>
+<td >
+<table width="99%" align="right" bgcolor="#f6f7f1" cellpadding=1 cellspacing=1 border=0">
+<tr>
+<td >
+&nbsp;&nbsp;<{#current_peoples#}>： <{$online_user_number}> <{#label_user#}> <{$online_vistor_number}> <{#vistor#}>
+</td>
+</tr>
+<tr>
+<td align="left" valign="top" bgcolor="white">
+<div align="left">
+<{ section name='info' loop=$user_info }>
+<a href='index.php?module=user&action=view&id=<{$user_info[info].id}>' target="_blank">
+<{$user_info[info].name}>
+</a>&nbsp;
+<{ if $smarty.section.info.rownum is div by 20 }>
+   <br>
+<{/if}>
+<{/section}>
+
+</div>
+
+<br>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+
+
+</table>
+<div align="left">
+&nbsp;&nbsp;&nbsp;<img src="<{$image_url}>new_topic.gif" border="0" align="absmiddle">&nbsp;<{#new_topic_reply#}><br>
+&nbsp;&nbsp;&nbsp;<img src="<{$image_url}>no_topic.gif" border="0" align="absmiddle">&nbsp;<{#no_topic_reply#}><br>
+&nbsp;&nbsp;&nbsp;<img src="<{$image_url}>topic_lock.gif" border="0" align="absmiddle">&nbsp;<{#topic_lock#}><br>
+
+&nbsp;&nbsp;&nbsp;<img src="<{$image_url}>nonewtopic.gif" border="0" align="absmiddle">&nbsp;<{#no_new_topic#}><br>
+&nbsp;&nbsp;&nbsp;<img src="<{$image_url}>havenewtopic.gif" border="0" align="absmiddle">&nbsp;<{#have_new_topic#}><br>
+&nbsp;&nbsp;&nbsp;<img src="<{$image_url}>lock.gif" border="0" align="absmiddle">&nbsp;<{#layout_have_lock#}><br>
+
+</div>
+
+
+<br>
+
+<!-- JavaScript 的函数定义区 -->
+<script language="javascript">
+function ViewUserInfo(user_id) {
+   if ( user_id != -1 && user_id != -2 ) {
+      window.open('index.php?module=user&action=view&id=' + user_id);
+   }
+   return;
+}
+
+
+</script>
+
+
+
+
+
+
+<{ include file="footer.tmpl" }>

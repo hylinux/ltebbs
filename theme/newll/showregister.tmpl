@@ -1,0 +1,269 @@
+<{ config_load file="showregister.conf" }>
+
+<{ include file="header.tmpl" }>
+
+<!-- 论坛的访问菜单 -->
+<table width="99%" cellpadding=0 cellspacing=1 border="0" bgcolor="#f6f7f1" align="center">
+<tr>
+<td align="left">
+&nbsp;&nbsp;<img src="<{$image_url}>open.gif" border=0 align="absmiddle">
+&nbsp;&nbsp;<a href='index.php?module=bbs'>[<{#the_bbs_home_page#}>]</a>
+<font color="<{#global_column_color#}>">></font>
+
+<a href='index.php?module=user&action=register'>[<{#show_register_label#}>]</a>
+<font color="<{#global_column_color#}>">></font>
+
+</td>
+</tr>
+</table>
+<br>
+
+
+<form action="index.php" method="post" name="register_form" id="register_form">
+<input type=hidden name="module" value="user">
+<input type=hidden name="action" value="checkregiste">
+
+
+<table width="99%" cellpadding=5 cellspacing=1 border="0" bgcolor="#f6f7f1" align="center">
+<tr>
+<td align="left" valign="middle" colspan=2 bgcolor="<{#global_column_color#}>" height="20">
+&nbsp;&nbsp;<font color="#FFFFFF"><{#must_input_inforamtion_label#}>:</font>
+</td>
+</tr>
+
+<!-- 用户名称 -->
+<tr>
+<td align="left" valign="middle" width="350" bgcolor="#FFFFFF">
+&nbsp;&nbsp;<{#register_user_name#}><font color="red">(*)</font>:<br>
+&nbsp;&nbsp;<{#register_user_name_desc#}>
+</td>
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+<input type="text" name="username" size=30 id="register_username" onBlur="checkRegisterUserName()">
+&nbsp;&nbsp;<input type="button" name="checkusername" value="<{#register_check_user#}>" OnClick="checkRegisterUserName()"><br>
+<div id="showusername_div" style="width:100%;align:left"></div>
+</td>
+
+</tr>
+
+<!-- 电子邮件 -->
+<tr>
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+&nbsp;&nbsp;<{#register_user_email#}><font color="red">(*)</font>:
+</td>
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+<input type="text" name="useremail" size=30 id="register_useremail" onBlur="checkRegisterUserEmail()">&nbsp;&nbsp;&nbsp;
+<input type="checkbox" name="public_email" value=1 checked>&nbsp;<{#public_your_email#}><br>
+<div id="showuseremail_div" style="width:100%;align:left"></div>
+</td>
+</tr>
+
+<!-- 用户密码 -->
+<tr>
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+&nbsp;&nbsp;<{#register_user_passwd#}><font color="red">(*)</font>:<br>
+&nbsp;&nbsp;<{#register_password_desc#}>
+</td>
+
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+<input type="password" name="userpass" size=30 id="password" onBlur="checkpassword()"><br>
+<div id="showmsg_p1"></div>
+</td>
+</tr>
+
+<!-- 确认密码 -->
+<tr>
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+&nbsp;&nbsp;<{#register_user_passwd_check#}><font color="red">(*)</font>:
+</td>
+
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+<input type="password" name="userpasscheck" size=30 id="re-password" Onblur="checkp2()"><br>
+<div id="showmsg_p2"></div>
+</td>
+</tr>
+
+<!-- 用户头像 -->
+<tr>
+<td align="left" valign="top" bgcolor="#FFFFFF">
+&nbsp;&nbsp;<{#register_user_image#}>:
+</td>
+
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+<select name=persionimage OnChange="document.images['currentimage'].src='<{$image_url}>face/' + document.register_form.persionimage.options[document.register_form.persionimage.selectedIndex].value + '.jpg'">
+<{$image_options}>
+</select>
+&nbsp;
+<img src="<{$image_url}>face/1.jpg" width="42" border=0 id='currentimage' align='absmiddle'>
+
+</td>
+</tr>
+
+<!-- 验证码 -->
+<tr>
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+&nbsp;&nbsp;<{#register_user_check_code#}><font color="red">(*)</font>:<br>
+&nbsp;&nbsp;<{#code_desc#}>
+</td>
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+<input type="text" name="checkcode" size=10 id="register_checkcode" onBlur="checkRegisterCode();return false;">&nbsp;&nbsp;<img src="index.php?module=util&action=showcheck" border="0" align="absmiddle"><br>
+<div id="showcheckcode_div"></div>
+</td>
+</tr>
+
+
+<!-- 提交注册 -->
+
+<tr>
+<td align="center" valign="middle" height="35" colspan=2 bgcolor="#FFFFFF">
+<input type="submit" value="<{#make_sure_submit#}>" name="mysubmit">
+
+</td>
+</tr>
+
+
+<!-- 选填信息 -->
+<tr>
+<td align="left" valign="middle" colspan=2 bgcolor="<{#global_column_color#}>" height="20">
+&nbsp;&nbsp;<font color="#FFFFFF"><{#choice_input_inforamtion_label#}>:</font>
+</td>
+</tr>
+
+<!-- 性别 -->
+<tr>
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+&nbsp;&nbsp;<{#user_gender#}>
+</td>
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+<select name="register_gender">
+<option value="keep" selected><{#keep_secure#}></option>
+<option value="male"><{#man_label#}></option>
+<option value="female"><{#woman_label#}></option>
+</select>
+</td>
+</tr>
+
+<!-- 来自 -->
+<tr>
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+&nbsp;&nbsp;<{#come_from#}>
+</td>
+
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+<input type="text" name="user_hometown" size="30">
+</td>
+</tr>
+
+<!-- 生日 -->
+<tr>
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+&nbsp;&nbsp;<{#birthday_label#}>
+
+</td>
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+<select name="birthday_year">
+<{$birthday_year}>
+</select>
+<{#year_label#}>
+<select name="birthday_month">
+<{$birthday_month}>
+</select>
+<{#month_label#}>
+<select name="birthday_day">
+<{$birthday_day}>
+</select>
+<{#day_label#}>
+</td>
+</tr>
+
+<!-- 个人网站 -->
+<tr>
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+&nbsp;&nbsp;<{#person_website#}>
+</td>
+
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+<input type="text" name="user_website" size=45>
+</td>
+</tr>
+
+<!-- 默认语言 -->
+<tr>
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+&nbsp;&nbsp;<{#default_language#}>
+</td>
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+<select name="user_lang">
+<option value="zh" selected><{#chinese_label#}></option>
+</select>
+</td>
+</tr>
+
+<!-- 界面风格 -->
+<tr>
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+&nbsp;&nbsp;<{#interface_style#}>
+</td>
+
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+<select name="user_theme">
+<option value='new' selected><{#theme_blue#}></option>
+<option value='newll'><{#theme_yan_red#}></option>
+</select>
+
+</td>
+</tr>
+
+
+<!-- 是否接收系统邮件 -->
+<tr>
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+&nbsp;&nbsp;<{#receive_system_email_label#}>
+</td>
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+<input type="radio"  name="receive_system_email" value=1 checked><{#sure_receive_email#}>&nbsp;&nbsp;
+<input type="radio" name="receive_system_email" value="0"><{#not_sure_receive_email#}>
+
+</td>
+
+</tr>
+
+<!-- 是否接收系统短消息 -->
+<tr>
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+&nbsp;&nbsp;<{#receive_system_message#}>
+</td>
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+<input type="radio"  name="receive_system_message" value=1 checked><{#sure_receive_msg#}>&nbsp;&nbsp;
+<input type="radio" name="receive_system_message" value="0"><{#not_sure_recieve_msg#}>
+
+</td>
+
+</tr>
+
+<!-- 个性化签名 -->
+<tr>
+<td align="left" valign="top" bgcolor="#FFFFFF">
+&nbsp;&nbsp;<{#user_sign_label#}><br>
+&nbsp;&nbsp;<{#user_sign_desc#}>
+</td>
+<td align="left" valign="middle" bgcolor="#FFFFFF">
+
+<{ $fck->Create() }>
+
+</td>
+
+</tr>
+
+</table>
+
+
+
+</form>
+<br>
+<br>
+<br>
+
+
+
+<{ include file="footer.tmpl" }>
+

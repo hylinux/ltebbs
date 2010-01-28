@@ -1,0 +1,61 @@
+<{ include file="header.tmpl" }>
+
+<table width="740" align="center" border="0" cellpadding=10 cellspacing=1 >
+<tr>
+<td width="145">
+<font size="4" color="#184366">安装说明：</font>
+</td>
+<td align="left">
+
+<input type="button" name="install" value="&nbsp;开&nbsp;始&nbsp;安&nbsp;装 " OnClick="document.location.href='install.php?step=1'" style="height:35px;width:175px">
+
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top" bgcolor="#FFFFFF" colspan=2>
+
+<pre>
+<font color="#184366">
+1、运行环境需求：PHP+MYSQL
+
+2、安装步骤
+
+● Linux 或 Freebsd 服务器下安装方法
+
+第一步：
+
+使用ftp工具中的二进制模式，将该软件包里的目录及其文件上传到您的空间。
+
+第二步：
+
+先确认以下目录或文件属性为 (777) 可写模式。
+config/config.inc.php <font color="red">(只需要确定此文件可写即可，目录为安全起见，最好不要可写)</font>
+cache
+cache/adodb
+cache/smarty
+upload
+upload/attach
+upload/userhead
+
+第三步：
+
+运行 http://yourwebsite/install.php 安装程序，填入安装相关信息与资料，完成安装！
+
+● Windows 服务器下安装方法
+
+第一步：
+
+使用ftp工具，将该软件包里的目录及其文件上传到您的空间。
+
+第二步：
+
+运行 http://yourwebsite/install.php 安装程序，填入安装相关信息与资料，完成安装！
+</font>
+</pre>
+
+</td>
+</tr>
+</table>
+
+<{ include file="footer.tmpl" }>

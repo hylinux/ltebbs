@@ -1,0 +1,251 @@
+<{ config_load file="listuser.conf" }>
+<{ include file="header.tmpl" }>
+
+<!-- 如果有公告则显示这一块，如果没有则不显示 -->
+<{ if $have_system_post }>
+<table width="98%" cellpadding=1 cellspacing=1 align="center" border="0">
+<tr>
+<td width="80">
+<font color="red"><b><{#system_post#}>：</b></font>
+</td>
+<td valign="middle">
+<marquee onmouseover="this.stop()" onmouseout="this.start()" scrolldelay="70" scrollamount="3">
+<{$post_str}>
+</marquee>
+</td>
+</tr>
+</table>
+<{/if}>
+
+<!-- 论坛的访问菜单 -->
+<table width="99%" cellpadding=0 cellspacing=1 border="0" bgcolor="#f6f7f1" align="center">
+<tr>
+<td align="left">
+&nbsp;&nbsp;<img src="<{$image_url}>open.gif" border=0 align="absmiddle">
+&nbsp;&nbsp;<a href='index.php?module=bbs'>[<{#the_bbs_home_page#}>]</a>
+<font color="<{#global_column_color#}>">></font>
+<font color="<{#global_column_color#}>"><{$user_list_label}></font>
+<font color="<{#global_column_color#}>">></font>
+
+&nbsp;&nbsp;&nbsp;
+<a href="index.php?module=user&action=listuser&m=1">[<{#show_manager_member#}>]</a>
+</td>
+</tr>
+</table>
+<br>
+
+
+<!-- 搜索论坛 -->
+<table width="98%" cellpadding=4 cellspacing=0 border="0" align="center">
+<tr bgcolor="<{#global_column_color#}>">
+<td align="center">
+<a href="index.php?module=user&action=listuser&m=<{$m}>"><font color="white">#</font></a>
+</td>
+
+<td align="center">
+<a href="index.php?module=user&action=listuser&t=a&m=<{$m}>"><font color="white">A</font></a>
+</td>
+
+<td align="center">
+<a href="index.php?module=user&action=listuser&t=b&m=<{$m}>"><font color="white">B</font></a>
+</td>
+
+<td align="center">
+<a href="index.php?module=user&action=listuser&t=c&m=<{$m}>"><font color="white">C</font></a>
+</td>
+
+<td align="center">
+<a href="index.php?module=user&action=listuser&t=d&m=<{$m}>"><font color="white">D</font></a>
+</td>
+
+<td align="center">
+<a href="index.php?module=user&action=listuser&t=e&m=<{$m}>"><font color="white">E</font></a>
+</td>
+
+<td align="center">
+<a href="index.php?module=user&action=listuser&t=f&m=<{$m}>"><font color="white">F</font></a>
+</td>
+<td align="center">
+<a href="index.php?module=user&action=listuser&t=g&m=<{$m}>"><font color="white">G</font></a>
+</td>
+<td align="center">
+<a href="index.php?module=user&action=listuser&t=h&m=<{$m}>"><font color="white">H</font></a>
+</td>
+<td align="center">
+<a href="index.php?module=user&action=listuser&t=i&m=<{$m}>"><font color="white">I</font></a>
+</td>
+<td align="center">
+<a href="index.php?module=user&action=listuser&t=j&m=<{$m}>"><font color="white">J</font></a>
+</td>
+<td align="center">
+<a href="index.php?module=user&action=listuser&t=k&m=<{$m}>"><font color="white">K</font></a>
+</td>
+<td align="center">
+<a href="index.php?module=user&action=listuser&t=l&m=<{$m}>"><font color="white">L</font></a>
+</td>
+<td align="center">
+<a href="index.php?module=user&action=listuser&t=m&m=<{$m}>"><font color="white">M</font></a>
+</td>
+<td align="center">
+<a href="index.php?module=user&action=listuser&t=n&m=<{$m}>"><font color="white">N</font></a>
+</td>
+<td align="center">
+<a href="index.php?module=user&action=listuser&t=o&m=<{$m}>"><font color="white">O</font></a>
+</td>
+<td align="center">
+<a href="index.php?module=user&action=listuser&t=p&m=<{$m}>"><font color="white">P</font></a>
+</td>
+<td align="center">
+<a href="index.php?module=user&action=listuser&t=q&m=<{$m}>"><font color="white">Q</font></a>
+</td>
+<td align="center">
+<a href="index.php?module=user&action=listuser&t=r&m=<{$m}>"><font color="white">R</font></a>
+</td>
+<td align="center">
+<a href="index.php?module=user&action=listuser&t=s&m=<{$m}>"><font color="white">S</font></a>
+</td>
+<td align="center">
+<a href="index.php?module=user&action=listuser&t=t&m=<{$m}>"><font color="white">T</font></a>
+</td>
+<td align="center">
+<a href="index.php?module=user&action=listuser&t=u&m=<{$m}>"><font color="white">U</font></a>
+</td>
+<td align="center">
+<a href="index.php?module=user&action=listuser&t=v&m=<{$m}>"><font color="white">V</font></a>
+</td>
+<td align="center">
+<a href="index.php?module=user&action=listuser&t=w&m=<{$m}>"><font color="white">W</font></a>
+</td>
+<td align="center">
+<a href="index.php?module=user&action=listuser&t=x&m=<{$m}>"><font color="white">X</font></a>
+</td>
+<td align="center">
+<a href="index.php?module=user&action=listuser&t=y&m=<{$m}>"><font color="white">Y</font></a>
+</td>
+<td align="center">
+<a href="index.php?module=user&action=listuser&t=z&m=<{$m}>"><font color="white">Z</font></a>
+</td>
+
+</tr>
+
+</table>
+
+
+<!-- 帖子导航栏的显示 -->
+<table width="99%" cellpadding=1 cellspacing=1 align="center" border=0 >
+<tr>
+<td width="150" align="left">
+&nbsp;
+</td>
+<td align="right">
+<table  align="right" cellpadding=1 cellspacing=1 border=0 bgcolor="#727273" >
+<tr bgcolor="#f6f7f1" >
+<td  width="150" align="center">
+<font color="<{#global_column_color#}>" ><{#total_have#}><{$total_page}><{#page_th#}><{$now_page}><{#page_label#}></font>
+</td>
+
+<td align="center" width="30">
+<a href='index.php?module=user&action=listuser&page=1&t=<{$t_sort}>&m=<{$m}>'><{#first_page#}></a>
+</td>
+
+<td align="center" width="30">
+<a href='index.php?module=user&action=listuser&page=<{$now_page-1}>&t=<{$t_sort}>&m=<{$m}>'><{#pre_page#}></a>
+</td>
+
+<{ section name="nav_page" loop=$nav_page }>
+
+
+
+<{ if $nav_page[nav_page] != $now_page }>
+<td width="16" align="center">
+<a href='index.php?module=user&action=listuser&page=<{$nav_page[nav_page]}>&t=<{$t_sort}>&m=<{$m}>'><b><{$nav_page[nav_page]}></b></a>
+</td>
+<{ else }>
+
+<td width="20" align="center" bgcolor="white">
+<b><{$nav_page[nav_page]}></b>
+</td>
+
+<{/if}>
+
+
+<{ /section }>
+
+<td width="30" align="center">
+<a href='index.php?module=user&action=listuser&page=<{ $now_page+1}>&t=<{$t_sort}>&m=<{$m}>'><{#next_page#}></a>
+</td>
+
+
+<td width="30" align="center">
+<a href='index.php?module=user&action=listuser&page=<{$total_page}>&t=<{$t_sort}>&m=<{$m}>'><{#last_page#}></a>
+</td>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+
+<!-- 用户列表 -->
+<table width="98%" cellpadding=4 cellspacing=0 border="0" align="center">
+<tr bgcolor="#f6f7f1">
+<td align="center">
+<font color="<{#global_column_color#}>"><{#user_name_label#}></font>
+</td>
+
+<td align="center">
+<font color="<{#global_column_color#}>"><{#register_date_label#}></font>
+</td>
+
+<td align="center">
+<font color="<{#global_column_color#}>"><{#topic_number_label#}></font>
+</td>
+
+<td align="center">
+<font color="<{#global_column_color#}>"><{#last_access_label#}></font>
+</td>
+
+<td align="center">
+<font color="<{#global_column_color#}>"><{#header_label#}></font>
+</td>
+</tr>
+
+
+<{ section name="myuser" loop=$myuser }>
+<tr bgcolor="#FFFFFF">
+<td align="left" valign="center" width="360">
+<a href="index.php?module=user&action=view&id=<{$myuser[myuser].id}>" target="_blank"><font color="<{#global_column_color#}>"><{$myuser[myuser].name}></font></a><br>
+<font color="<{#global_column_color#}>">[<{$myuser[myuser].group}>]</font>
+</td>
+
+<td align="center" width="130">
+<{$myuser[myuser].register_date}>
+</td>
+
+<td align="center" width="50">
+<{$myuser[myuser].topic_number}>
+</td>
+
+<td align="center" width="130">
+<{$myuser[myuser].last_access_time|date_format:"%Y-%m-%d %H:%M:%S"}>
+</td>
+
+<td align="center" width="65" >
+<img src="<{$myuser[myuser].header}>" border="1" height="28" align="absmiddle">
+</td>
+
+</tr>
+<{/section}>
+
+</table>
+
+<br>
+<br>
+<br>
+
+
+<{ include file="footer.tmpl" }>
+

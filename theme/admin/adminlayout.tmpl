@@ -1,0 +1,139 @@
+<{ config_load file="admin/layout.conf" }>
+<html>
+<head>
+<title><{#res_title#}></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel=stylesheet type=text/css href="<{$css_url}>style.css">
+</head>
+
+<body bgcolor="#e0e0e0" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
+<br>
+<input type="button" value="<{#add_layout_label#}>" OnClick="document.location.href='index.php?action=addlayout&parent=<{$parent_id}>'">
+&nbsp;&nbsp;<a href='index.php?action=layout'><{#layout_manager_label#}></a>&nbsp;>&nbsp;
+<{ section name="menu" loop=$menu }>
+<a href="index.php?action=layout&parent=<{$menu[menu].id}>"><{$menu[menu].title}></a>
+<{ if $menu[menu].id }>
+&nbsp;>&nbsp;
+<{/if}>
+<{/section}>
+
+<table width="100%"  align="center" cellpadding="1" cellspacing="1" border="0" bgcolor="#727273">
+<tr>
+<td align="center" width="365">
+<font color="#FFFFFF"><{#layout_name_label#}></font>
+</td>
+
+<td align="center">
+<font color="#FFFFFF"><{#layout_desc_label#}></font>
+</td>
+
+<td align="center" width="150">
+<font color="#FFFFFF"><{#layout_status_label#}></font>
+</td>
+
+<td align="center">
+<font color="#FFFFFF"><{#layout_manager#}></font>
+</td>
+
+
+<td align="center" width="200">
+<font color="#FFFFFF"><{#operation_label#}></font>
+</td>
+</tr>
+
+<{ section name="layout" loop=$layout }>
+<tr bgcolor="#FFFFFF">
+<td align="center">
+<a href="index.php?action=layout&parent=<{$layout[layout].id}>"><{$layout[layout].name}></a>
+</td>
+
+<td align="center">
+<{$layout[layout].desc}>
+</td>
+
+
+<td align="center">
+<{$layout[layout].status}>
+</td>
+
+<td align="center">
+<select name="manager">
+<{$layout[layout].ma}>
+</select>
+</td>
+
+
+<td align="center">
+<select name="layout" OnChange="ChangeProcess(this, <{$layout[layout].id}>)" >
+<option value=''>-------------------</option>
+<option value="addsub"><{#add_sub_layout_label#}></option>
+<option value="dellayout"><{#del_layout_label#}></option>
+<option value="editlayout"><{#edit_layout_label#}></option>
+<option value=''>-------------------</option>
+<option value='openlayout'><{#open_layout_label#}></option>
+<option value='closelayout'><{#close_layout_label#}></option>
+<option value='authorlayout'><{#author_layout_label#}></option>
+<option value='setcategorylayout'><{#category_layout#}></option>
+<option value=''>-------------------</option>
+<option value='addmanager'><{#add_manager_label#}></option>
+<option value='delmanager'><{#del_manager_label#}></option>
+
+</select>
+</td>
+</tr>
+
+<{/section}>
+
+</table>
+
+<!-- JavaScript 函数 -->
+<script language="javascript">
+function ChangeProcess(stuff, id) {
+   var action = stuff.options[stuff.selectedIndex].value;
+
+   switch(action) {
+      case 'addsub':
+         document.location.href='index.php?action=addlayout&parent='+id;
+         break;
+      case 'dellayout':
+         DelLayout(id);
+         break;
+      case 'editlayout':
+         document.location.href='index.php?action=editlayout&id='+id;
+         break;
+      case 'openlayout':
+         document.location.href='index.php?action=setlayoutstatus&id='+id+'&status=0';
+         break;
+      case 'closelayout':
+         document.location.href='index.php?action=setlayoutstatus&id='+id+'&status=2';
+         break;
+      case 'authorlayout':
+         document.location.href='index.php?action=setlayoutstatus&id='+id+'&status=1';
+         break;
+      case 'setcategorylayout':
+         document.location.href='index.php?action=setlayoutstatus&id='+id+'&status=3';
+         break;
+      case 'addmanager':
+         document.location.href='index.php?action=showaddmanager&id='+id;
+         break;
+      case 'delmanager':
+         document.location.href='index.php?action=showdelmanager&id='+id;
+         break;
+   }
+
+}
+
+function DelLayout(id) {
+
+   if ( confirm("<{#info_label#}>") ) {
+          document.location.href='index.php?action=dellayout&id='+id;
+   }
+   return;
+}
+
+
+</script>
+
+</body>
+</html>
+

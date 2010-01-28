@@ -1,0 +1,205 @@
+<{config_load file="viewuser.conf"}>
+<{ include file="header.tmpl" }>
+
+<table width="100%" height="400" align="center" cellspacing=1 cellpadding=1 border=0>
+<tr>
+<td align="center" valign="top">
+
+<table width="98%"  bgcolor="#f6f7f1" cellpadding="3" cellspacing=1 border="0" align="center">
+<tr bgcolor="<{#global_column_color#}>">
+<td align="left" height="15" colspan=2>
+&nbsp;&nbsp;<font color="#FFFFFF"><b><{$view_user_name}></b>&nbsp;&nbsp;[<{$user_roles}>]&nbsp;</font>
+&nbsp;
+<{ if $user_is_online }>
+<font color="red"><{#online_label#}></font>
+<{ else }>
+<font color="gray"><b><{#not_online#}></b></font>
+<{/if}>
+
+</td>
+</tr>
+<tr>
+<td align="center" valign="middle" width="100" height="85">
+<!-- 显示用户的头像 -->
+<img src="<{$head_url}>" border="1" height="68" align="absmiddle">
+</td>
+<td align="center" valign="middle">
+
+<!-- 显示一些基本的信息 -->
+
+<table width="95%" cellpadding=4 cellspacing=0 border=1 align="center">
+<tr>
+<td width="85" align="center">
+<{#xb_label#}>
+</td>
+<td align="left" width="280">
+&nbsp;
+<{$user_sex}>
+</td>
+<td  width="85" align="center">
+<{#birthday#}>:
+</td>
+<td align="left" width="280">
+&nbsp;
+<{$user_birthday}>
+</td>
+</tr>
+
+
+<tr>
+<td width="85" align="center">
+<{#email_address_label#}>
+</td>
+<td align="left" colspan=3>
+&nbsp;
+<{$user_email}>
+</td>
+</tr>
+
+
+<tr>
+<td align="center" width="85">
+<{#website_label#}>:
+</td>
+<td align="left" colspan=3">
+&nbsp;
+<{$user_website}>
+</td>
+</tr>
+
+<tr>
+<td align="center" width="85">
+<{#register_date#}>:
+</td>
+<td align="left">
+&nbsp;
+<{$user_register_date}>
+</td>
+<td align="center" width="85">
+<{#topic_number#}>:
+</td>
+<td align="left">
+&nbsp;
+<{$user_topic_number}>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+
+<!-- 功能菜单 -->
+<tr bgcolor="<{#global_column_color#}>">
+<td colspan=2 align="left">
+<input type="button" value="<{#send_message_label#}>" OnClick="document.location.href='index.php?module=message&action=showsend&userid=<{$user_id}>&backurl=<{$backurl}>'">
+<input type="button" value="<{#send_mail_label#}>" OnClick="document.location.href='index.php?module=email&action=showsend&id=<{$user_id}>&backurl=<{$backurl}>'">
+
+<!--
+<input type="button" value="<{#add_friends_label#}>" OnClick="document.location.href='index.php?module=user&action=addfriend&userid=<{$user_id}>'">
+<input type="button" value="<{#add_black_list#}>" OnClick="document.location.href='index.php?module=user&action=addblack&userid=<{$user_id}>'">
+-->
+<input type="button" value="<{#relate_topic#}>" OnClick="document.location.href='index.php?module=bbs&action=searchresult&user=<{$view_user_name}>&usermatch=1'">
+
+</td>
+</tr>
+
+<!-- 联系信息 -->
+<tr>
+<td align="center" valign="top" colspan="2">
+<table width="96%" align="center" cellpadding=2 cellspacing=0 border=1>
+
+<tr>
+<td align="center" width="85">
+ICQ:
+</td>
+<td align="left" width="277">
+&nbsp;&nbsp;<{$user_icq}>
+</td>
+<td align="center" width="85">
+AIM:
+</td>
+<td align="left" width="277">
+&nbsp; <{$user_aim}>
+</td>
+</tr>
+
+<tr>
+<td align="center" width="85">
+MSN:
+</td>
+<td align="left" width="277">
+&nbsp;&nbsp; <{$user_msn}>
+</td>
+<td align="center" width="85">
+YAHOO:
+</td>
+<td align="left" width="277">
+&nbsp; <{$user_yahoo}>
+</td>
+</tr>
+
+<tr>
+<td align="center" width="85">
+SKYPE:
+</td>
+<td align="left" width="277">
+&nbsp;&nbsp; <{$user_skype}>
+</td>
+<td align="center" width="85">
+QQ:
+</td>
+<td align="left" width="277">
+&nbsp; <{$user_qq}>
+</td>
+</tr>
+
+<tr>
+<td align="center" width="85">
+<{#home_town_label#}>:
+</td>
+<td align="left" valign="top" align="left" colspan="3">
+&nbsp;
+<{$user_home_town}>
+</td>
+</tr>
+
+<tr>
+<td align="center" width="85">
+<{#favor_label#}>:
+</td>
+<td align="left" valign="top" align="left" colspan="3">
+&nbsp;
+<{$user_favor}>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+
+
+<!-- 个人签名 -->
+<tr bgcolor="<{#global_column_color#}>">
+<td align="left" height="15" colspan="2">
+&nbsp;&nbsp;<font color="#FFFFFF"><{#sign_label#}></font>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top" colspan="2" height="55">
+<{$user_sign}>
+</td>
+</tr>
+
+</table>
+<br>
+
+</td>
+</tr>
+</table>
+<br>
+<br>
+
+
+<{ include file="footer.tmpl" }>
+

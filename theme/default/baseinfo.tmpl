@@ -1,0 +1,227 @@
+<{config_load file="baseinfo.conf"}>
+
+<{ include file="header.tmpl" }>
+
+<br>
+<table width="100%" height="300" align="center" cellspacing=1 cellpadding=1 border=0>
+<tr>
+<td align="center" valign="top">
+
+<table width="98%"  height="295" bgcolor="#f6f7f1" cellpadding="3" cellspacing=1 border="0" align="center">
+<tr bgcolor="#c5c5b3">
+<td align="left" height="15" colspan=2>
+<table width="100%" cellpadding=0 cellspacing=0 border=0 align="center">
+<tr>
+<td align="left">
+&nbsp;&nbsp;<font color="#336699"><b><{$view_user_name}></b>&nbsp;&nbsp;[<{$user_roles}>]&nbsp;</font>
+</td>
+<td align="right">
+<img src="<{$image_url}>user_online.gif" border=0 align="absmiddle">
+<font color="#336699"><{#res_title#}></font>
+&nbsp;&nbsp;
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+<tr>
+<td width="100" valign="top" >
+<{ include file="userleftmenu.tmpl" }>
+
+</td>
+<td align="left" valign="top" bgcolor="white">
+<form action="index.php" name="form1" method="post">
+<input type="hidden" name="module" value="user">
+<input type="hidden" name="action" value="savebaseinfo">
+<!-- 显示用户的基本信息 -->
+<table width="98%" cellpadding=3 cellspacing=1 align="center" border="0" bgcolor="#f6f7f1">
+<tr>
+<td align="center" width="80"><font color="#336699"><{#gender_label#}>:</font></td>
+<td align="left" colspan="3">
+<{ if $user_gender eq 'male' }>
+<input type="radio" value="male" name="gender" checked>Male
+<input type="radio" value="female" name="gender">FeMale
+<{ else }>
+<input type="radio" value="male" name="gender">Male
+<input type="radio" value="female" name="gender" checked>FeMale
+<{/if}>
+
+</td>
+</tr>
+
+
+<tr>
+<td align="center" width="80">
+<font color="#336699"><{#birthday_label#}></font>
+</td>
+<td align="left" width="250">
+<input type="text" name="user_birthday" value="<{$user_birthday}>" size="30">
+</td>
+<td align="center" width="80">
+<{#public_birthday#}>
+</td>
+<td align="left" >
+<input type="radio" name="public_birthday" value="1" <{ if $public_birthday }>checked<{/if}> ><{#public_label#}>
+<input type="radio" name="public_birthday" value="0" <{ if !$public_birthday }>checked<{/if}>><{#not_public_label#}>
+</td>
+</tr>
+
+
+<tr>
+<td align="center" width="80">
+<font color="#336699"><{#person_website#}></font>
+</td>
+<td align="left" width="250">
+<input type="text" name="user_website" value="<{$user_website}>" size="30">
+</td>
+<td align="center" width="80">
+<{#public_website_label#}>
+</td>
+<td align="left" >
+<input type="radio" name="public_website" value="1" <{ if $public_website }>checked<{/if}>><{#public_label#}>
+<input type="radio" name="public_website" value="0" <{ if !$public_website }>checked<{/if}>><{#not_public_label#}>
+</td>
+</tr>
+
+<tr>
+<td align="center" width="80">
+<font color="#336699">ICQ</font>
+</td>
+<td align="left" width="250">
+<input type="text" name="user_icq" value="<{$user_icq}>" size="30">
+</td>
+<td align="center" width="80">
+<{#public_icq_label#}>
+</td>
+<td align="left" >
+<input type="radio" name="public_icq" value="1" <{ if $public_icq }>checked<{/if}> ><{#public_label#}>
+<input type="radio" name="public_icq" value="0" <{ if !$public_icq }>checked<{/if}>><{#not_public_label#}>
+</td>
+</tr>
+
+
+
+<tr>
+<td align="center" width="80">
+<font color="#336699">AIM</font>
+</td>
+<td align="left" width="250">
+<input type="text" name="user_aim" value="<{$user_aim}>" size="30">
+</td>
+<td align="center" width="80">
+<{#public_aim_label#}>
+</td>
+<td align="left" >
+<input type="radio" name="public_aim" value="1" <{ if $public_aim }>checked<{/if}> > <{#public_label#}>
+<input type="radio" name="public_aim" value="0" <{ if !$public_aim }>checked<{/if}> ><{#not_public_label#}>
+</td>
+</tr>
+
+<tr>
+<td align="center" width="80">
+<font color="#336699">MSN</font>
+</td>
+<td align="left" width="250">
+<input type="text" name="user_msn" value="<{$user_msn}>" size="30">
+</td>
+<td align="center" width="80">
+<{#public_msn_label#}>
+</td>
+<td align="left" >
+<input type="radio" name="public_msn" value="1" <{ if $public_msn }>checked<{/if}>><{#public_label#}>
+<input type="radio" name="public_msn" value="0" <{ if !$public_msn }>checked<{/if}>><{#not_public_label#}>
+</td>
+</tr>
+
+
+<tr>
+<td align="center" width="80">
+<font color="#336699">Yahoo</font>
+</td>
+<td align="left" width="250">
+<input type="text" name="user_yahoo" value="<{$user_yahoo}>" size="30">
+</td>
+<td align="center" width="80">
+<{#public_yahoo_label#}>
+</td>
+<td align="left" >
+<input type="radio" name="public_yahoo" value="1" <{ if $public_yahoo }>checked<{/if}>><{#public_label#}>
+<input type="radio" name="public_yahoo" value="0" <{ if !$public_yahoo }>checked<{/if}>> <{#not_public_label#}>
+</td>
+</tr>
+
+
+<tr>
+<td align="center" width="80">
+<font color="#336699">Skype</font>
+</td>
+<td align="left" width="250">
+<input type="text" name="user_skype" value="<{$user_skype}>" size="30">
+</td>
+<td align="center" width="80">
+<{#public_skype_label#}>
+</td>
+<td align="left" >
+<input type="radio" name="public_skype" value="1" <{ if $public_skype }>checked<{/if}>><{#public_label#}>
+<input type="radio" name="public_skype" value="0" <{ if !$public_skype }>checked<{/if}>><{#not_public_label#}>
+</td>
+</tr>
+
+<tr>
+<td align="center" width="80">
+<font color="#336699">QQ</font>
+</td>
+<td align="left" width="250">
+<input type="text" name="user_qq" value="<{$user_qq}>" size="30">
+</td>
+<td align="center" width="80">
+<{#public_qq_label#}>
+</td>
+<td align="left" >
+<input type="radio" name="public_qq" value="1" <{ if $public_qq }>checked<{/if}>><{#public_label#}>
+<input type="radio" name="public_qq" value="0" <{ if !$public_qq }>checked<{/if}>><{#not_public_label#}>
+</td>
+</tr>
+
+<tr>
+<td align="center" width="80">
+<font color="#336699"><{#home_town_label#}></font>
+</td>
+<td align="left" width="250" colspan="3">
+<input type="text" name="user_hometown" value="<{$user_hometown}>" size="30">
+</td>
+</tr>
+
+
+<tr>
+<td align="center" width="80" valign="top">
+<font color="#336699"><{#favor_label#}></font>
+</td>
+<td align="left" colspan="3">
+<textarea name="favor" cols=50 rows="6"><{$user_favor}></textarea>
+</td>
+</tr>
+
+
+<tr>
+<td align="center" colspan="4">
+<input type="submit" value="<{#save_label#}>">
+<input type="reset" value="<{#reset_label#}>">
+</td>
+</tr>
+
+
+</table>
+</form>
+</td>
+</tr>
+</table>
+
+</form>
+<br>
+<br>
+<br>
+
+<{ include file="footer.tmpl" }>

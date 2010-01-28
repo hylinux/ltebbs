@@ -1,0 +1,52 @@
+<{ config_load file="viewpost.conf" }>
+<{ include file="header.tmpl" }>
+
+<!-- 论坛的访问菜单 -->
+<table width="99%" cellpadding=0 cellspacing=1 border="0" bgcolor="#f6f7f1" align="center">
+<tr>
+<td align="left">
+&nbsp;&nbsp;<img src="<{$image_url}>open.gif" border=0 align="absmiddle">
+&nbsp;&nbsp;<a href='index.php?module=bbs'>[<{#the_bbs_home_page#}>]</a>
+<font color="<{#global_column_color#}>">></font>
+<font color="<{#global_column_color#}>"><{#view_post#}></font>
+<font color="<{#global_column_color#}>">></font>
+</td>
+</tr>
+</table>
+<br>
+<br>
+
+<table width="99%" cellpadding=0 cellspacing=1 border="0" bgcolor="#FFFFFF" align="center">
+<tr>
+<td align="center">
+<font size="4"><{$title}></font>
+</td>
+</tr>
+
+<tr>
+<td align="center">
+<{#create_date#}>： <{$begin_date|date_format:"%Y-%m-%d %H:%M:%S"}>
+</td>
+</tr>
+
+<tr>
+<td align="center">
+
+<table width="864" cellpadding="25" height="300" cellspacing=1 border="0" bgcolor="#FFFFFF" align="center">
+<tr>
+<td align="left" valign="top" bgcolor="#FFFFFF">
+<{$content}>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+</table>
+
+<br>
+<br>
+
+<{ include file="footer.tmpl" }>

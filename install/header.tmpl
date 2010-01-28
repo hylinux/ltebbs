@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<meta name="keywords" content="5anet(BBS) 安装脚本">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<link rel=stylesheet type=text/css href="install/style.css">
+
+<title><{$title}></title>
+</head>
+
+<!-- include the prototype.js -->
+<script src="prototype.js"></script>   
+<script src="5anet.js"></script>
+
+</head>
+<body>
+
+
+<div id="header">
+
+	<div id="header_inner" class="fixed">
+
+		<div id="logo">
+			<h1><span>5anet(BBS)</span></h1><br>
+			<h2>The Best Cool Web Forum SoftWare</h2>
+		</div>
+		
+		<div id="menu">
+			<ul>
+                <li>
+                    <a href='install.php'
+                    <{ if !$step }>
+                     class='active'
+                    <{/if}>
+                    >安装说明</a>
+                </li>
+
+                <li>
+                    <a href='install.php?step=1'
+                    <{ if $step == 1 }>
+                     class='active'
+                    <{/if}>
+                    >许可协议</a>
+                </li>
+
+
+
+                <li>
+                    <a href="install.php?step=2" 
+                        <{ if $step == 2 || $step == 3 }>
+                         class="active" 
+                        <{/if}>
+                    >
+                        路径和目录设定
+                    </a>
+                </li>
+
+                <li>
+                    <a href="install.php?step=4"
+                        <{ if $step == 4 || $step == 5 }>
+                            class="active"
+                        <{/if}>
+                    >
+                        数据库设定
+                    </a>
+                </li>
+
+
+                 <li>
+                    <a href="install.php?step=6"
+                        <{ if $step == 6 }>
+                            class="active"
+                        <{/if}>
+                    >
+                        成功安装
+                    </a>
+                </li>
+               
+
+
+
+			</ul>
+		</div>
+		
+	</div>
+</div>
+
+
+<!-- 从这里开始正文 -->
+<div id="main">
+    <div id="main_inner" class="fixed">
+		<div id="primaryContent_columns" align="center">
+
+

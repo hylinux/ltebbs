@@ -1,0 +1,103 @@
+<{config_load file="showaddfavor.conf"}>
+
+<{ include file="header.tmpl" }>
+
+<!-- 论坛的访问菜单 -->
+<table width="99%" cellpadding=0 cellspacing=1 border="0" bgcolor="#f6f7f1" align="center">
+<tr>
+<td align="left">
+&nbsp;&nbsp;<img src="<{$image_url}>open.gif" border=0 align="absmiddle">
+&nbsp;&nbsp;<a href='index.php?module=bbs'>[<{#the_bbs_home_page#}>]</a>
+<font color="<{#global_column_color#}>">></font>
+
+<a href='index.php?module=favor&action=add&type=<{$favor_type}>&id=<{$id}>&backurl=<{$backurl}>'>[<{#res_title#}>]</a>
+<font color="<{#global_column_color#}>">></font>
+
+
+
+</td>
+</tr>
+</table>
+<br>
+
+<{ include file="usersharemenu.tmpl" }>
+
+
+<form action="index.php" method="post" id="add_favor_form">
+<input type=hidden name="module" value="favor">
+<input type="hidden" name="action" value="save">
+<input type="hidden" name="id" value="<{$id}>">
+<input type='hidden' name='backurl' value="<{$backurl}>">
+<input type='hidden' name='type' value="<{$favor_type}>">
+
+<table width="100%" height="300" align="center" cellspacing=1 cellpadding=1 border=0>
+<tr>
+<td align="center" valign="top">
+
+<br>
+<h2><{#res_title#}></h2>
+<br>
+
+<table width="550" bgcolor="<{#global_font_color#}>" cellpadding="3" cellspacing="3" align="center">
+
+
+<tr>
+<td align=left width="220">
+<{#choice_favor_dir_label#}>
+</td>
+<td>
+<select name="favor_dir" id="select_favor_dir">
+<option value="0">-<{#choice_favor_dir_label#}>-</option>
+<{ section name=favor loop=$favor }>
+<option value="<{$favor[favor].id}>"><{$favor[favor].dir_name}></option>
+<{/section}>
+</select>
+</td>
+</tr>
+
+<tr>
+<td align=left width="220" valign="top">
+<{#create_dir_and_add_favor_label#}>:
+</td>
+<td>
+<input type="text" name="add_new_favor_dir" size="35" id="add_new_dir">
+</td>
+</tr>
+
+
+<tr>
+<td colspan=2 align="center">
+<input type="button" name="s1" value="<{#send_label#}>" onClick="check_add_form();return false">
+<input type="button" value="<{#back_label#}>" OnClick="javascript:history.back()">
+
+</td>
+</tr>
+
+</td>
+</tr>
+</table>
+</form>
+<br>
+<br>
+
+<script language="javascript">
+function check_add_form() {
+    var select_dir = $F('select_favor_dir');
+    var add_new_dir = $F('add_new_dir');
+    if ( select_dir == 0 && !add_new_dir ) {
+        alert('<{#please_choice_dir#}>');
+        return false;
+    }
+
+    var submitform = $('add_favor_form');
+
+    submitform.submit();
+
+}
+
+</script>
+
+
+
+
+<{ include file="footer.tmpl" }>

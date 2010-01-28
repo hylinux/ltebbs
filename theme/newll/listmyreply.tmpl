@@ -1,0 +1,361 @@
+<{config_load file="listmyreply.conf"}>
+
+<{ include file="header.tmpl" }>
+
+
+<!-- 论坛的访问菜单 -->
+<table width="99%" cellpadding=0 cellspacing=1 border="0" bgcolor="#f6f7f1" align="center">
+<tr>
+<td align="left">
+&nbsp;&nbsp;<img src="<{$image_url}>open.gif" border=0 align="absmiddle">
+&nbsp;&nbsp;<a href='index.php?module=bbs'>[<{#the_bbs_home_page#}>]</a>
+<font color="<{#global_column_color#}>">></font>
+
+<a href='index.php?module=user'>[<{#user_control_panel#}>]</a>
+<font color="<{#global_column_color#}>">></font>
+
+<a href='index.php?module=user&action=myreply'>[<{#my_post_reply#}>]</a>
+<font color="<{#global_column_color#}>">></font>
+
+
+
+</td>
+</tr>
+</table>
+<br>
+
+<{ include file="usersharemenu.tmpl" }>
+
+<table width="99%" cellpadding=10 cellspacing=1 border="0" align="center">
+<tr>
+<td align="center" valign="top"  bgcolor="#FFFFFF" width="250">
+
+<table width="99%" cellpadding=3 cellspacing=1 border="0" align='center' bgcolor="<{#global_font_color#}>">
+
+<!-- 显示用户名和用户角色 -->
+<tr>
+<td align="center" valign="middle"  height="25" >
+<b><{$view_user_name}></b>&nbsp;&nbsp;[<{$user_roles}>]
+</td>
+</tr>
+
+<!-- 显示用户的头像 -->
+<tr>
+<td align="center" valign="middle" >
+<br>
+<img src="<{$head_url}>" border="0" align="absmiddle">
+<br>
+</td>
+</tr>
+
+<tr>
+<td align="center" valign="middle"  height="25" >
+<b><{#base_user_info_label#}></b>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="middle"  height="25" >
+<b><{#username_label#}>:</b> &nbsp;&nbsp;<{$view_user_name}>
+</td>
+</tr>
+
+
+<tr>
+<td align="left" valign="middle"  height="25" >
+<b><{#user_title#}>:</b>&nbsp;&nbsp;<{$user_roles}>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="middle"  height="25" >
+<b><{#register_date#}>:</b> &nbsp;&nbsp;<{$user_register_date}>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="middle"  height="25" >
+<b><{#last_login_date#}>:</b> &nbsp;&nbsp;<{$user_last_logout}>
+</td>
+</tr>
+
+
+<tr>
+<td align="left" valign="middle"  height="25" >
+<b><{#all_topics#}>:</b> &nbsp;&nbsp;<{$all_topic_number}><{#topic_desc#}>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="middle"  height="25" >
+<b><{#all_replies#}>:</b> &nbsp;&nbsp;<{$all_reply_number}><{#reply_desc#}>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="middle"  height="25" >
+<b><{#favor_number#}>:</b> &nbsp;&nbsp;<{$favor_amount}><{#favor_desc#}>
+</td>
+</tr>
+
+
+<tr>
+<td align="left" valign="middle"  height="25" >
+<b><{#all_messages#}>:</b> &nbsp;&nbsp;<{$message_all_number}><{#message_desc#}>
+</td>
+</tr>
+
+</table>
+
+
+</td>
+
+<td align="center" valign="top"  bgcolor="#FFFFFF">
+<br>
+
+
+<!-- 加入导航栏 -->
+<table width="99%" cellpadding=1 cellspacing=1 align="right" border=0 >
+<tr>
+<td width="150" align="left">
+&nbsp;
+</td>
+<td align="right">
+<table  align="right" cellpadding=1 cellspacing=1 border=0 bgcolor="#727273" >
+<tr bgcolor="#f6f7f1" >
+<td  width="150" align="center">
+<font color="<{#global_column_color#}>" ><{#total_have#}><{$total_page}><{#page_th#}><{$now_page}><{#page_label#}></font>
+</td>
+
+<td align="center" width="30">
+<a href='index.php?module=user&action=myreply&page=1'><{#first_page#}></a>
+</td>
+
+<td align="center" width="30">
+<a href='index.php?module=user&action=myreply&page=<{$now_page-1}>'><{#pre_page#}></a>
+</td>
+
+<{ section name="nav_page" loop=$nav_page }>
+
+
+<{ if $nav_page[nav_page] != $now_page }>
+<td width="16" align="center">
+<a href='index.php?module=user&action=myreply&page=<{$nav_page[nav_page]}>'><b><{$nav_page[nav_page]}></b></a>
+</td>
+<{ else }>
+
+<td width="20" align="center" bgcolor="white">
+<b><{$nav_page[nav_page]}></b>
+</td>
+
+<{/if}>
+
+
+<{ /section }>
+
+<td width="30" align="center">
+<a href='index.php?module=user&action=myreply&page=<{ $now_page+1}>'><{#next_page#}></a>
+</td>
+
+
+<td width="30" align="center">
+<a href='index.php?module=user&action=myreply&page=<{$total_page}>'><{#last_page#}></a>
+</td>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+<!-- 导航栏结束 -->
+<br><br>
+
+
+
+
+
+
+<!-- 显示用户发表的主题 -->
+<table width="97%" bgcolor="#f6f7f1" cellpadding=3 cellspacing=1 border="0" align='center'>
+
+<tr>
+<td align="left" colspan=6>
+<{#newest_five_topic#}>
+</td>
+</tr>
+
+<tr bgcolor="#FFFFFF">
+<td align="center" width="55">
+&nbsp;
+</td>
+
+<td align="left">
+&nbsp;&nbsp;&nbsp;
+<{#title_label#}>
+</td>
+
+<td align="center" width="255">
+<{#view_btitle_label#}>
+</td>
+
+
+<td align="center" width="55">
+<{#view_label#}>
+</td>
+
+<td align="center" width="55">
+<{#reply_label#}>
+</td>
+
+<td align="center" width="135">
+<{#last_post_label#}>
+</td>
+
+
+</tr>
+
+<{ section name="mysubject" loop=$subject }>
+   <tr>
+   <td align="center" valign="middle" width="30" bgcolor="white">
+   <img src="<{$image_url}><{$subject[mysubject].image}>" border="0" align="absmiddle">
+   </td>
+
+
+   <td bgcolor="white" align="left">
+       <{ if $subject[mysubject].express ne '' }>
+      <img src="<{$image_url}>express/<{$subject[mysubject].express}>" border="0" align="absmiddle">
+      <{/if}>
+       <a href="index.php?module=bbs&action=viewtopic&id=<{$subject[mysubject].id}>" target="_blank">
+<{$subject[mysubject].title}></a>
+      <{ if $subject[mysubject].have_attach }>
+         <img src="<{$image_url}>attach.gif" border=0 align="absmiddle">
+      <{/if}>
+
+      <{ if $subject[mysubject].have_new_reply && $subject[mysubject].reply_number>0 }>
+      <a href="index.php?module=bbs&action=viewtopic&id=<{$subject[mysubject].id}>&page=1#topic2"
+         title='<{#go_to_the_new_topic#}>' target="_blank">
+      <img src="<{$image_url}>firstnew.gif" border=0 align="absmiddle">
+      </a>
+      <{/if}>
+   </td>
+
+    <td align="center" width="255" bgcolor="white">
+        <a href="index.php?module=bbs&action=viewlayout&id=<{$subject[mysubject].bid}>" target="_blank">
+        <{ $subject[mysubject].btitle}>
+        </a>    
+    </td>
+
+
+   <td align="center" width="55" bgcolor="white">
+      <font color="<{#global_column_color#}>"><{$subject[mysubject].clicks_number}></font>
+   </td>
+
+   <td align="center" width="55" bgcolor="white">
+      <font color="<{#global_column_color#}>"><{$subject[mysubject].reply_number}></font>
+   </td>
+
+   <td align="center" width="135" bgcolor="white">
+      <font color="<{#global_column_color#}>">
+         <{$subject[mysubject].last_time}><br>
+       <div align="right">
+      <a href="index.php?module=user&action=view&id=<{$subject[mysubject].last_userid}>" target="_blank">
+         <{$subject[mysubject].last_username}>
+      </a>
+      <{ if $subject[mysubject].reply_number>0 }>
+         <a href="index.php?module=bbs&action=viewtopic&id=<{$subject[mysubject].id}>&page=<{$subject[mysubject].last_page}>#topic<{$subject[mysubject].last_number}>" title="<{#go_to_the_last_topic#}>" target="_blank">
+         <img src="<{$image_url}>lastpost.gif" border="0" align="absmiddle"></div>
+         </a>
+      <{/if}>
+      </font>
+   </td>
+
+   </tr>
+
+   <{/section}>
+
+
+
+
+</table>
+<br>
+
+<!-- 加入导航栏 -->
+<table width="99%" cellpadding=1 cellspacing=1 align="right" border=0 >
+<tr>
+<td width="150" align="left">
+&nbsp;
+</td>
+<td align="right">
+<table  align="right" cellpadding=1 cellspacing=1 border=0 bgcolor="#727273" >
+<tr bgcolor="#f6f7f1" >
+<td  width="150" align="center">
+<font color="<{#global_column_color#}>" ><{#total_have#}><{$total_page}><{#page_th#}><{$now_page}><{#page_label#}></font>
+</td>
+
+<td align="center" width="30">
+<a href='index.php?module=user&action=myreply&page=1'><{#first_page#}></a>
+</td>
+
+<td align="center" width="30">
+<a href='index.php?module=user&action=myreply&page=<{$now_page-1}>'><{#pre_page#}></a>
+</td>
+
+<{ section name="nav_page" loop=$nav_page }>
+
+
+<{ if $nav_page[nav_page] != $now_page }>
+<td width="16" align="center">
+<a href='index.php?module=user&action=myreply&page=<{$nav_page[nav_page]}>'><b><{$nav_page[nav_page]}></b></a>
+</td>
+<{ else }>
+
+<td width="20" align="center" bgcolor="white">
+<b><{$nav_page[nav_page]}></b>
+</td>
+
+<{/if}>
+
+
+<{ /section }>
+
+<td width="30" align="center">
+<a href='index.php?module=user&action=myreply&page=<{ $now_page+1}>'><{#next_page#}></a>
+</td>
+
+
+<td width="30" align="center">
+<a href='index.php?module=user&action=myreply&page=<{$total_page}>'><{#last_page#}></a>
+</td>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+<!-- 导航栏结束 -->
+
+
+
+
+
+</td>
+</tr>
+</table>
+
+
+
+<br>
+<br>
+
+<br>
+<br>
+
+<br>
+
+
+
+<{ include file="footer.tmpl" }>

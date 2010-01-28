@@ -1,0 +1,13 @@
+body {font-family: "Verdana, Arial, Helvetica, sans-serif, Tahoma,宋体";font-size: 13px;}
+table,td,input,select {font-size: 13px;color: #666666;line-height: 18px;font-family: "Verdana, Arial, Helvetica, sans-serif, Tahoma,宋体";}
+
+small {font-size:13pt;}
+big {font-size:15pt;}
+
+
+a {color:#0000A0; text-decoration:none;}
+a:active {color:#FFFFFF; text-decoration:none;}
+a:link {color:#FFFFFF; text-decoration:none;}
+a:visited {color:#FFFFFF; text-decoration:none;}
+a:hover {color:#FFFFFF; text-decoration:none;}
+

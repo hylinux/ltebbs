@@ -1,0 +1,104 @@
+<{ config_load file="bbssearch.conf" }>
+<{ include file="header.tmpl" }>
+
+<br>
+<!-- 如果有公告则显示这一块，如果没有则不显示 -->
+<{ if $have_system_post }>
+<table width="98%" cellpadding=1 cellspacing=1 align="center" border="0">
+<tr>
+<td width="80">
+<font color="red"><b><{#system_post#}>：</b></font>
+</td>
+<td valign="middle">
+<marquee onmouseover="this.stop()" onmouseout="this.start()" scrolldelay="70" scrollamount="3">
+<{$post_str}>
+</marquee>
+</td>
+</tr>
+</table>
+<{/if}>
+
+<!-- 论坛的访问菜单 -->
+<table width="99%" cellpadding=0 cellspacing=1 border="0" bgcolor="#f6f7f1" align="center">
+<tr>
+<td align="left">
+&nbsp;&nbsp;<img src="<{$image_url}>open.gif" border=0 align="absmiddle">
+&nbsp;&nbsp;<a href='index.php?module=bbs'>[<{#the_bbs_home_page#}>]</a>
+<font color="#336699">></font>
+<font color="#336699"><{#show_search_label#}></font>
+<font color="#336699">></font>
+</td>
+</tr>
+</table>
+<br>
+
+<form action="index.php" method="post">
+<input type="hidden" name="module" value="bbs">
+<input type="hidden" name="action" value="searchresult">
+
+
+<!-- 搜索论坛 -->
+<table width="98%" cellpadding=4 cellspacing=0 border="0" align="center">
+<tr bgcolor="#c5c5b3">
+<td align="left">
+&nbsp;&nbsp;<font color="#336699"><{#show_search_label#}></font>
+</td>
+</tr>
+
+<tr>
+<td align="center" valign="top">
+<table width="100%" cellpadding=1 cellspacing=1 border=0 align="center">
+<tr>
+<td width="50%" valign="top" align="left">
+<{#by_keyword_search#}>:<br>
+<input type="text" name="word" size="45" ><br>
+<select name="wordtarget">
+<option value="1" selected><{#by_title_label#}></option>
+<option value="2"><{#by_content_label#}></option>
+</select>
+</td>
+<td width="50%" valign="top" align="left">
+<{#by_user_search#}>:<br>
+<input type="text" name="user" size="45"><br>
+<input type="checkbox" name="usermatch" value="1" checked><{#user_match_label#}>
+
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+
+
+<tr bgcolor="#c5c5b3">
+<td align="left">
+&nbsp;&nbsp;<font color="#336699"><{#search_label#}></font>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top">
+&nbsp;&nbsp;&nbsp;
+<select name="layout[]" multiple="multiple" size="13">
+<{$layout_information}>
+</select>
+
+</td>
+</tr>
+
+</table>
+
+<center>
+<input type="submit" name="submit" value="<{#now_search#}>">
+&nbsp;&nbsp;
+<input type="reset" name="reset" value="<{#reset_form#}>">
+</center>
+
+</form>
+
+<br>
+<br>
+<br>
+
+<{ include file="footer.tmpl" }>
+

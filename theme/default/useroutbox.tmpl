@@ -1,0 +1,175 @@
+<{config_load file="useroutbox.conf"}>
+
+<{ include file="header.tmpl" }>
+
+<br>
+<table width="100%" height="300" align="center" cellspacing=1 cellpadding=1 border=0>
+<tr>
+<td align="center" valign="top">
+
+<table width="98%"  height="295" bgcolor="#f6f7f1" cellpadding="3" cellspacing=1 border="0" align="center">
+<tr bgcolor="#c5c5b3">
+<td align="left" height="15" colspan=2>
+<table width="100%" cellpadding=0 cellspacing=0 border=0 align="center">
+<tr>
+<td align="left">
+&nbsp;&nbsp;<font color="#336699"><b><{$view_user_name}></b>&nbsp;&nbsp;[<{$user_roles}>]&nbsp;</font>
+</td>
+<td align="right">
+<img src="<{$image_url}>ly10.gif" border=0 align="absmiddle">
+<font color="#336699"><{#res_title#}></font>&nbsp;&nbsp;
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+<tr>
+<td width="100" valign="top">
+<{ include file="userleftmenu.tmpl" }>
+
+</td>
+<td align="left" valign="top" bgcolor="white">
+<script language="javascript">
+
+   function CheckAll(v){
+        var e = document.form1;
+        for (var i=0;i<e.elements.length;i++)
+        {
+            if ( e.elements[i].type == 'checkbox' && e.elements[i].name != 'checkall' ) {
+                e.elements[i].checked = v;
+            }
+        }
+    }
+
+
+function showcanceldel()
+{
+    if(confirm("<{#sure_delete_msg#}>?\n")) {
+       document.form1.submit();
+        return;
+    }
+}
+
+</script>
+<!-- 站内短消息的显示处 -->
+<form action="index.php" method="post" name="form1">
+<input type=hidden name="module" value="message">
+<input type=hidden name="action" value="delsendmsg">
+
+<!-- 导航条 -->
+<br>
+
+<table width="99%" cellpadding=1 cellspacing=1 align="center" border=0 >
+<tr>
+<td align="right">
+<table  align="right" cellpadding=1 cellspacing=1 border=0 bgcolor="#727273" >
+<tr bgcolor="#f6f7f1" >
+<td  width="150" align="center">
+<font color="#336699" ><{#total_have#}><{$total_page}><{#page_th#}><{$now_page}><{#page_label#}></font>
+</td>
+
+<td align="center" width="30">
+<a href='index.php?module=message&action=send&page=1'><{#first_page#}></a>
+</td>
+
+<td align="center" width="30">
+<a href='index.php?module=message&action=send&page=<{$now_page-1}>'><{#pre_page#}></a>
+</td>
+
+<{ section name="nav_page" loop=$nav_page }>
+
+
+
+<{ if $nav_page[nav_page] != $now_page }>
+<td width="16" align="center">
+<a href='index.php?module=message&action=send&page=<{$nav_page[nav_page]}>'><b><{$nav_page[nav_page]}></b></a>
+</td>
+<{ else }>
+
+<td width="20" align="center" bgcolor="white">
+<b><{$nav_page[nav_page]}></b>
+</td>
+
+<{/if}>
+
+
+<{ /section }>
+
+<td width="30" align="center">
+<a href='index.php?module=message&action=send&page=<{ $now_page+1}>'><{#next_page#}></a>
+</td>
+
+
+<td width="30" align="center">
+<a href='index.php?module=message&action=send&page=<{$total_page}>'><{#last_page#}></a>
+</td>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<table width="98%" cellpadding=3 cellspacing=1 align="center" border="0">
+<tr bgcolor="#f6f7f1">
+<td align="center" width="86">
+<input type=checkbox name="chkall" value="on" onclick="CheckAll(this.checked)">
+<font color="#336699"><{#choice_all#}></font>
+</td>
+<td align="center" width="90">
+<font color="#336699"><{#send_man_label#}></font>
+</td>
+<td align="center">
+<font color="#336699"><{#title_label#}></font>
+</td>
+<td align="center" width="65">
+<font color="#336699"><{#date_label#}></font>
+</td>
+</tr>
+
+<{ section name="msg" loop=$msg }>
+<tr>
+<td align="center">
+<input type="checkbox" name="id[]" value="<{$msg[msg].id}>">
+</td>
+
+<td align="center">
+<a href="index.php?module=user&action=view&id=<{$msg[msg].send_user_id}>" target="_blank" title="<{#view_user_label#}>">
+<{$msg[msg].send_user_name}></a>
+</td>
+
+<td align="left">
+<a href="index.php?module=message&action=showsendmsg&id=<{$msg[msg].id}>" title="<{$msg[msg].title}>">
+<{$msg[msg].short_title}>
+</a>
+</td>
+
+<td align="center">
+<{$msg[msg].send_date}>
+</td>
+</tr>
+
+<{/section}>
+
+
+</table>
+<br>
+<center><input type="button" name="delmesg" value="<{#delete_all_message#}>" OnClick="showcanceldel()"></center>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</form>
+<br>
+<br>
+<br>
+
+<{ include file="footer.tmpl" }>

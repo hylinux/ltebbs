@@ -1,0 +1,79 @@
+<{config_load file="admin/login.conf"}>
+
+<html>
+<head>
+<title><{#res_title#}></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel=stylesheet type=text/css href="<{$css_url}>style.css">
+</head>
+
+<body bgcolor="#e0e0e0" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
+
+<form action="index.php" method="post" name="form2">
+<input type=hidden name="action" value="login">
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<table width="360" bgcolor="#c2c3b5" cellpadding=3 cellspacing=3 border=0 align="center">
+<tr>
+<td height="190" bgcolor="#f6f7f1" align="center" valign="top"><br><br>
+<font color="#336699" size=4><b><{#login_system_label#}></b></font><br><br>
+   <table width="82%" cellpadding=4 cellspacing=1 border=0 bgcolor="#c2c3b5" align="center">
+      <tr>
+      <td align="center">
+         User Name:
+      </td>
+      <td align="left" bgcolor="#f6f7f1">
+         <input type=text name="username" size=20 maxlength="30">
+
+      </td>
+      </tr>
+      <tr>
+      <td align="center">
+         Password:
+      </td>
+      <td align="left" bgcolor="#f6f7f1">
+         <input type=password name="userpass" size=20 maxlength="30">
+      </td>
+
+      </tr>
+   </table>
+      <input type="submit" name="submit" value="   Login   " onClick="return LoginCheck()">&nbsp;&nbsp;
+      <input type="reset" name="reset" value="  Cancel  ">
+</td>
+</tr>
+</table>
+
+
+</form>
+
+
+<script language="javascript">
+
+function LoginCheck() {
+   var username = document.form2.username.value;
+
+   if ( username.length <= 0 ) {
+      alert('user name can not be empty!');
+      return false;
+   }
+   var userpass = document.form2.userpass.value;
+
+   if ( userpass.length <= 0 ) {
+      alert('the password can not be empty!');
+      return false;
+   }
+
+   return true;
+
+}
+
+
+</script>
+</body>
+</html>
+

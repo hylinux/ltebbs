@@ -1,0 +1,53 @@
+<{ include file="header.tmpl" }>
+
+<br>
+<form action="install.php" method="get">
+
+<input type="button" value="上一步" OnClick="document.location.href='install.php?step=4'">&nbsp;&nbsp;
+<input type="submit" value="下一步">
+
+
+<table width="55%" left="left" cellpadding=3 cellspacing=3 border="0">
+
+<tr align="left">
+<td>
+<font size=4>数据库设定检测</font><br>
+</td>
+</tr>
+
+
+
+<tr align="left">
+<td>
+
+<{ if $failed_error }>
+<{$failed_error}>
+<{ else }>
+<font color="green">数据库成功建立</font>
+<br>
+
+<{$run_script}>
+
+<{/if}>
+
+
+</td>
+</tr>
+
+
+
+</table>
+<br>
+<input type="hidden" name="step" value=6>
+<input type="button" value="上一步" OnClick="document.location.href='install.php?step=4'">&nbsp;&nbsp;
+<input type="submit" value="下一步">
+
+</form>
+
+
+
+
+
+
+
+<{ include file="footer.tmpl" }>

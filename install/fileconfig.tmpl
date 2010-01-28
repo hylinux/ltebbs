@@ -1,0 +1,84 @@
+<{ include file="header.tmpl" }>
+
+<br>
+<form action="install.php" method="post">
+<table width="55%" left="left" cellpadding=3 cellspacing=3 border="0">
+
+<tr align="left">
+<td colspan=2>
+<font size=4>路径设定</font><br>
+<font color="red">注意：所有路径均应该以"/"结尾</font><br>
+</td>
+</tr>
+
+
+<tr align="left">
+<td>
+管理员邮件
+</td>
+<td>
+<input type="text" name="adminemail" value="<{$adminemail}>"/ size=35>
+</td>
+</tr>
+
+<tr align="left">
+<td>
+管理员密码
+</td>
+<td>
+<input type="text" name="adminpassword" value="<{$adminpassword}>"/ size=35>
+</td>
+</tr>
+
+
+
+
+
+<tr align="left">
+<td>
+网站域名
+</td>
+<td>
+<input type="text" name="domain" value="<{$domain}>"/ size=35>
+</td>
+</tr>
+
+
+
+<tr align="left">
+<td>
+访问URL:
+</td>
+<td>
+<input type="text" name="url" value="<{$url}>"/ size=35>
+</td>
+</tr>
+
+<tr align="left">
+<td>
+代码安装路径:
+</td>
+<td>
+<input type="text" name="path" value="<{$path}>"/ size=35>
+</td>
+</tr>
+
+<tr align="left">
+<td>
+缓存目录:
+</td>
+<td>
+<input type="text" name="cache" value="<{$cache}>"/ size=35><br>
+<font color="red">(您可以选择在web root目录范围之外的目录，这样更安全)</font>
+</td>
+</tr>
+</table>
+<input type="hidden" name="step" value=3>
+<input type="button" value="上一步" OnClick="document.location.href='install.php?step=1'">&nbsp;&nbsp;
+<input type="submit" value="下一步">
+
+</form>
+
+
+
+<{ include file="footer.tmpl" }>

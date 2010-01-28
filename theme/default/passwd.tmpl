@@ -1,0 +1,97 @@
+<{config_load file="passwd.conf"}>
+
+<{ include file="header.tmpl" }>
+
+<br>
+<table width="100%" height="300" align="center" cellspacing=1 cellpadding=1 border=0>
+<tr>
+<td align="center" valign="top">
+
+<table width="98%"  height="295" bgcolor="#f6f7f1" cellpadding="3" cellspacing=1 border="0" align="center">
+<tr bgcolor="#c5c5b3">
+<td align="left" height="15" colspan=2>
+<table width="100%" cellpadding=0 cellspacing=0 border=0 align="center">
+<tr>
+<td align="left">
+&nbsp;&nbsp;<font color="#336699"><b><{$view_user_name}></b>&nbsp;&nbsp;[<{$user_roles}>]&nbsp;</font>
+</td>
+<td align="right">
+<font color="#336699"><{#res_title#}></font>
+&nbsp;&nbsp;
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+<tr>
+<td width="100" valign="top" >
+<{ include file="userleftmenu.tmpl" }>
+
+</td>
+<td align="left" valign="top" bgcolor="white">
+<form action="index.php" name="form1" method="post">
+<input type="hidden" name="module" value="user">
+<input type="hidden" name="action" value="savemail">
+<!-- 显示用户的邮件和密码 -->
+<table width="98%" cellpadding=3 cellspacing=1 align="center" border="0" bgcolor="#f6f7f1">
+<tr>
+<td align="center" width="80"><font color="#336699"><{#user_email_label#}>:</font></td>
+<td align="left">
+<input type="text" name="user_email" value="<{$user_email}>" size="35">
+</td>
+</tr>
+
+<tr>
+<td align="center" width="80"><font color="#336699"><{#public_email_label#}>:</font></td>
+<td align="left">
+<input type="radio" name="public_email" value="1" <{ if $public_email }>checked<{/if}>><{#public_label#}>
+<input type="radio" name="public_email" value="0" <{ if !$public_email }>checked<{/if}>><{#not_public_label#}>
+
+
+
+</td>
+</tr>
+
+
+<tr>
+<td align="center" width="80">
+<font color="#336699"><{#new_passwd_label#}>:</font>
+</td>
+<td align="left" >
+<input type="password" name="new_passwd" size="35">
+</td>
+</tr>
+
+
+<tr>
+<td align="center" width="80">
+<font color="#336699"><{#check_passwd_label#}>:</font>
+</td>
+<td align="left" >
+<input type="password" name="check_passwd"  size="35">
+</td>
+</tr>
+
+<tr>
+<td align="left" colspan="2">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="submit" value="<{#save_label#}>">
+<input type="reset" value="<{#reset_label#}>">
+</td>
+</tr>
+
+
+</table>
+</form>
+</td>
+</tr>
+</table>
+
+</form>
+<br>
+<br>
+<br>
+
+<{ include file="footer.tmpl" }>

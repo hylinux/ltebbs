@@ -1,0 +1,83 @@
+<{ config_load file="admin/site.conf" }>
+<html>
+<head>
+<title><{#res_title#}></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel=stylesheet type=text/css href="<{$css_url}>style.css">
+</head>
+
+<body bgcolor="#e0e0e0" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
+
+<table width="100%"  align="center" cellpadding="1" cellspacing="1" border="0" bgcolor="#727273">
+<tr>
+<td align="center" width="65">
+<font color="#FFFFFF"><{#module_name_label#}></font>
+</td>
+
+<td align="center" width="65">
+<font color="#FFFFFF"><{#author_label#}></font>
+</td>
+
+<td align="center" width="65">
+<font color="#FFFFFF"><{#version_label#}></font>
+</td>
+
+<td align="center">
+<font color="#FFFFFF"><{#description_label#}></font>
+</td>
+
+<td align="center">
+<font color="#FFFFFF">状态</font>
+</td>
+
+<td align="center" width="85">
+<font color="#FFFFFF"><{#operation_label#}></font>
+</td>
+
+</tr>
+
+
+<{ section name="mymodule" loop=$module }>
+<tr bgcolor="#FFFFFF">
+<td align="center">
+<{$module[mymodule].name}>
+</td>
+
+<td align="center">
+<{$module[mymodule].author}>
+</td>
+
+<td align="center">
+<{$module[mymodule].version}>
+</td>
+
+<td align="center">
+<{$module[mymodule].description}>
+</td>
+
+<td align="center">
+<{$module[mymodule].status}>
+</td>
+
+<td align="center">
+<input type="button" value="<{#open_label#}>" OnClick="document.location.href='index.php?action=sitestatus&id=<{$module[mymodule].id}>&status=0'">
+<input type="button" value="<{#authortion#}>" OnClick="document.location.href='index.php?action=sitestatus&id=<{$module[mymodule].id}>&status=1'">
+<input type="button" value="<{#temp_closed#}>" OnClick="document.location.href='index.php?action=sitestatus&id=<{$module[mymodule].id}>&status=2'">
+<input type="button" value="<{#closed_for_ever#}>" OnClick="document.location.href='index.php?action=sitestatus&id=<{$module[mymodule].id}>&status=3'">
+</td>
+
+</tr>
+
+<{/section}>
+
+
+
+
+
+</table>
+
+
+
+</body>
+</html>
+

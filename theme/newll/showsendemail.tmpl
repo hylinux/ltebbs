@@ -1,0 +1,82 @@
+<{config_load file="showsendemail.conf"}>
+
+<{ include file="header.tmpl" }>
+
+<!-- 论坛的访问菜单 -->
+<table width="99%" cellpadding=0 cellspacing=1 border="0" bgcolor="#f6f7f1" align="center">
+<tr>
+<td align="left">
+&nbsp;&nbsp;<img src="<{$image_url}>open.gif" border=0 align="absmiddle">
+&nbsp;&nbsp;<a href='index.php?module=bbs'>[<{#the_bbs_home_page#}>]</a>
+<font color="<{#global_column_color#}>">></font>
+
+<a href='index.php?module=email&action=showsend&id=<{$id}>&backurl=<{$backurl}>'>[<{#res_title#}>]</a>
+<font color="<{#global_column_color#}>">></font>
+
+
+
+</td>
+</tr>
+</table>
+<br>
+
+<{ include file="usersharemenu.tmpl" }>
+
+
+
+
+<form action="index.php" method="post">
+<input type=hidden name="module" value="email">
+<input type="hidden" name="action" value="send">
+<input type="hidden" name="id" value="<{$id}>">
+<input type='hidden' name='backurl' value="<{$backurl}>">
+
+<table width="100%" height="300" align="center" cellspacing=1 cellpadding=1 border=0>
+<tr>
+<td align="center" valign="top">
+
+<br>
+<h2><{#res_title#}></h2>
+<br>
+
+<table width="95%" bgcolor="<{#global_font_color#}>" cellpadding="3" cellspacing="3" align="center">
+
+
+<tr>
+<td align=center width="80">
+<{#title_label#}>:
+</td>
+<td>
+<input type="text" name="title" size=50 style="height:23px">
+</td>
+</tr>
+
+<tr>
+<td align=center width="80" valign="top">
+<{#content_label#}>:
+</td>
+<td>
+<{ $fck->Create() }>
+</td>
+</tr>
+
+
+<tr>
+<td colspan=2 align="center">
+<input type="submit" name="s1" value="<{#send_label#}>">
+<input type="button" value="<{#back_label#}>" OnClick="javascript:history.back()">
+
+</td>
+</tr>
+
+</td>
+</tr>
+</table>
+</form>
+<br>
+<br>
+
+
+
+
+<{ include file="footer.tmpl" }>

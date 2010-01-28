@@ -1,0 +1,68 @@
+<{ config_load file="admin/addpost.conf" }>
+
+<html>
+<head>
+<title><{#res_title#}></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel=stylesheet type=text/css href="<{$css_url}>style.css">
+</head>
+
+<body bgcolor="#e0e0e0" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
+
+<form name="form2" action="index.php" method="post">
+<input type="hidden" name="action" value="savepost">
+
+<br>
+<br>
+<center><b><{#add_new_post_label#}></b></center><br>
+<table cellpadding="1" cellspacing="1" border="0" bgcolor="#727273" align="center">
+
+<tr>
+<td align="center" width="95">
+<font color="#FFFFFF"><{#title_label#}></font>
+</td>
+<td width="150">
+<input type="text" name="title" size="35">
+</td>
+</tr>
+
+<tr>
+<td align="center" width="95" valign="top">
+<font color="#FFFFFF"><{#content_label#}></font>
+</td>
+<td width="150">
+<textarea name="content" rows="8" cols="35"></textarea>
+</td>
+</tr>
+
+<tr>
+<td align="center" width="95">
+<font color="#FFFFFF"><{#end_date_label#}>:</font>
+</td>
+<td width="150">
+<select name="end_date">
+<option value="1">1<{#day_label#}></option>
+<option value="3">3<{#day_label#}></option>
+<option value="7"><{#one_week_label#}></option>
+<option value="14"><{#two_week_label#}></option>
+<option value="30"><{#one_month_label#}></option>
+<option value="365"><{#one_year_label#}></option>
+</select>
+</td>
+</tr>
+
+
+<tr>
+<td colspan="2" align="center">
+<input type="submit" value="<{#release_label#}>">
+<input type="button" value="<{#reset_label#}>" OnClick="document.location.href='index.php?action=post'">
+</td>
+</tr>
+
+</table>
+
+</form>
+
+</body>
+</html>
+

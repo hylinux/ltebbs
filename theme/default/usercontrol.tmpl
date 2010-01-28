@@ -1,0 +1,58 @@
+<{config_load file="usercontrol.conf"}>
+
+<{ include file="header.tmpl" }>
+
+<br>
+<table width="100%" height="300" align="center" cellspacing=1 cellpadding=1 border=0>
+<tr>
+<td align="center" valign="top">
+
+<table width="98%"  height="295" bgcolor="#f6f7f1" cellpadding="3" cellspacing=1 border="0" align="center">
+<tr bgcolor="#c5c5b3">
+<td align="left" height="15" colspan=2>
+&nbsp;&nbsp;<font color="#336699"><b><{$view_user_name}></b>&nbsp;&nbsp;[<{$user_roles}>]&nbsp;</font>
+
+</td>
+</tr>
+
+<tr>
+<td width="100" valign="top">
+<{ include file="userleftmenu.tmpl" }>
+
+</td>
+<td align="left" valign="top" bgcolor="white">
+<!-- 显示控制面板的默认信息  -->
+<br>
+&nbsp;&nbsp;&nbsp;<img src="<{$head_url}>" border="1" height="78" align="absmiddle">
+<br><br>
+<table width="98%" border="0" cellpadding=3 cellspacing=1 border=0>
+<tr>
+<td bgcolor="#c3c3b5">
+&nbsp; <b><font color="#336699"><{#info_detail#}></font></b>
+</td>
+</tr
+
+<tr>
+<td valign="top" bgcolor="#FFFFFF">
+<{#inbox_new_label#}><font color="red"> <{$new_message_label}> </font><{#inbox_new_label_1#}>， <{#total_number#}><font color="red"> <{$total_message_number}> </font><{#email_number_label#}><br>
+<br>
+
+</td>
+</tr>
+
+</table>
+
+
+
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br>
+<br>
+<br>
+
+<{ include file="footer.tmpl" }>

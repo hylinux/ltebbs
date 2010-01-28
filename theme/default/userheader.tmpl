@@ -1,0 +1,88 @@
+<{config_load file="userheader.conf"}>
+
+<{ include file="header.tmpl" }>
+
+<br>
+<table width="100%" height="300" align="center" cellspacing=1 cellpadding=1 border=0>
+<tr>
+<td align="center" valign="top">
+
+<table width="98%"  height="295" bgcolor="#f6f7f1" cellpadding="3" cellspacing=1 border="0" align="center">
+<tr bgcolor="#c5c5b3">
+<td align="left" height="15" colspan=2>
+<table width="100%" cellpadding=0 cellspacing=0 border=0 align="center">
+<tr>
+<td align="left">
+&nbsp;&nbsp;<font color="#336699"><b><{$view_user_name}></b>&nbsp;&nbsp;[<{$user_roles}>]&nbsp;</font>
+</td>
+<td align="right">
+<font color="#336699"><{#res_title#}></font>
+&nbsp;&nbsp;
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+<tr>
+<td width="100" valign="top" >
+<{ include file="userleftmenu.tmpl" }>
+
+</td>
+<td align="left" valign="top" bgcolor="white">
+<form action="index.php" name="form1" method="post" enctype="multipart/form-data">
+<input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
+<input type="hidden" name="module" value="user">
+<input type="hidden" name="action" value="saveuserheader">
+<!--显示用户的图像-->
+<table width="98%" cellpadding=3 cellspacing=1 align="center" border="0" bgcolor="#f6f7f1">
+<tr>
+<td align="left">
+<img src="<{$head_url}>" border="1" height="78" align="absmiddle" id="myimage">
+</td>
+</td>
+</tr>
+
+
+
+<tr>
+<td align="left">
+<select name="userheader" OnChange="document.images['myimage'].src='<{$image_url}>face/' + document.form1.userheader.options[document.form1.userheader.selectedIndex].value + '.jpg'">
+<{$image_options}>
+</select>
+
+</td>
+</tr>
+
+<tr>
+<td align="left">
+<{#user_defined_header#}>:<input type="file" name="user_define_header">
+<br>
+<font color="red"><{#upload_attach_limited#}></font>
+</td>
+</tr>
+
+
+<tr>
+<td align="left" >
+&nbsp;
+<input type="submit" value="<{#save_label#}>">
+<input type="reset" value="<{#reset_label#}>">
+</td>
+</tr>
+
+
+</table>
+</form>
+
+</td>
+</tr>
+</table>
+
+</form>
+<br>
+<br>
+<br>
+
+<{ include file="footer.tmpl" }>
